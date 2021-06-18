@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Card.hasOne(models.User, {
+        foreignKey: 'card_id'
+      })
     }
   };
   Card.init({
@@ -20,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     cvc: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Card',
+    modelName: 'card',
   });
   return Card;
 };

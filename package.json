@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "react": "cd client && npm start",
-    "dev": "concurrently \"npm run start\" \"npm run react\""
+    "dev": "concurrently \"npm run start\" \"npm run react\"",
+    "migrate": "npx sequelize-cli db:migrate",
+    "make-model": " npx sequelize-cli model:generate --name _entity_name_ --attributes atribute:type,..."
   },
   "repository": {
     "type": "git",

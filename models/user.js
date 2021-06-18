@@ -10,7 +10,24 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      User.hasMany(models.Auction, {
+        foreignKey: 'user_id'
+      })
+      User.hasMany(models.Bid, {
+        foreignKey: 'user_id'
+      })
+      User.belongsTo(models.Location, {
+        foreignKey: 'location_id',
+        onDelete: 'CASCADE'
+      })
+      User.belongsTo(models.Paypal, {
+        foreignKey: 'paypal_id',
+        onDelete: 'CASCADE'
+      })
+      User.belongsTo(models.Card, {
+        foreignKey: 'card_id',
+        onDelete: 'CASCADE'
+      })
     }
   };
   User.init({
@@ -28,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     profile_picture: DataTypes.BLOB
   }, {
     sequelize,
-    modelName: 'User',
+    modelName: 'user',
   });
   return User;
 };

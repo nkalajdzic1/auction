@@ -10,14 +10,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Paypal.hasOne(models.User, {
+        foreignKey: 'paypal_id'
+      })
     }
   };
   Paypal.init({
-    credentials: DataTypes.STRING
+    credentials: DataTypes.STRING,
+    password: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Paypal',
+    modelName: 'paypal',
   });
   return Paypal;
 };

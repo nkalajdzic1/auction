@@ -10,7 +10,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Auction.hasMany(models.Bid, {
+        foreignKey: 'auction_id'
+      })
+      Auction.belongsToMany(models.Item, {
+        foreignKey: 'item_id',
+        onDelete: 'CASCADE'
+      })
+      Auction.belongsToMany(models.User, {
+        foreignKey: 'user_id',
+        onDelete: 'CASCADE'
+      })
     }
   };
   Auction.init({
@@ -22,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     end_date: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'Auction',
+    modelName: 'auction',
   });
   return Auction;
 };

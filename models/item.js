@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Item.hasMany(models.Item_Category, {
+        foreignKey: 'item_id'
+      })
+      Item.hasOne(models.Auction, {
+        foreignKey: 'item_id'
+      })
     }
   };
   Item.init({
@@ -22,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Item',
+    modelName: 'item',
   });
   return Item;
 };

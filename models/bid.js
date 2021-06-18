@@ -10,7 +10,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Bid.belongsToMany(models.Auction, {
+        foreignKey: 'auction_id',
+        onDelete: 'CASCADE'
+      })
+      Bid.belongsToMany(models.User, {
+        foreignKey: 'user_id',
+        onDelete: 'CASCADE'
+      })
     }
   };
   Bid.init({
@@ -20,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     bidding_time: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'Bid',
+    modelName: 'bid',
   });
   return Bid;
 };

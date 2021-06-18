@@ -10,14 +10,20 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Location.hasOne(models.User, {
+        foreignKey: 'user_id'
+      })
     }
   };
   Location.init({
-    street: DataTypes.STRING
+    street: DataTypes.STRING,
+    city: DataTypes.STRING,
+    zip_code: DataTypes.STRING,
+    state: DataTypes.STRING,
+    country: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Location',
+    modelName: 'location',
   });
   return Location;
 };
