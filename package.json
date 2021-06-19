@@ -1,0 +1,33 @@
+{
+  "name": "auction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server/server.js",
+    "react": "cd client && npm start",
+    "dev": "concurrently \"npm run start\" \"npm run react\"",
+    "migrate": "npx sequelize-cli db:migrate",
+    "make-model": " npx sequelize-cli model:generate --name _entity_name_ --attributes atribute:type,..."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkalajdzic1/auction.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nkalajdzic1/auction/issues"
+  },
+  "homepage": "https://github.com/nkalajdzic1/auction#readme",
+  "devDependencies": {
+    "nodemon": "2.0.7",
+    "sequelize-cli": "^6.2.0"
+  },
+  "dependencies": {
+    "concurrently": "^6.2.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5"
+  }
+}

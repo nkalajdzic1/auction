@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "Admin",
+    "password": "admin",
+    "database": "auctionDB",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "admin",
+    "password": "admin",
+    "database": "auctionDB",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "admin",
+    "password": "admin",
+    "database": "auctionDB",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
