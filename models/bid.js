@@ -4,18 +4,11 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Bid extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      Bid.belongsToMany(models.Auction, {
-        foreignKey: 'auction_id',
+      Bid.belongsTo(models.auction, {
         onDelete: 'CASCADE'
       })
-      Bid.belongsToMany(models.User, {
-        foreignKey: 'user_id',
+      Bid.belongsTo(models.user, {
         onDelete: 'CASCADE'
       })
     }
@@ -28,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'bid',
+    freezeTableName: true,
+    underscored: true
   });
   return Bid;
 };

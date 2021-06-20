@@ -45,7 +45,7 @@ function SmallItemCard({
         <CardMedia className={classes.media} image={imageURL} title={title} />
         <CardMedia className={classes.root}>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="subtitle1" component="h2">
               {title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">

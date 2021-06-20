@@ -4,28 +4,20 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      User.hasMany(models.Auction, {
-        foreignKey: 'user_id'
-      })
-      User.hasMany(models.Bid, {
-        foreignKey: 'user_id'
-      })
-      User.belongsTo(models.Location, {
-        foreignKey: 'location_id',
+      User.hasMany(models.auction, {
         onDelete: 'CASCADE'
       })
-      User.belongsTo(models.Paypal, {
-        foreignKey: 'paypal_id',
+      User.hasMany(models.bid, {
         onDelete: 'CASCADE'
       })
-      User.belongsTo(models.Card, {
-        foreignKey: 'card_id',
+      User.belongsTo(models.location, {
+        onDelete: 'CASCADE'
+      })
+      User.belongsTo(models.paypal, {
+        onDelete: 'CASCADE'
+      })
+      User.belongsTo(models.card, {
         onDelete: 'CASCADE'
       })
     }
@@ -46,6 +38,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'user',
+    freezeTableName: true,
+    underscored: true
   });
   return User;
 };

@@ -4,20 +4,13 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Category extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      Category.hasMany(models.Item_Category, {
-        foreignKey: 'category_id'
+      Category.hasMany(models.item_category, {
+        onDelete: 'CASCADE'
       })
-      Category.hasMany(models.Category, {
-        foreignKey: 'category_id'
-      })
-      Category.belongsToMany(models.Category, {
-        foreignKey: 'category_id',
+      Category.belongsTo(models.category, {
+        as: 'parent_category',
+        useJunctionTable: false,
         onDelete: 'CASCADE'
       })
     }
@@ -28,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'category',
+    freezeTableName: true,
+    underscored: true
   });
   return Category;
 };

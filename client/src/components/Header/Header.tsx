@@ -5,6 +5,7 @@ import twIcon from "../../assets/icon/twitter_icon.svg";
 import gpIcon from "../../assets/icon/google_plus_icon.svg";
 
 import "./Header.css";
+import HeaderMenu from "../HeaderMenu/HeaderMenu";
 
 function Header() {
   return (
@@ -23,6 +24,7 @@ function Header() {
           </div>
         </div>
       </div>
+      <HeaderMenu></HeaderMenu>
     </div>
   );
 }

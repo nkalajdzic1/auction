@@ -33,54 +33,22 @@ function FeatureProducts() {
       <div>
         <div className="cardContent">
           <ul>
-            <li>
-              <div className="singleCard">
-                <SmallItemCard
-                  id={1}
-                  imageURL={""}
-                  title={"Shoes"}
-                  starting_price={10.1}
-                  styles={mediumCardclasses}
-                  onClickF={openItem}
-                ></SmallItemCard>
-              </div>
-            </li>
-            <li>
-              <div className="singleCard">
-                <SmallItemCard
-                  id={1}
-                  imageURL={""}
-                  title={"Shoes"}
-                  starting_price={10.1}
-                  styles={mediumCardclasses}
-                  onClickF={openItem}
-                ></SmallItemCard>
-              </div>
-            </li>
-            <li>
-              <div className="singleCard">
-                <SmallItemCard
-                  id={1}
-                  imageURL={""}
-                  title={"Shoes"}
-                  starting_price={10.1}
-                  styles={mediumCardclasses}
-                  onClickF={openItem}
-                ></SmallItemCard>
-              </div>
-            </li>
-            <li>
-              <div className="singleCard">
-                <SmallItemCard
-                  id={1}
-                  imageURL={""}
-                  title={"Shoes"}
-                  starting_price={10.1}
-                  styles={mediumCardclasses}
-                  onClickF={openItem}
-                ></SmallItemCard>
-              </div>
-            </li>
+            {[1, 2, 3, 4].map((x, i) => {
+              return (
+                <li>
+                  <div className="singleCard">
+                    <SmallItemCard
+                      id={x}
+                      imageURL={""}
+                      title={"Shoes"}
+                      starting_price={10.1}
+                      styles={mediumCardclasses}
+                      onClickF={openItem}
+                    ></SmallItemCard>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
