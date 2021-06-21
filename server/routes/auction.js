@@ -1,9 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const models = require('../../models');
+const {
+    Op
+} = require('sequelize');
 
 router.get('/new_arrivals', (req, res) => {
     models.auction.findAll({
+        where: {
+            end_date: {
+                [Op.gt]: new Date()
+            }
+        },
         include: [{
             model: models.item,
             include: [{
@@ -25,6 +33,11 @@ router.get('/new_arrivals', (req, res) => {
 
 router.get('/last_chance', (req, res) => {
     models.auction.findAll({
+        where: {
+            end_date: {
+                [Op.gt]: new Date()
+            }
+        },
         include: [{
             model: models.item,
             include: [{
