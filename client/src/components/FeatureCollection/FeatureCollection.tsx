@@ -1,6 +1,6 @@
 import { makeStyles, Tab } from "@material-ui/core";
 import React from "react";
-import SmallItemCard from "../ItemCard/SmallItemCard/SmallItemCard";
+import ItemCard from "../ItemCard//ItemCard";
 
 import "./FeatureCollection.css";
 
@@ -32,42 +32,22 @@ function FeatureCollection() {
       <div>
         <div className="cardContent">
           <ul>
-            <li>
-              <div className="singleCard">
-                <SmallItemCard
-                  id={1}
-                  imageURL={""}
-                  title={"Shoes"}
-                  starting_price={10.1}
-                  styles={bigCardclasses}
-                  onClickF={openItem}
-                ></SmallItemCard>
-              </div>
-            </li>
-            <li>
-              <div className="singleCard">
-                <SmallItemCard
-                  id={1}
-                  imageURL={""}
-                  title={"Shoes"}
-                  starting_price={10.1}
-                  styles={bigCardclasses}
-                  onClickF={openItem}
-                ></SmallItemCard>
-              </div>
-            </li>
-            <li>
-              <div className="singleCard">
-                <SmallItemCard
-                  id={1}
-                  imageURL={""}
-                  title={"Shoes"}
-                  starting_price={10.1}
-                  styles={bigCardclasses}
-                  onClickF={openItem}
-                ></SmallItemCard>
-              </div>
-            </li>
+            {[1, 2, 3].map((x, i) => {
+              return (
+                <li>
+                  <div className="singleCard">
+                    <ItemCard
+                      id={1}
+                      imageURL={""}
+                      title={"Shoes"}
+                      starting_price={10.1}
+                      styles={bigCardclasses}
+                      onClickF={openItem}
+                    ></ItemCard>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

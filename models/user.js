@@ -1,31 +1,23 @@
-'use strict';
+/*'use strict';
 const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      User.hasMany(models.Auction, {
-        foreignKey: 'user_id'
-      })
-      User.hasMany(models.Bid, {
-        foreignKey: 'user_id'
-      })
-      User.belongsTo(models.Location, {
-        foreignKey: 'location_id',
+      User.hasMany(models.auction, {
         onDelete: 'CASCADE'
       })
-      User.belongsTo(models.Paypal, {
-        foreignKey: 'paypal_id',
+      User.hasMany(models.bid, {
         onDelete: 'CASCADE'
       })
-      User.belongsTo(models.Card, {
-        foreignKey: 'card_id',
+      User.belongsTo(models.location, {
+        onDelete: 'CASCADE'
+      })
+      User.belongsTo(models.paypal, {
+        onDelete: 'CASCADE'
+      })
+      User.belongsTo(models.card, {
         onDelete: 'CASCADE'
       })
     }
@@ -46,6 +38,28 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'user',
+    freezeTableName: true,
+    underscored: true
   });
   return User;
+};*/
+
+module.exports = function (sequelize, DataTypes) {
+  return sequelize.define("user", {
+    location_id: DataTypes.INTEGER,
+    card_id: DataTypes.INTEGER,
+    paypal_id: DataTypes.INTEGER,
+    name: DataTypes.STRING,
+    surname: DataTypes.STRING,
+    gender: DataTypes.STRING,
+    date_of_birth: DataTypes.DATE,
+    phone_number: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    role: DataTypes.INTEGER,
+    profile_picture: DataTypes.BLOB
+  }, {
+    freezeTableName: true,
+    underscored: true
+  });
 };

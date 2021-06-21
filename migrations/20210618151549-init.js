@@ -40,7 +40,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       state: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: true
       },
       country: {
         type: Sequelize.STRING
@@ -68,7 +69,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       expiration_date: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       cvc: {
         type: Sequelize.STRING
@@ -101,11 +102,41 @@ module.exports = {
       rating: {
         type: Sequelize.FLOAT
       },
-      item_picture: {
-        type: Sequelize.BLOB
-      },
       description: {
         type: Sequelize.STRING
+      },
+      created_at: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updated_at: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
+    await queryInterface.createTable('item_picture', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      item_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'item',
+          key: 'id',
+          as: 'item_id'
+        }
+      },
+      is_main_picture: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+      },
+      picture: {
+        type: Sequelize.BLOB('long'),
+        allowNull: false
       },
       created_at: {
         allowNull: false,
@@ -283,7 +314,7 @@ module.exports = {
           as: 'user_id'
         }
       },
-      startring_price: {
+      starting_price: {
         type: Sequelize.FLOAT
       },
       is_bearing_shipping: {
