@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 const {
   Model
 } = require('sequelize');
@@ -6,7 +6,10 @@ module.exports = (sequelize, DataTypes) => {
   class Item_Picture extends Model {
     static associate(models) {
       Item_Picture.belongsTo(models.item, {
-        onDelete: "CASCADE"
+        foreignKey: 'item_id',
+        targetKey: 'id',
+        as: 'itemPicture',
+        onDelete: 'CASCADE'
       })
     }
   };
@@ -21,4 +24,15 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true
   });
   return Item_Picture;
+};*/
+
+module.exports = function (sequelize, DataTypes) {
+  return sequelize.define("item_picture", {
+    item_id: DataTypes.INTEGER,
+    is_main_picture: DataTypes.BOOLEAN,
+    picture: DataTypes.BLOB('long')
+  }, {
+    freezeTableName: true,
+    underscored: true
+  });
 };

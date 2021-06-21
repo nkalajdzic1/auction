@@ -5,7 +5,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
 import TabPanel from "../TabPanel/TabPanel";
-import SmallItemCard from "../ItemCard/SmallItemCard/SmallItemCard";
+import ItemCard from "../ItemCard/ItemCard";
 
 import "./NTLOverview.css";
 
@@ -27,40 +27,46 @@ const smallCard = makeStyles({
 
 function openItem() {}
 
+function blobToImage(picData: any) {
+  var blob = new Blob([new Uint8Array(picData.data)], { type: picData.type });
+  return URL.createObjectURL(blob);
+}
+
 // <<<<      >>>
 
-interface INewArrivals {
+interface IItemCard {
   id: number;
   item_id: number;
   user_id: number;
-  startring_price: number;
-  is_bearing_shipping: boolean;
-  start_date: Date;
-  end_date: Date;
-  createdAt: Date;
-  updatedAt: Date;
-  userId: number;
-  item_auction_id: {
-    id: number;
+  starting_price: number;
+  item: {
     name: string;
-    color: string;
-    size: string;
-    rating: number;
-    description: string;
-    createdAt: Date;
-    updatedAt: Date;
+    item_item_picture: [
+      {
+        picture: {
+          type: string;
+          data: any;
+        };
+      }
+    ];
   };
 }
 
 export default function NTLOverview() {
   const smallCardclasses = smallCard();
   const [value, setValue] = useState(0);
-  const [newArrivals, setNewArrivals] = useState<INewArrivals[]>([]);
+  const [newArrivals, setNewArrivals] = useState<IItemCard[]>([]);
+  const [lastChance, setLastChance] = useState<IItemCard[]>([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/auction/new_arrivals")
       .then((res) => setNewArrivals(res.data))
+      .catch((err) => console.log(err));
+
+    axios
+      .get("http://localhost:5000/auction/last_chance")
+      .then((res) => setLastChance(res.data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -91,17 +97,19 @@ export default function NTLOverview() {
               <ul>
                 {newArrivals.map((x, i) => {
                   return (
-                    <li>
+                    <li id={x.id.toString()}>
                       <div className="singleCard">
-                        <SmallItemCard
+                        <ItemCard
                           id={x.id}
                           key={i}
-                          imageURL={""}
-                          title={x.item_auction_id.name}
-                          starting_price={x.startring_price}
+                          imageURL={blobToImage(
+                            x.item.item_item_picture[0].picture
+                          )}
+                          title={x.item.name}
+                          starting_price={x.starting_price}
                           styles={smallCardclasses}
                           onClickF={openItem}
-                        ></SmallItemCard>
+                        ></ItemCard>
                       </div>
                     </li>
                   );
@@ -116,7 +124,7 @@ export default function NTLOverview() {
                   return (
                     <li>
                       <div className="singleCard">
-                        <SmallItemCard
+                        <ItemCard
                           id={x}
                           key={i}
                           imageURL={""}
@@ -124,7 +132,7 @@ export default function NTLOverview() {
                           starting_price={10.1}
                           styles={smallCardclasses}
                           onClickF={openItem}
-                        ></SmallItemCard>
+                        ></ItemCard>
                       </div>
                     </li>
                   );
@@ -135,19 +143,21 @@ export default function NTLOverview() {
           <TabPanel value={value} index={2}>
             <div className="cardContent">
               <ul>
-                {[1, 2, 3, 4, 5, 6, 7].map((x, i) => {
+                {lastChance.map((x, i) => {
                   return (
-                    <li>
+                    <li id={x.id.toString()}>
                       <div className="singleCard">
-                        <SmallItemCard
-                          id={x}
+                        <ItemCard
+                          id={x.id}
                           key={i}
-                          imageURL={""}
-                          title={"Shoes"}
-                          starting_price={10.1}
+                          imageURL={blobToImage(
+                            x.item.item_item_picture[0].picture
+                          )}
+                          title={x.item.name}
+                          starting_price={x.starting_price}
                           styles={smallCardclasses}
                           onClickF={openItem}
-                        ></SmallItemCard>
+                        ></ItemCard>
                       </div>
                     </li>
                   );

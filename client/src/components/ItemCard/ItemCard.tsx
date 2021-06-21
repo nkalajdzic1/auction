@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 
-import "../ItemCard.css";
+import "./ItemCard.css";
 
 export interface IItemCardProps {
   id: number;
@@ -30,7 +30,7 @@ const defaultStyles = makeStyles({
   },
 });
 
-function SmallItemCard({
+function ItemCard({
   id,
   imageURL,
   title,
@@ -58,4 +58,4 @@ function SmallItemCard({
   );
 }
 
-export default SmallItemCard;
+export default ItemCard;

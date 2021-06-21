@@ -135,7 +135,7 @@ module.exports = {
         allowNull: false
       },
       picture: {
-        type: Sequelize.BLOB,
+        type: Sequelize.BLOB('long'),
         allowNull: false
       },
       created_at: {
@@ -314,7 +314,7 @@ module.exports = {
           as: 'user_id'
         }
       },
-      startring_price: {
+      starting_price: {
         type: Sequelize.FLOAT
       },
       is_bearing_shipping: {

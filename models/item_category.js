@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 const {
   Model
 } = require('sequelize');
@@ -18,4 +18,14 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true
   });
   return Item_Category;
+};*/
+
+module.exports = function (sequelize, DataTypes) {
+  return sequelize.define("item_category", {
+    item_id: DataTypes.INTEGER,
+    category_id: DataTypes.INTEGER
+  }, {
+    freezeTableName: true,
+    underscored: true
+  });
 };

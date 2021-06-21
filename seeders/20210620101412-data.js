@@ -560,9 +560,9 @@ module.exports = {
     await queryInterface.bulkInsert('auction', [{
         item_id: 1,
         user_id: 1,
-        startring_price: 35.75,
+        starting_price: 35.75,
         is_bearing_shipping: false,
-        start_date: currentDate,
+        start_date: new Date(2021, 0, 11),
         end_date: auctionDate,
         created_at: currentDate,
         updated_at: currentDate
@@ -570,9 +570,9 @@ module.exports = {
       {
         item_id: 2,
         user_id: 1,
-        startring_price: 45.90,
+        starting_price: 45.90,
         is_bearing_shipping: false,
-        start_date: currentDate,
+        start_date: new Date(2021, 0, 11),
         end_date: auctionDate,
         created_at: currentDate,
         updated_at: currentDate
@@ -580,9 +580,9 @@ module.exports = {
       {
         item_id: 3,
         user_id: 2,
-        startring_price: 15,
+        starting_price: 15,
         is_bearing_shipping: true,
-        start_date: currentDate,
+        start_date: new Date(2021, 0, 11),
         end_date: auctionDate,
         created_at: currentDate,
         updated_at: currentDate
@@ -590,9 +590,9 @@ module.exports = {
       {
         item_id: 4,
         user_id: 2,
-        startring_price: 12.78,
+        starting_price: 12.78,
         is_bearing_shipping: false,
-        start_date: currentDate,
+        start_date: new Date(2021, 0, 11),
         end_date: auctionDate,
         created_at: currentDate,
         updated_at: currentDate
@@ -600,7 +600,7 @@ module.exports = {
       {
         item_id: 5,
         user_id: 3,
-        startring_price: 33,
+        starting_price: 33,
         is_bearing_shipping: false,
         start_date: currentDate,
         end_date: auctionDate,
@@ -610,7 +610,7 @@ module.exports = {
       {
         item_id: 6,
         user_id: 3,
-        startring_price: 33,
+        starting_price: 33,
         is_bearing_shipping: false,
         start_date: currentDate,
         end_date: auctionDate,
@@ -620,7 +620,7 @@ module.exports = {
       {
         item_id: 7,
         user_id: 3,
-        startring_price: 80.10,
+        starting_price: 80.10,
         is_bearing_shipping: true,
         start_date: currentDate,
         end_date: auctionDate,

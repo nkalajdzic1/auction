@@ -1,8 +1,8 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 
-const SmallitemCardSkeleton = () => {
+const ItemCardSkeleton = () => {
   return <div></div>;
 };
 
-export default SmallitemCardSkeleton;
+export default ItemCardSkeleton;

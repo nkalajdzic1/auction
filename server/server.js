@@ -2,13 +2,13 @@ const express = require("express");
 const cors = require('cors');
 const app = express();
 const db = require('./database.js');
+
 app.use(cors());
 
 //routes
 app.use('/auction', require('./routes/auction.js'));
 
-
-//check connection
+//check connection to database
 db.authenticate().then(() => console.log('Connected to auctionDB database.'))
     .catch(err => console.log(err));
 

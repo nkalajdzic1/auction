@@ -1,6 +1,6 @@
 import { makeStyles, Tab } from "@material-ui/core";
 import React from "react";
-import SmallItemCard from "../ItemCard/SmallItemCard/SmallItemCard";
+import ItemCard from "../ItemCard//ItemCard";
 
 import "./FeatureCollection.css";
 
@@ -36,14 +36,14 @@ function FeatureCollection() {
               return (
                 <li>
                   <div className="singleCard">
-                    <SmallItemCard
+                    <ItemCard
                       id={1}
                       imageURL={""}
                       title={"Shoes"}
                       starting_price={10.1}
                       styles={bigCardclasses}
                       onClickF={openItem}
-                    ></SmallItemCard>
+                    ></ItemCard>
                   </div>
                 </li>
               );
