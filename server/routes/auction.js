@@ -27,7 +27,9 @@ router.get('/new_arrivals', (req, res) => {
         attributes: ['id', 'item_id', 'user_id', 'starting_price'],
         order: [
             ['start_date', 'DESC']
-        ]
+        ],
+        limit: 8,
+        subQuery: false
     }).then(x => res.json(x)).catch(x => res.json(x));
 });
 
@@ -53,7 +55,9 @@ router.get('/last_chance', (req, res) => {
         attributes: ['id', 'item_id', 'user_id', 'starting_price'],
         order: [
             ['start_date', 'ASC']
-        ]
+        ],
+        limit: 8,
+        subQuery: false
     }).then(x => res.json(x)).catch(x => res.json(x));
 });
 

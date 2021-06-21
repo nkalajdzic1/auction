@@ -5,12 +5,8 @@ import Footer from "../Footer/Footer";
 import "./Page.css";
 
 const Page = ({ children }: any) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
-    <div className="page content">
+    <div className="page_content">
       <Header />
       {children}
       <Footer />
