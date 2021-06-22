@@ -4,7 +4,11 @@ import axios from "axios";
 import ItemList from "../ItemList/ItemList";
 import ItemListSkeleton from "../ItemList/ItemListSkeleton";
 
-function LastChance() {
+export interface ILastChanceProps {
+    route: string;
+}
+
+function LastChance({route}: ILastChanceProps) {
   const [items, setItems] = useState<IItemCard[]>([]);
   const [isLoadingData, setIsLoadingData] = useState(false);
 
@@ -12,7 +16,7 @@ function LastChance() {
     setIsLoadingData(true);
 
     axios
-      .get("http://localhost:5000/auction/last_chance")
+      .get("http://localhost:5000/auction/" + route)
       .then((res) => {
         setItems(res.data);
         setTimeout(() => {
