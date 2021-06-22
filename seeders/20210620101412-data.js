@@ -562,8 +562,8 @@ module.exports = {
         user_id: 1,
         starting_price: 35.75,
         is_bearing_shipping: false,
-        start_date: new Date(2021, 0, 11),
-        end_date: auctionDate,
+        start_date: new Date(2021, 0, 1),
+        end_date: new Date(2021, 6, 1),
         created_at: currentDate,
         updated_at: currentDate
       },

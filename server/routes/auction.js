@@ -40,7 +40,7 @@ router.get('/new_arrivals', (req, res) => {
 
 router.get('/last_chance', (req, res) => {
     getItemsNTL([
-        ['start_date', 'ASC']
+        ['end_date', 'ASC']
     ]).then(x => res.json(x)).catch(x => res.json(x));
 });
 
