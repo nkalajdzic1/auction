@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { IItemCard } from "./IItemCard";
+import { IItemCard } from "../ItemList/IItemCard";
 import axios from "axios";
-import ItemList from "./ItemList/ItemList";
-import ItemListSkeleton from "./ItemList/ItemListSkeleton";
+import ItemList from "../ItemList/ItemList";
+import ItemListSkeleton from "../ItemList/ItemListSkeleton";
 
 function LastChance() {
   const [items, setItems] = useState<IItemCard[]>([]);

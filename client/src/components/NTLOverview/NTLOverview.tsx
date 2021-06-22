@@ -4,8 +4,9 @@ import Tab from "@material-ui/core/Tab";
 
 import TabPanel from "../TabPanel/TabPanel";
 import "./NTLOverview.css";
-import NewArrivals from "./components/NewArrivals";
-import LastChance from "./components/LastChance";
+import NewArrivals from "./components/NTL/NewArrivals";
+import LastChance from "./components/NTL/LastChance";
+import TopRated from "./components/NTL/TopRated";
 
 // <<<< card styles, size, etc >>>
 
@@ -46,7 +47,9 @@ export default function NTLOverview() {
           <TabPanel value={value} index={0} className="tab1">
             <NewArrivals></NewArrivals>
           </TabPanel>
-          <TabPanel value={value} index={1}></TabPanel>
+          <TabPanel value={value} index={1}>
+            <TopRated></TopRated>
+            </TabPanel>
           <TabPanel value={value} index={2}>
             <LastChance></LastChance>
           </TabPanel>
