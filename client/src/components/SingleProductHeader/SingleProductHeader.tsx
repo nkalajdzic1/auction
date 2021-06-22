@@ -3,7 +3,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Styles from "./Styles";
 import { Typography } from "@material-ui/core";
-import { toastError, toastRegular } from '../ToastCustom/ToastCustom';
+import { toastRegular } from '../ToastCustom/ToastCustom';
 
 function SingleProductHeader() {
     const classes = Styles();

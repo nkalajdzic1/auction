@@ -1,0 +1,21 @@
+.single_product_content {
+    margin: 5% 10%;
+}
+
+.single_product_images {
+    display: flex;
+    width: auto;
+}
+
+.single_product_pictures {
+    width: 43%;
+}
+
+.single_product_info {
+
+}
+
+.arrows {
+    padding-top: 10px;
+    margin-left: 43%;    
+}
