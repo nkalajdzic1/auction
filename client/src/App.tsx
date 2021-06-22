@@ -4,8 +4,8 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CustomRoute from "./routes/CustomRoute";
 import Routes from "./routes/Routes";
+import { AboutUsPage, LandingPage, Page404, SingleProductPage } from "./pages";
 import { ToastContainer } from "react-toastify";
-import { AboutUsPage, LandingPage, Page404 } from "./pages";
 
 function App() {
   useEffect(() => {
@@ -33,14 +33,20 @@ function App() {
         <CustomRoute
           //permission={[PermissionType.All]}
           exact
-          path="/aboutUs"
+          path="/about_us"
           component={AboutUsPage}
           title="About us"
+        />
+        <CustomRoute
+          exact
+          path="/single_product"
+          component={SingleProductPage}
+          title="Single Product"
         />
         <Route exact path="" component={Routes} />
         <Route exact path="" component={Page404} />x
       </Switch>
-      <ToastContainer />
+      <ToastContainer draggable={false}/>
     </Router>
   );
 }

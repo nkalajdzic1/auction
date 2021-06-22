@@ -21,7 +21,9 @@ interface ICustomRouteProps {
 export default function CustomRoute({
   /*permission,*/
   title,
-  ...rest
+  exact,
+  path,
+  component,
 }: ICustomRouteProps) {
   //<<<<<<<<<<<<<routing for permission type because administrator can access more etc>>>>>>>>>>>>>>>>>
 
@@ -33,5 +35,5 @@ export default function CustomRoute({
 
   document.title = `Auction | ${title}`;
 
-  return <Route {...rest} />;
+  return <Route>{component}</Route>;
 }

@@ -14,8 +14,7 @@ function ItemList({ items }: IItemListProps) {
   const smallCardClasses = smallCard();
   return (
     <ul>
-      {items.length != 0 ?
-       items.map((x, i) => {
+      {items.map((x, i) => {
         return (
           <li id={x.id.toString()}>
             <div className="singleCard">
@@ -31,9 +30,7 @@ function ItemList({ items }: IItemListProps) {
             </div>
           </li>
         );
-      }) : (new Array(8)).fill(null).map((x,i) => {
-        	  return <li></li>
-      }) }
+      })}
     </ul>
   );
 }

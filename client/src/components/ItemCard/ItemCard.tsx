@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -10,6 +10,8 @@ import { makeStyles } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 
 import "./ItemCard.css";
+import { SingleProductPage } from "../../pages";
+import CustomRoute from "../../routes/CustomRoute";
 
 export interface IItemCardProps {
   id: number;
@@ -38,9 +40,17 @@ function ItemCard({
   styles,
   onClickF,
 }: IItemCardProps) {
+  const history = useHistory();
   const classes = styles == null ? defaultStyles() : styles;
+
+  function routeTo(id: number) {
+    history.push({
+      pathname: "/single_product"
+    });
+  }
+
   return (
-    <Card key={id} className={classes.root} onClick={onClickF} raised={false}>
+    <Card key={id} className={classes.root} onClick={() => routeTo(id)} raised={false}>
       <CardActionArea>
         <CardMedia className={classes.media} image={imageURL} title={title} />
         <CardMedia className={classes.root}>
