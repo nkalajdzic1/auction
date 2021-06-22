@@ -4,7 +4,6 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "heroku-postbuild": "cd client && npm install && --only=dev --no-shrinkwrap && npm run build",
     "start": "nodemon server/server.js",
     "react": "cd client && npm start",
     "dev": "concurrently \"npm run start\" \"npm run react\"",
