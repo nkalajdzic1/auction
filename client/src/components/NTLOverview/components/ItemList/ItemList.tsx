@@ -1,8 +1,8 @@
 import React from "react";
 import ItemCard from "../../../ItemCard/ItemCard";
-import { IItemCard } from "../IItemCard";
+import { IItemCard } from "./IItemCard";
 import { blobToImage } from "../../NTLOverview";
-import { smallCard } from "../Styles";
+import { smallCard } from "./Styles";
 
 function openItem() {}
 
@@ -14,7 +14,8 @@ function ItemList({ items }: IItemListProps) {
   const smallCardClasses = smallCard();
   return (
     <ul>
-      {items.map((x, i) => {
+      {items.length != 0 ?
+       items.map((x, i) => {
         return (
           <li id={x.id.toString()}>
             <div className="singleCard">
@@ -30,7 +31,9 @@ function ItemList({ items }: IItemListProps) {
             </div>
           </li>
         );
-      })}
+      }) : (new Array(8)).fill(null).map((x,i) => {
+        	  return <li></li>
+      }) }
     </ul>
   );
 }

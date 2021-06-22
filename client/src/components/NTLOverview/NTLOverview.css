@@ -15,6 +15,7 @@
 .cardContent {
   display: inline-grid;
   grid-template-columns: repeat(4, auto);
+  height: 720px;
 }
 
 .cardContent > ul {

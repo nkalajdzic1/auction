@@ -14,15 +14,8 @@ import './CategoriesOverview.css';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-        width: '100%',
+        width: 250,
         maxWidth: 250,
-    },
-    itemShadow: {
-        boxShadow: "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;",
-        marginTop: ".8px",
-    },
-    list: {
-
     },
     head: {
         color: "#8367D8"
@@ -38,16 +31,20 @@ function CategoriesOverview() {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-        <List component="nav" className={classes.list}>
+        <div className="categories_list">
+        <List component="nav" className={classes.root}>
           <ListItem className={classes.head}>
               <ListItemText>CATEGORIES</ListItemText>
           </ListItem>
+          <Divider></Divider>
           {(new Array(10)).fill(null).map((x, i) => {
               return (
-                <ListItem button className={classes.itemShadow}>
+                <>
+                <ListItem button>
                     <ListItemText primary="List item"/>
                 </ListItem>
+                <Divider></Divider>
+                </>
               )
           })}
       </List>

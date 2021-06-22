@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { IItemCard } from "./IItemCard";
+import { IItemCard } from "../ItemList/IItemCard";
 import axios from "axios";
-import ItemList from "./ItemList/ItemList";
-import ItemListSkeleton from "./ItemList/ItemListSkeleton";
+import ItemList from "../ItemList/ItemList";
+import ItemListSkeleton from "../ItemList/ItemListSkeleton";
 
-function NewArrivals() {
+function TopRated() {
   const [items, setItems] = useState<IItemCard[]>([]);
   const [isLoadingData, setIsLoadingData] = useState(false);
 
@@ -12,22 +12,12 @@ function NewArrivals() {
     setIsLoadingData(true);
 
     axios
-      .get("http://localhost:5000/auction/new_arrivals")
+      .get("http://localhost:5000/auction/top_rated")
       .then((res) => {
         setItems(res.data);
         setTimeout(() => setIsLoadingData(false), 500);
       })
       .catch((err) => setTimeout(() => setIsLoadingData(false), 500));
-
-    /*axios
-      .get("http://localhost:5000/auction/last_chance")
-      .then((res) => {
-        setLastChance(res.data);
-        setTimeout(() => {
-          setIsLoadingData(false);
-        }, 500);
-      })
-      .catch((err) => setTimeout(() => setIsLoadingData(false), 500));*/
   }, []);
 
   return (
@@ -41,4 +31,4 @@ function NewArrivals() {
   );
 }
 
-export default NewArrivals;
+export default TopRated;

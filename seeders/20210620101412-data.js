@@ -164,7 +164,7 @@ module.exports = {
         name: "V-neck Kaftan Dress",
         color: "DARK BEIGE",
         size: "S",
-        rating: 4.5,
+        rating: 5,
         description: "Calf-length kaftan dress in woven fabric. Low-cut V-neck, pleat at front for added volume, and short sleeves. Straight-cut hem. Unlined.",
         created_at: currentDate,
         updated_at: currentDate

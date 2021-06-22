@@ -1,3 +1,6 @@
 .categories_item {
     margin: 1% 10%;
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    column-gap: 10px;
 }
