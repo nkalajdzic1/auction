@@ -219,7 +219,7 @@ module.exports = {
       location_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
-        unique: true,
+        unique: false,
         references: {
           model: 'location',
           key: 'id',

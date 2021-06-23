@@ -477,7 +477,7 @@ module.exports = {
         updated_at: currentDate
       },
       {
-        location_id: 2,
+        location_id: 1,
         card_id: null,
         paypal_id: 2,
         name: "user2",

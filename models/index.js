@@ -25,6 +25,8 @@ fs
     db[model.name] = model;
   });
 
+//  ------------- relations --------------
+
 //auction with bid relation
 db.auction.hasMany(db.bid, {
   as: "auction_bid",
@@ -58,72 +60,97 @@ db.item_picture.belongsTo(db.item, {
   sourceKey: 'id'
 });
 
+//item with item_category_junction relation
+db.item.hasMany(db.item_category, {
+  as: "item_category",
+  foreignKey: "item_id",
+  sourceKey: "id"
+});
+db.item_category.belongsTo(db.item, {
+  foreignKey: "item_id",
+  sourceKey: "id"
+});
+
+//category with item_category_junction relation
+db.category.hasMany(db.item_category, {
+  as: "category_item",
+  foreignKey: "category_id",
+  sourceKey: "id"
+});
+db.item_category.belongsTo(db.category, {
+  foreignKey: "category_id",
+  sourceKey: "id"
+})
+
+//category on it self relation
+db.category.hasMany(db.category, {
+  as: "category_category",
+  foreignKey: "parent_category_id",
+  sourceKey: "id"
+});
+db.category.belongsTo(db.category, {
+  as: "subcategory",
+  foreignKey: "parent_category_id",
+  sourceKey: "id"
+});
+
+//auction with user relation
+db.user.hasMany(db.auction, {
+  as: "user_auction",
+  foreignKey: "user_id",
+  sourceKey: "id"
+});
+db.auction.belongsTo(db.user, {
+  foreignKey: "user_id",
+  sourceKey: "id"
+});
+
+//user with bid relation
+db.user.hasMany(db.bid, {
+  as: "user_bid",
+  foreignKey: "user_id",
+  sourceKey: "id"
+});
+db.bid.belongsTo(db.user, {
+  foreignKey: "user_id",
+  sourceKey: "id"
+});
+
+//card with user relation
+db.card.hasOne(db.user, {
+  as: "card_user",
+  foreignKey: "card_id",
+  sourceKey: "id"
+});
+db.user.belongsTo(db.card, {
+  foreignKey: "card_id",
+  sourceKey: "id"
+});
+
+//paypal with user relation
+db.paypal.hasOne(db.user, {
+  as: "paypal_user",
+  foreignKey: "paypal_id",
+  sourceKey: "id"
+});
+db.user.belongsTo(db.paypal, {
+  foreignKey: "paypal_id",
+  sourceKey: "id"
+});
+
+//location with user relation
+db.location.hasMany(db.user, {
+  as: "location_user",
+  foreignKey: "location_id",
+  sourceKey: "id"
+});
+db.user.belongsTo(db.location, {
+  foreignKey: "location_id",
+  sourceKey: "id"
+});
+
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
-
-
-
-/*
-const Sequelize = require("sequelize");
-const path = require('path');
-const fs = require('fs');
-
-
-const sequelize = new Sequelize("auctionDB", "Admin", "admin", {
-  host: "127.0.0.1",
-  dialect: "mysql",
-});
-
-var db = {};
-
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
-
-db.auction = import(__dirname + "/auction.js")(sequelize, );
-db.bid = import(__dirname + "/bid.js");
-db.card = import(__dirname + "/card.js");
-db.category = import(__dirname + "/category.js");
-db.item_category = import(__dirname + "/item_category.js");
-db.item_picture = import(__dirname + "/item_picture.js");
-db.item = import(__dirname + "/item.js");
-db.location = import(__dirname + "/location.js");
-db.paypal = import(__dirname + "/paypal.js");
-db.user = import(__dirname + "/user.js");
-
-db.auction.hasMany(db.bid, {
-  as: "auction_bid"
-});
-
-db.card.hasOne(db.user, {
-  as: "card_user",
-  allowNull: true,
-});
-
-db.category.hasMany(db.category, {
-  as: "subcategory",
-});
-
-db.category.hasMany(db.item_category, {
-  as: "category_item_category",
-});
-
-db.dan.hasMany(db.aktivnost, {
-  as: "dan_aktivnost1-N"
-});
-//db.aktivnost.belongsTo(db.dan, {as: "aktivnost_danN-1"});
-
-db.tip.hasMany(db.aktivnost, {
-  as: "tip_aktivnost1-N"
-});
-//db.aktivnost.belongsTo(db.tip, {as: "aktivnost_tipN-1"});
-
-db.student.belongsToMany(db.grupa, {
-  as: "student_grupa",
-  through: "pomtabela",
-  foreignKey: 'studentId'
-}); // jer nije fino radilo bilo sa belongsToMany
-//db.grupa.hasMany(db.pomtabela, {as: "grupa_pomtabela"});
-
-module.exports = db;*/

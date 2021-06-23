@@ -8,7 +8,7 @@ export const useStyles = makeStyles({
     maxWidth: "100%",
   },
   media: {
-    height: "750px",
+    height: "600px",
   },
   images: {
     paddingTop: 10,

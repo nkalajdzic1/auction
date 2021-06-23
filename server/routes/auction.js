@@ -50,8 +50,15 @@ router.get('/top_rated', (req, res) => {
     ]).then(x => res.json(x)).catch(x => res.json(x));
 });
 
-router.get('/new_arrivals/picture/{id}', (req, res) => {
-    res.send(200)
+router.get('/single_item/:auction_id', (req, res) => {
+    let auction_id = req.params.auction_id;
+
+    return models.location.findAll({
+        include: [{
+            model: models.user,
+            as: "location_user"
+        }],
+    }).then(x => res.json(x)).catch(err => res.json(err));
 });
 
 module.exports = router;
