@@ -53,11 +53,10 @@ router.get('/top_rated', (req, res) => {
 router.get('/single_item/:auction_id', (req, res) => {
     let auction_id = req.params.auction_id;
 
-    return models.location.findAll({
-        include: [{
-            model: models.user,
-            as: "location_user"
-        }],
+    return models.auction.findOne({
+        where: {
+            id: auction_id
+        }
     }).then(x => res.json(x)).catch(err => res.json(err));
 });
 
