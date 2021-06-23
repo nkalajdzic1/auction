@@ -1,4 +1,4 @@
-import { Typography, Input, Button } from "@material-ui/core";
+import { Typography, Input, Button, Divider, Paper } from "@material-ui/core";
 import React from "react";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -38,6 +38,10 @@ function SingleProductInfo() {
       >
         Watchlist
       </Button>
+      <Typography variant="h5" className={classes.details}>
+        Details
+      </Typography>
+      <Paper elevation={3} className={classes.paperInfo}></Paper>
     </div>
   );
 }

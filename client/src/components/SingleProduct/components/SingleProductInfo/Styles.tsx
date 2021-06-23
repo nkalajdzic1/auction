@@ -11,6 +11,7 @@ export const useStyles = makeStyles({
     fontSize: 20,
     height: 50,
     width: 200,
+    color: "black",
   },
   price_input: {
     display: "flex",
@@ -22,7 +23,7 @@ export const useStyles = makeStyles({
     color: "#9B9B9B",
   },
   buttonBid: {
-    width: "30%",
+    width: "auto",
   },
   highest_bid: {
     marginTop: "10%",
@@ -31,5 +32,17 @@ export const useStyles = makeStyles({
   },
   buttonWatchlist: {
     marginTop: "10%",
+    width: "33.3%",
+  },
+  details: {
+    marginTop: "5%",
+  },
+  divider: {
+    height: 5,
+  },
+  paperInfo: {
+    height: "100%",
+    maxHeight: "100%",
+    marginTop: "1%",
   },
 });
