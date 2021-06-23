@@ -1,21 +1,19 @@
 .single_product_content {
-    margin: 5% 10%;
+  margin: 5% 10%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }
 
 .single_product_images {
-    display: flex;
-    width: auto;
+  display: flex;
+  width: auto;
 }
 
 .single_product_pictures {
-    width: 43%;
+  width: 100%;
 }
 
 .single_product_info {
-
-}
-
-.arrows {
-    padding-top: 10px;
-    margin-left: 43%;    
+  margin-left: 5%;
 }

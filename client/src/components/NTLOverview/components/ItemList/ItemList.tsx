@@ -14,7 +14,7 @@ function ItemList({ items }: IItemListProps) {
   const smallCardClasses = smallCard();
   return (
     <ul>
-      {items.map((x, i) => {
+      {items.length > 0 ? items.map((x, i) => {
         return (
           <li id={x.id.toString()}>
             <div className="singleCard">
@@ -25,12 +25,11 @@ function ItemList({ items }: IItemListProps) {
                 title={x.item.name}
                 starting_price={x.starting_price}
                 styles={smallCardClasses}
-                onClickF={openItem}
               ></ItemCard>
             </div>
           </li>
         );
-      })}
+      }) : <></>  }
     </ul>
   );
 }

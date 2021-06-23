@@ -10,8 +10,6 @@ import { makeStyles } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 
 import "./ItemCard.css";
-import { SingleProductPage } from "../../pages";
-import CustomRoute from "../../routes/CustomRoute";
 
 export interface IItemCardProps {
   id: number;
@@ -19,7 +17,10 @@ export interface IItemCardProps {
   title: string;
   starting_price: number;
   styles?: ClassNameMap<"root" | "media">;
-  onClickF: () => void;
+}
+
+export interface IAuctionIdBody {
+  auction_id: number;
 }
 
 const defaultStyles = makeStyles({
@@ -38,14 +39,17 @@ function ItemCard({
   title,
   starting_price,
   styles,
-  onClickF,
 }: IItemCardProps) {
   const history = useHistory();
   const classes = styles == null ? defaultStyles() : styles;
 
   function routeTo(id: number) {
+    var body: IAuctionIdBody = {
+      auction_id: id
+    } 
     history.push({
-      pathname: "/single_product"
+      pathname: '/single_product',
+      state: body
     });
   }
 

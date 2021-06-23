@@ -1,0 +1,16 @@
+.images_other {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.arrows {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.arrow_previous,
+.arrow_next {
+  padding: 5px;
+  display: inline-block;
+}

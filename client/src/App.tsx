@@ -37,11 +37,10 @@ function App() {
           component={AboutUsPage}
           title="About us"
         />
-        <CustomRoute
+        <Route
           exact
           path="/single_product"
           component={SingleProductPage}
-          title="Single Product"
         />
         <Route exact path="" component={Routes} />
         <Route exact path="" component={Page404} />x

@@ -42,7 +42,6 @@ function FeatureCollection() {
                       title={"Shoes"}
                       starting_price={10.1}
                       styles={bigCardclasses}
-                      onClickF={openItem}
                     ></ItemCard>
                   </div>
                 </li>

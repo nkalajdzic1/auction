@@ -1,27 +1,28 @@
 import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles({
-    root: {
-      maxWidth: "100%",
-      paddingTop: 16,
-      paddingBottom: 0
+  root: {
+    lastChild: {
+      paddingBottom: 0,
     },
-    media: {
-      height: "750px",
-    },
-    images: {
-      display: "flex",
-      gap: 10,
-      overflow: ""
-    },
-    smallImage: {
-      height: 100,
-      minWidth: "23.5%",
-      width: "23.5%",
-      backgroundColor: "#ECECEC"
-    },
-    arrow: {
-      minWidth: 40,
-      width: 40 
-    },
-  });   
+    maxWidth: "100%",
+  },
+  media: {
+    height: "750px",
+  },
+  images: {
+    paddingTop: 10,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingBottom: 0,
+  },
+  smallImage: {
+    height: 100,
+    width: "100%",
+    backgroundColor: "#ECECEC",
+  },
+  arrow: {
+    minWidth: 40,
+    width: 40,
+  },
+});

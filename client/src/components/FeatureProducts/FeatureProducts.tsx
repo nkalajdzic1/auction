@@ -43,7 +43,6 @@ function FeatureProducts() {
                       title={"Shoes"}
                       starting_price={10.1}
                       styles={mediumCardclasses}
-                      onClickF={openItem}
                     ></ItemCard>
                   </div>
                 </li>
