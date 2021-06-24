@@ -13,7 +13,7 @@
     "unmigrate": "npx sequelize-cli db:migrate:undo:all",
     "seed-all": "npx sequelize-cli db:seed:all",
     "make-model": "npx sequelize-cli model:generate --name _entity_name_ --attributes atribute:type,...",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
