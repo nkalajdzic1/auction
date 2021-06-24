@@ -19,12 +19,14 @@ export interface ISingleAuction {
       };
     }>;
   };
-  auction_bid: Array<{
-    bidding_price: number;
-    bidding_time?: string;
-    user: {
-      name: string;
-      surname: string;
-    };
-  }>;
+  auction_bid: [
+    {
+      bidding_price: number;
+      bidding_date: string;
+      user: {
+        name: string;
+        surname: string;
+      };
+    }
+  ];
 }

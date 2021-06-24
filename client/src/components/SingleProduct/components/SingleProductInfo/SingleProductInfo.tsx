@@ -6,7 +6,6 @@ import { useStyles } from "./Styles";
 import { ISingleAuction } from "../../ISingleProduct";
 import Countdown from "antd/lib/statistic/Countdown";
 import "antd/dist/antd.css";
-import { countdownValueType } from "antd/lib/statistic/utils";
 
 export interface ISingleProductInfoProps {
   auction?: ISingleAuction;
@@ -17,6 +16,7 @@ function SingleProductInfo({ auction }: ISingleProductInfoProps) {
 
   const classes = useStyles();
   const [bidDisabled, setBidDisabled] = useState(false);
+  const [watchlistStyle, setWatchlistStyle] = useState(classes.buttonWatchlist);
 
   var bids = auction.auction_bid.sort((x, y) => {
     if (x.bidding_price < y.bidding_price) return 1;
@@ -58,13 +58,30 @@ function SingleProductInfo({ auction }: ISingleProductInfoProps) {
         {bids.length > 0 ? bids[0].bidding_price : auction.starting_price} or
         more
       </Typography>
-      <div className={classes.highest_bid}>
-        <Typography>Highest bid:</Typography>
-        <Typography style={{ color: "#8367D8" }}>
-          {bids.length > 0 ? "$" + bids[0].bidding_price : "None"}
-        </Typography>
+      <div className={classes.info}>
+        <div>
+          <Typography className={classes.rating}>
+            Rating: {auction.item.rating}
+          </Typography>
+          <Typography>
+            Color:{" "}
+            {auction.item.color.toLocaleUpperCase()[0] +
+              auction.item.color
+                .toLocaleLowerCase()
+                .slice(1, auction.item.color.length)}
+          </Typography>
+          <Typography>Size: {auction.item.size}</Typography>
+        </div>
+        <div className={classes.bids}>
+          <div className={classes.highest_bid}>
+            <Typography>Highest bid:</Typography>
+            <Typography style={{ color: "#8367D8" }}>
+              {bids.length > 0 ? "$" + bids[0].bidding_price : "None"}
+            </Typography>
+          </div>
+          <Typography>No bids: {bids.length}</Typography>
+        </div>
       </div>
-      <Typography>No bids: {bids.length}</Typography>
       <Countdown
         style={{ marginTop: "5%" }}
         title="Time left"
@@ -76,7 +93,12 @@ function SingleProductInfo({ auction }: ISingleProductInfoProps) {
       <Button
         variant="outlined"
         endIcon={<FavoriteIcon />}
-        className={classes.buttonWatchlist}
+        className={watchlistStyle}
+        onClick={() => {
+          watchlistStyle == classes.buttonWatchlist
+            ? setWatchlistStyle(classes.buttonWatchlistActive)
+            : setWatchlistStyle(classes.buttonWatchlist);
+        }}
       >
         Watchlist
       </Button>

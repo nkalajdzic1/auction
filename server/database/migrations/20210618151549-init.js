@@ -344,6 +344,7 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'user',
           key: 'id',
@@ -352,6 +353,7 @@ module.exports = {
       },
       auction_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'auction',
           key: 'id',
@@ -359,10 +361,12 @@ module.exports = {
         }
       },
       bidding_price: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        allowNull: false,
       },
       bidding_time: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false,
       },
       created_at: {
         allowNull: false,

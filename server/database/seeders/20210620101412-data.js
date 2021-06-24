@@ -642,17 +642,26 @@ module.exports = {
         updated_at: currentDate
       },
     ]);
+    var bid1 = new Date();
+    bid1.setDate(bid1.getDate() + 1)
+    var bid2 = new Date();
+    bid2.setDate(bid2.getDate() + 1)
+    bid2.setDate(bid2.getHours() + 2)
     await queryInterface.bulkInsert('bid', [{
         user_id: 1,
         auction_id: 5,
         bidding_price: 45,
-        bidding_time: currentDate.setDate(auctionDate.getDate() + 1)
+        bidding_time: bid2,
+        created_at: currentDate,
+        updated_at: currentDate
       },
       {
         user_id: 1,
         auction_id: 5,
         bidding_price: 48,
-        bidding_time: currentDate.setDate(auctionDate.getDate() + 2)
+        bidding_time: bid1,
+        created_at: currentDate,
+        updated_at: currentDate
       }
     ])
 

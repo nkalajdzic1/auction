@@ -1,31 +1,33 @@
-import React from 'react'
+import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Styles from "./Styles";
-import { Typography } from "@material-ui/core";
-import { toastRegular } from '../ToastCustom/ToastCustom';
+import { Breadcrumbs, Link, Typography } from "@material-ui/core";
 
 function SingleProductHeader() {
-    const classes = Styles();
-    const tt = () => toastRegular("toast test");
-    return (
-        <div>
-         <AppBar position="static" className={classes.root} onClick={tt}>
-          <Toolbar>
+  const classes = Styles();
+  return (
+    <div>
+      <AppBar position="static" className={classes.root}>
+        <Toolbar>
           <div className={classes.product_left}>
-              <Typography variant="subtitle1">SINGLE PRODUCT</Typography>
+            <Typography variant="h6">SINGLE PRODUCT</Typography>
           </div>
-          <div className={classes.empty}>
-          </div>
+          <div className={classes.empty}></div>
           <div className={classes.product_right}>
-              <Typography variant="subtitle1" style={{color: "#9B9B9B"}}> SHOP/ </Typography>
-              <Typography variant="subtitle1"> SINGLE PRODUCT </Typography>
-
+            <Breadcrumbs aria-label="breadcrumb">
+              <Link color="inherit" href="/website/shop/">
+                <Typography variant="h6">SHOP</Typography>
+              </Link>
+              <Typography variant="h6" color="textSecondary">
+                SINGLE PRODUCT
+              </Typography>
+            </Breadcrumbs>
           </div>
-         </Toolbar>
+        </Toolbar>
       </AppBar>
-        </div>
-    )
+    </div>
+  );
 }
 
-export default SingleProductHeader
+export default SingleProductHeader;

@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const models = require('../../models');
+const models = require('../database/models');
 const {
     Op
 } = require('sequelize');
+const {
+    sequelize
+} = require('../database/models');
 
 // get items for new arrivals, top rated and last chance --> only difference is the order_by clause
 function getItemsNTL(sort) {
@@ -77,7 +80,9 @@ router.get('/single_item/:auction_id', (req, res) => {
                     attributes: ['name', 'surname']
 
                 }],
-                attributes: ['bidding_price', 'bidding_time']
+                attributes: ['bidding_price',
+                    [sequelize.fn('date_format', sequelize.col('bidding_time'), '%d %M %Y'), 'bidding_date']
+                ]
             }
         ],
         attributes: {
