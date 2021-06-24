@@ -91,7 +91,6 @@
     "url": "https://github.com/nkalajdzic1/auction/issues"
   },
   "homepage": "https://github.com/nkalajdzic1/auction#readme",
-  "proxy": "http://localhost:5000",
   "browserslist": [
     ">0.2%",
     "not dead",
