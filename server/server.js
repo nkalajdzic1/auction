@@ -10,6 +10,7 @@ app.use(cors());
 
 //routes
 app.use("/auction", require("./routes/auction.js"));
+app.use("/category", require("./routes/category.js"));
 
 //check connection to database
 db.authenticate()

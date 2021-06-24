@@ -53,6 +53,10 @@ router.get('/top_rated', (req, res) => {
     ]).then(x => res.json(x)).catch(x => res.json(x));
 });
 
+router.get('/feature_products', (req, res) => {
+
+});
+
 router.get('/single_item/:auction_id', (req, res) => {
     let auction_id = req.params.auction_id;
 
