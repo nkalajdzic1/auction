@@ -5,10 +5,11 @@
   "main": "server/server.js",
   "scripts": {
     "server": "nodemon server/server.js",
+    "node": "node server/server.js",
     "client": "cd client && npm start",
     "build": "cd client && npm run build",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "npm run dev",
+    "start": "concurrently \"npm run node\" \"npm run client\"",
     "migrate": "npx sequelize-cli db:migrate",
     "unmigrate": "npx sequelize-cli db:migrate:undo:all",
     "seed-all": "npx sequelize-cli db:seed:all",
