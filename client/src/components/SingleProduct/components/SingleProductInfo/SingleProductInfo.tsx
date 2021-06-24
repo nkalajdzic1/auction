@@ -1,9 +1,12 @@
 import { Typography, Input, Button, Divider, Paper } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { useStyles } from "./Styles";
 import { ISingleAuction } from "../../ISingleProduct";
+import Countdown from "antd/lib/statistic/Countdown";
+import "antd/dist/antd.css";
+import { countdownValueType } from "antd/lib/statistic/utils";
 
 export interface ISingleProductInfoProps {
   auction?: ISingleAuction;
@@ -13,6 +16,7 @@ function SingleProductInfo({ auction }: ISingleProductInfoProps) {
   if (auction == null) return <div></div>;
 
   const classes = useStyles();
+  const [bidDisabled, setBidDisabled] = useState(false);
 
   var bids = auction.auction_bid.sort((x, y) => {
     if (x.bidding_price < y.bidding_price) return 1;
@@ -20,7 +24,17 @@ function SingleProductInfo({ auction }: ISingleProductInfoProps) {
     return 0;
   });
 
-  console.log(bids);
+  function dateDiffInDays(a: Date, b: Date) {
+    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+
+    return Math.floor((utc2 - utc1) / (1000 * 60 * 60 * 24));
+  }
+
+  var format =
+    dateDiffInDays(new Date(auction.start_date), new Date(auction.end_date)) > 0
+      ? "DDd HH:mm:ss"
+      : "HH:mm:ss";
 
   return (
     <div className="single_product_info">
@@ -34,6 +48,7 @@ function SingleProductInfo({ auction }: ISingleProductInfoProps) {
           variant="outlined"
           endIcon={<ArrowForwardIosIcon />}
           className={classes.buttonBid}
+          disabled={bidDisabled}
         >
           Place Bid
         </Button>
@@ -50,7 +65,14 @@ function SingleProductInfo({ auction }: ISingleProductInfoProps) {
         </Typography>
       </div>
       <Typography>No bids: {bids.length}</Typography>
-      <Typography>Time left: 10 days</Typography>
+      <Countdown
+        style={{ marginTop: "5%" }}
+        title="Time left"
+        value={auction.end_date}
+        onFinish={() => setBidDisabled(true)}
+        format={format}
+      />
+
       <Button
         variant="outlined"
         endIcon={<FavoriteIcon />}
