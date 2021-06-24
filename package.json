@@ -8,7 +8,7 @@
     "client": "cd client && npm start",
     "build": "cd client && npm run build",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node server/server.js",
+    "start": "npm run dev",
     "migrate": "npx sequelize-cli db:migrate",
     "unmigrate": "npx sequelize-cli db:migrate:undo:all",
     "seed-all": "npx sequelize-cli db:seed:all",
@@ -46,8 +46,11 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "node": "^16.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-gesture-responder": "^2.1.0",
     "react-image-enlarger": "^1.1.0",
+    "reflect-metadata": "^0.1.13",
     "sequelize": "^6.6.2",
     "typescript": "^4.3.4"
   }
