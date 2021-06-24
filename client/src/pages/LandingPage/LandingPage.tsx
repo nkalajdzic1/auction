@@ -12,8 +12,8 @@ const LandingPage = () => {
   return (
     <Page>
       <div className="categories_item">
-      <CategoriesOverview></CategoriesOverview>
-      <LandingItem></LandingItem>
+        <CategoriesOverview></CategoriesOverview>
+        <LandingItem></LandingItem>
       </div>
       <FeatureCollection></FeatureCollection>
       <FeatureProducts></FeatureProducts>

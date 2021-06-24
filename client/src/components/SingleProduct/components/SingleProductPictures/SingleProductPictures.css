@@ -9,6 +9,12 @@
   text-align: center;
 }
 
+.ant-image {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
 .arrow_previous,
 .arrow_next {
   padding: 5px;

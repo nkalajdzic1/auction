@@ -54,9 +54,36 @@ router.get('/single_item/:auction_id', (req, res) => {
     let auction_id = req.params.auction_id;
 
     return models.auction.findOne({
+        limit: 1,
         where: {
             id: auction_id
+        },
+        include: [{
+                model: models.item,
+                include: [{
+                    model: models.item_picture,
+                    as: "item_item_picture",
+                    attributes: ['is_main_picture', 'picture']
+                }],
+                attributes: {
+                    exclude: ['id', 'createdAt', 'updatedAt']
+                }
+            },
+            {
+                model: models.bid,
+                as: "auction_bid",
+                include: [{
+                    model: models.user,
+                    attributes: ['name', 'surname']
+
+                }],
+                attributes: ['bidding_price', 'bidding_time']
+            }
+        ],
+        attributes: {
+            exclude: ['is_bearing_shipping', 'createdAt', 'updatedAt']
         }
+
     }).then(x => res.json(x)).catch(err => res.json(err));
 });
 

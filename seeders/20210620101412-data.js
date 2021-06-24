@@ -199,6 +199,13 @@ module.exports = {
         updated_at: currentDate
       },
       {
+        item_id: 1,
+        is_main_picture: false,
+        picture: fs.readFileSync(__dirname + "/img/shoe1_img5.jpg"),
+        created_at: currentDate,
+        updated_at: currentDate
+      },
+      {
         item_id: 2,
         is_main_picture: true,
         picture: fs.readFileSync(__dirname + "/img/shoe2_img1.jpg"),
@@ -223,6 +230,13 @@ module.exports = {
         item_id: 2,
         is_main_picture: false,
         picture: fs.readFileSync(__dirname + "/img/shoe2_img4.jpg"),
+        created_at: currentDate,
+        updated_at: currentDate
+      },
+      {
+        item_id: 2,
+        is_main_picture: false,
+        picture: fs.readFileSync(__dirname + "/img/shoe2_img5.png"),
         created_at: currentDate,
         updated_at: currentDate
       },
@@ -628,6 +642,19 @@ module.exports = {
         updated_at: currentDate
       },
     ]);
+    await queryInterface.bulkInsert('bid', [{
+        user_id: 1,
+        auction_id: 5,
+        bidding_price: 45,
+        bidding_time: currentDate.setDate(auctionDate.getDate() + 1)
+      },
+      {
+        user_id: 1,
+        auction_id: 5,
+        bidding_price: 48,
+        bidding_time: currentDate.setDate(auctionDate.getDate() + 2)
+      }
+    ])
 
   },
 

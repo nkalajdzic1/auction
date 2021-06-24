@@ -45,4 +45,7 @@ export const useStyles = makeStyles({
     maxHeight: "100%",
     marginTop: "1%",
   },
+  description: {
+    margin: "2% 2%",
+  },
 });

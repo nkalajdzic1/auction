@@ -12,6 +12,7 @@ import NTL from "./components/NTL/NTL";
 function openItem() {}
 
 export function blobToImage(picData: any) {
+  if (picData == null) return "";
   var blob = new Blob([new Uint8Array(picData.data)], { type: picData.type });
   return URL.createObjectURL(blob);
 }

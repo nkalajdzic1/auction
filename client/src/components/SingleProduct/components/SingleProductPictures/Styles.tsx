@@ -2,13 +2,11 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles({
   root: {
-    lastChild: {
-      paddingBottom: 0,
-    },
     maxWidth: "100%",
   },
   media: {
     height: "600px",
+    borderRadius: 5,
   },
   images: {
     paddingTop: 10,
