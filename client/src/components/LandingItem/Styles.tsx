@@ -16,4 +16,8 @@ export const styles = makeStyles({
     borderRadius: 0,
     borderWidth: 3,
   },
+  image: {
+    width: 300,
+    height: "scale",
+  },
 });

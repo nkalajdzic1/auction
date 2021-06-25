@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename={"/website"}>
+    <Router basename={"/site"}>
       <Switch>
         <CustomRoute
           //permission={[PermissionType.All]}
@@ -37,15 +37,11 @@ function App() {
           component={AboutUsPage}
           title="About us"
         />
-        <Route
-          exact
-          path="/single_product"
-          component={SingleProductPage}
-        />
+        <Route exact path="/single_product" component={SingleProductPage} />
         <Route exact path="" component={Routes} />
         <Route exact path="" component={Page404} />x
       </Switch>
-      <ToastContainer draggable={false}/>
+      <ToastContainer draggable={false} />
     </Router>
   );
 }

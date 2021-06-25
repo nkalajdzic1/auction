@@ -18,7 +18,6 @@ const useStyles = makeStyles({
     width: "80%",
     marginLeft: "10%",
     maxHeight: 64 * 4,
-    paddingBottom: "10%",
     marginBottom: "10%",
     marginTop: "10%",
   },
@@ -28,6 +27,9 @@ const useStyles = makeStyles({
   },
   body: {
     border: "none",
+  },
+  green: {
+    color: "#6CC047",
   },
   table_body: {
     overflowY: "scroll",
@@ -85,13 +87,26 @@ function BidsList({ auction }: IBidsList) {
                     <Typography variant="h6">{bid.bidding_date}</Typography>
                   </TableCell>
                   <TableCell className={classes.body} align="left">
-                    <Typography variant="h6">$ {bid.bidding_price}</Typography>
+                    <Typography
+                      variant="h6"
+                      className={
+                        bid.bidding_price == bids[0].bidding_price
+                          ? classes.green
+                          : ""
+                      }
+                    >
+                      $ {bid.bidding_price}
+                    </Typography>
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           ) : (
-            <></>
+            <TableRow>
+              <TableCell />
+              <TableCell />
+              <TableCell />
+            </TableRow>
           )}
         </Table>
       </TableContainer>

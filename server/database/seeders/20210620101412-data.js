@@ -571,13 +571,41 @@ module.exports = {
         updated_at: currentDate
       },
     ]);
+    var a1 = new Date(),
+      ae1 = new Date(),
+      a2 = new Date(),
+      ae2 = new Date(),
+      a3 = new Date(),
+      ae3 = new Date(),
+      a4 = new Date(),
+      ae4 = new Date(),
+      a5 = new Date(),
+      ae5 = new Date(),
+      a6 = new Date(),
+      ae6 = new Date(),
+      a7 = new Date(),
+      ae7 = new Date();
+    a1.setMonth(a1.getMonth() - 1);
+    ae1.setDate(ae1.getDate() + 12);
+    a2.setDate(a2.getDate() - 25);
+    ae2.setDate(ae2.getDate() + 1);
+    a3.setDate(a3.getDate() - 20);
+    ae3.setHours(ae3.getHours() + 1);
+    a4.setDate(a4.getDate() - 2);
+    ae4.setHours(ae4.getHours() + 7);
+    a5.setDate(a5.getDate() - 35);
+    ae5.setHours(ae5.getHours() + 4);
+    a6.setDate(a6.getDate() - 12);
+    ae6.setMinutes(ae6.getMinutes() + 45);
+    a7.setDate(a7.getDate() - 61);
+    ae7.setMinutes(ae7.getMinutes() + 30);
     await queryInterface.bulkInsert('auction', [{
         item_id: 1,
         user_id: 1,
         starting_price: 35.75,
         is_bearing_shipping: false,
-        start_date: new Date(2021, 0, 1),
-        end_date: new Date(2021, 6, 1),
+        start_date: a1,
+        end_date: ae1,
         created_at: currentDate,
         updated_at: currentDate
       },
@@ -586,8 +614,8 @@ module.exports = {
         user_id: 1,
         starting_price: 45.90,
         is_bearing_shipping: false,
-        start_date: new Date(2021, 0, 11),
-        end_date: auctionDate,
+        start_date: a2,
+        end_date: ae2,
         created_at: currentDate,
         updated_at: currentDate
       },
@@ -596,8 +624,8 @@ module.exports = {
         user_id: 2,
         starting_price: 15,
         is_bearing_shipping: true,
-        start_date: new Date(2021, 0, 11),
-        end_date: auctionDate,
+        start_date: a3,
+        end_date: ae3,
         created_at: currentDate,
         updated_at: currentDate
       },
@@ -606,8 +634,8 @@ module.exports = {
         user_id: 2,
         starting_price: 12.78,
         is_bearing_shipping: false,
-        start_date: new Date(2021, 0, 11),
-        end_date: auctionDate,
+        start_date: a4,
+        end_date: ae4,
         created_at: currentDate,
         updated_at: currentDate
       },
@@ -616,8 +644,8 @@ module.exports = {
         user_id: 3,
         starting_price: 33,
         is_bearing_shipping: false,
-        start_date: currentDate,
-        end_date: auctionDate,
+        start_date: a5,
+        end_date: ae5,
         created_at: currentDate,
         updated_at: currentDate
       },
@@ -626,8 +654,8 @@ module.exports = {
         user_id: 3,
         starting_price: 33,
         is_bearing_shipping: false,
-        start_date: currentDate,
-        end_date: auctionDate,
+        start_date: a6,
+        end_date: ae6,
         created_at: currentDate,
         updated_at: currentDate
       },
@@ -636,30 +664,29 @@ module.exports = {
         user_id: 3,
         starting_price: 80.10,
         is_bearing_shipping: true,
-        start_date: currentDate,
-        end_date: auctionDate,
+        start_date: a7,
+        end_date: ae7,
         created_at: currentDate,
         updated_at: currentDate
       },
     ]);
-    var bid1 = new Date();
-    bid1.setDate(bid1.getDate() + 1)
-    var bid2 = new Date();
-    bid2.setDate(bid2.getDate() + 1)
-    bid2.setDate(bid2.getHours() + 2)
+    var bid1 = new Date(a5);
+    bid1.setHours(bid1.getHours() + 1)
+    var bid2 = new Date(a5);
+    bid2.setHours(bid2.getHours() + 2)
     await queryInterface.bulkInsert('bid', [{
         user_id: 1,
         auction_id: 5,
         bidding_price: 45,
-        bidding_time: bid2,
+        bidding_time: bid1,
         created_at: currentDate,
         updated_at: currentDate
       },
       {
-        user_id: 1,
+        user_id: 2,
         auction_id: 5,
         bidding_price: 48,
-        bidding_time: bid1,
+        bidding_time: bid2,
         created_at: currentDate,
         updated_at: currentDate
       }

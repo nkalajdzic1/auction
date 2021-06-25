@@ -55,15 +55,7 @@ router.get('/top_rated', (req, res) => {
 });
 
 router.get('/feature_products', (req, res) => {
-    getItemsNTL([
-        ['start_date', 'DESC'],
-    ], 4).then(x => res.json(x)).catch(x => res.json(x));
-});
-
-router.get('/feature_collection', (req, res) => {
-    getItemsNTL([
-        ['start_date', 'DESC'],
-    ], 3).then(x => res.json(x)).catch(x => res.json(x));
+    getItemsNTL([Sequelize.fn('RAND')], 4).then(x => res.json(x)).catch(x => res.json(x));
 });
 
 router.get('/count_auction_rows', (req, res) => {
@@ -97,7 +89,7 @@ router.get('/random_item/', (req, res) => {
 router.get('/single_item/:auction_id', (req, res) => {
     let auction_id = req.params.auction_id;
 
-    return models.auction.findOne({
+    models.auction.findOne({
         limit: 1,
         where: {
             id: auction_id
@@ -122,7 +114,7 @@ router.get('/single_item/:auction_id', (req, res) => {
 
                 }],
                 attributes: ['bidding_price',
-                    [sequelize.fn('date_format', sequelize.col('bidding_time'), '%d %M %Y'), 'bidding_date']
+                    [sequelize.fn('date_format', sequelize.col('bidding_time'), '%D %M %Y %H:%m:%s'), 'bidding_date']
                 ]
             }
         ],

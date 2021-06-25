@@ -5,7 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { Button, Typography } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { useStyles } from "./Styles";
 import { Image } from "antd";
 import "antd/dist/antd.css";

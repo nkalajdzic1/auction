@@ -6,8 +6,30 @@ import twIcon from "../../assets/icon/twitter_icon.svg";
 import gpIcon from "../../assets/icon/google_plus_icon.svg";
 
 import "./Footer.css";
+import { Button, Input, makeStyles } from "@material-ui/core";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+
+const useStyle = makeStyles({
+  input: {
+    backgroundColor: "#3B3B3B",
+    color: "white",
+    marginTop: "2%",
+    padding: "5px 10px",
+  },
+  button: {
+    width: "auto",
+    borderColor: "#8367D8",
+    borderRadius: 0,
+    borderWidth: 3,
+    color: "white",
+    marginLeft: "2%",
+    marginBottom: "1%",
+    height: "fit-content",
+  },
+});
 
 function Footer() {
+  const classes = useStyle();
   return (
     <div className="main-footer">
       <div className="container">
@@ -42,6 +64,19 @@ function Footer() {
               <li>
                 Enter your email address and get notified<br></br> about new
                 products. We hate spam!
+              </li>
+              <li>
+                <Input
+                  placeholder="Your email addres"
+                  className={classes.input}
+                ></Input>
+                <Button
+                  variant="outlined"
+                  endIcon={<ArrowForwardIosIcon />}
+                  className={classes.button}
+                >
+                  Go
+                </Button>
               </li>
             </ul>
           </div>
