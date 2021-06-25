@@ -5,7 +5,8 @@ const {
     Op
 } = require('sequelize');
 const {
-    sequelize
+    sequelize,
+    Sequelize
 } = require('../database/models');
 
 // get items for new arrivals, top rated and last chance --> only difference is the order_by clause
@@ -69,13 +70,12 @@ router.get('/count_auction_rows', (req, res) => {
     models.auction.count().then(x => res.json(x)).catch(err => res.json(err));
 });
 
-router.get('/random_item/:auction_id', (req, res) => {
+router.get('/random_item/', (req, res) => {
     models.auction.findOne({
         where: {
             end_date: {
                 [Op.gt]: new Date()
             },
-            id: req.params.auction_id
         },
         include: [{
             model: models.item,
@@ -89,8 +89,7 @@ router.get('/random_item/:auction_id', (req, res) => {
             }],
             attributes: ['name', 'description']
         }],
-        limit: 1,
-        subQuery: false,
+        order: [Sequelize.fn('RAND')],
         attributes: ['id', 'starting_price'],
     }).then(x => res.json(x)).catch(x => res.json(x));
 });

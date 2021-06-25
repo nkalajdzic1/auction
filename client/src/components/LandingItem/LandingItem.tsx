@@ -14,20 +14,12 @@ function LandingItem() {
   useEffect(() => {
     setIsLoadingData(true);
     axios
-      .get("http://localhost:5000/auction/count_auction_rows")
+      .get("http://localhost:5000/auction/random_item")
       .then((res) => {
-        const rndInt = Math.floor(Math.random() * res.data) + 1;
-        axios
-          .get("http://localhost:5000/auction/random_item/" + rndInt)
-          .then((res2) => {
-            console.log(res2.data);
-            setItem(res2.data);
-
-            setTimeout(() => {
-              setIsLoadingData(false);
-            }, 500);
-          })
-          .catch((err1) => setTimeout(() => setIsLoadingData(false), 500));
+        setItem(res.data);
+        setTimeout(() => {
+          setIsLoadingData(false);
+        }, 500);
       })
       .catch((err) => setTimeout(() => setIsLoadingData(false), 500));
   }, []);
