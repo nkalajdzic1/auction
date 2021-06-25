@@ -5,10 +5,10 @@ import ItemList from "../ItemList/ItemList";
 import ItemListSkeleton from "../ItemList/ItemListSkeleton";
 
 export interface ILastChanceProps {
-    route: string;
+  route: string;
 }
 
-function LastChance({route}: ILastChanceProps) {
+function LastChance({ route }: ILastChanceProps) {
   const [items, setItems] = useState<IItemCard[]>([]);
   const [isLoadingData, setIsLoadingData] = useState(false);
 
@@ -29,7 +29,7 @@ function LastChance({route}: ILastChanceProps) {
   return (
     <div className="cardContent">
       {isLoadingData ? (
-        <ItemListSkeleton></ItemListSkeleton>
+        <ItemListSkeleton size={8}></ItemListSkeleton>
       ) : (
         <ItemList items={items}></ItemList>
       )}

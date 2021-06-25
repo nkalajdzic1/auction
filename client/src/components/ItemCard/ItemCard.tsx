@@ -9,8 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 
-import "./ItemCard.css";
-
 export interface IItemCardProps {
   id: number;
   imageURL: string;
@@ -25,11 +23,12 @@ export interface IAuctionIdBody {
 
 const defaultStyles = makeStyles({
   root: {
-    width: 250,
+    width: 350,
     height: 350,
   },
   media: {
     height: 250,
+    width: 350,
   },
 });
 
@@ -45,16 +44,21 @@ function ItemCard({
 
   function routeTo(id: number) {
     var body: IAuctionIdBody = {
-      auction_id: id
-    } 
+      auction_id: id,
+    };
     history.push({
-      pathname: '/single_product',
-      state: body
+      pathname: "/single_product",
+      state: body,
     });
   }
 
   return (
-    <Card key={id} className={classes.root} onClick={() => routeTo(id)} raised={false}>
+    <Card
+      key={id}
+      className={classes.root}
+      onClick={() => routeTo(id)}
+      raised={false}
+    >
       <CardActionArea>
         <CardMedia className={classes.media} image={imageURL} title={title} />
         <CardMedia className={classes.root}>

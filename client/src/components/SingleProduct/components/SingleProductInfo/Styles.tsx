@@ -67,5 +67,6 @@ export const useStyles = makeStyles({
   },
   description: {
     margin: "2% 2%",
+    overflowWrap: "break-word",
   },
 });

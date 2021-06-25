@@ -4,20 +4,13 @@ import Tab from "@material-ui/core/Tab";
 
 import TabPanel from "../TabPanel/TabPanel";
 import "./NTLOverview.css";
-import NTL from "./components/NTL/NTL";
-
-// <<<< card styles, size, etc >>>
-
-// <<< helping functions >>>
-function openItem() {}
+import NTL from "./NTL";
 
 export function blobToImage(picData: any) {
   if (picData == null) return "";
   var blob = new Blob([new Uint8Array(picData.data)], { type: picData.type });
   return URL.createObjectURL(blob);
 }
-
-// <<<<      >>>
 
 export default function NTLOverview() {
   const [value, setValue] = useState(0);

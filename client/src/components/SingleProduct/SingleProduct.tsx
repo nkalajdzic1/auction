@@ -4,7 +4,7 @@ import SingleProductPictures from "./components/SingleProductPictures/SingleProd
 import SingleProductInfo from "./components/SingleProductInfo/SingleProductInfo";
 import axios from "axios";
 import { ISingleAuction } from "./ISingleProduct";
-import BidsList from "./components/BidsList";
+import BidsList from "./components/BidsList/BidsList";
 
 export interface ISingleProductProps {
   auction_id: number;
@@ -17,10 +17,12 @@ function SingleProduct({ auction_id }: ISingleProductProps) {
     axios
       .get("http://localhost:5000/auction/single_item/" + auction_id)
       .then((res) => {
-        console.log(res.data);
         setAuction(res.data);
+        window.scrollTo(0, 0);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
