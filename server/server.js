@@ -16,5 +16,5 @@ db.authenticate()
   .then(() => console.log("Connected to auctionDB database."))
   .catch((err) => console.log(err));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 1000;
 app.listen(PORT, async () => console.log(`Server listening on ${PORT}`));

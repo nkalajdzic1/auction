@@ -5,7 +5,8 @@ const {
     Op
 } = require('sequelize');
 const {
-    sequelize
+    sequelize,
+    Sequelize
 } = require('../database/models');
 
 
@@ -16,6 +17,32 @@ router.get('/parent_categories', (req, res) => {
             sequelize.col('parent_category_id')
         ),
         attributes: ['id', 'name']
+    }).then(x => res.json(x)).catch(err => res.json(err));
+});
+
+router.get('/categories', (req, res) => {
+    models.category.findAll({
+        include: [{
+            model: models.category,
+            as: "category_category",
+            include: [{
+                model: models.item_category,
+                as: "category_item",
+                attributes: ['id'],
+                include: [{
+                    model: models.item,
+                    attributes: []
+                }],
+            }],
+            attributes: ['id', 'parent_category_id', 'name'],
+        }],
+        where: {
+            id: {
+                [Op.like]: sequelize.col('category.parent_category_id')
+            }
+        },
+        attributes: ['id', 'name'],
+        // group: ['category_category.id', 'category_category.category_item.item.id']
     }).then(x => res.json(x)).catch(err => res.json(err));
 });
 

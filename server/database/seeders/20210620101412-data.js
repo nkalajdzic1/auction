@@ -420,12 +420,6 @@ module.exports = {
         updated_at: currentDate
       },
       {
-        item_id: 2,
-        category_id: 2,
-        created_at: currentDate,
-        updated_at: currentDate
-      },
-      {
         item_id: 3,
         category_id: 2,
         created_at: currentDate,
@@ -590,15 +584,15 @@ module.exports = {
     a2.setDate(a2.getDate() - 25);
     ae2.setDate(ae2.getDate() + 1);
     a3.setDate(a3.getDate() - 20);
-    ae3.setHours(ae3.getHours() + 1);
+    ae3.setHours(ae3.getHours() + 18);
     a4.setDate(a4.getDate() - 2);
-    ae4.setHours(ae4.getHours() + 7);
+    ae4.setHours(ae4.getHours() + 20);
     a5.setDate(a5.getDate() - 35);
-    ae5.setHours(ae5.getHours() + 4);
+    ae5.setHours(ae5.getHours() + 24);
     a6.setDate(a6.getDate() - 12);
-    ae6.setMinutes(ae6.getMinutes() + 45);
+    ae6.setMinutes(ae6.getMinutes() + 60 * 12);
     a7.setDate(a7.getDate() - 61);
-    ae7.setMinutes(ae7.getMinutes() + 30);
+    ae7.setMinutes(ae7.getMinutes() + 60 * 10);
     await queryInterface.bulkInsert('auction', [{
         item_id: 1,
         user_id: 1,

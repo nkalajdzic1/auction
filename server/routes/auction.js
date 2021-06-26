@@ -10,7 +10,7 @@ const {
 } = require('../database/models');
 
 // get items for new arrivals, top rated and last chance --> only difference is the order_by clause
-function getItemsNTL(sort, limit, description) {
+function getItemsNTL(sort, limit) {
     return models.auction.findAll({
         where: {
             end_date: {
