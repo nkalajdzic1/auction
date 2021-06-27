@@ -10,11 +10,14 @@ app.use(cors());
 //routes
 app.use("/auction", require("./routes/auction.js"));
 app.use("/category", require("./routes/category.js"));
+app.use("/price", require("./routes/price.js"));
+app.use("/color", require("./routes/color.js"));
+app.use("/size", require("./routes/size.js"));
 
 //check connection to database
 db.authenticate()
   .then(() => console.log("Connected to auctionDB database."))
   .catch((err) => console.log(err));
 
-const PORT = process.env.PORT || 1000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, async () => console.log(`Server listening on ${PORT}`));

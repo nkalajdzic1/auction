@@ -31,7 +31,7 @@ router.get('/categories', (req, res) => {
                 attributes: ['id'],
                 include: [{
                     model: models.item,
-                    attributes: []
+                    attributes: ['color', 'size']
                 }],
             }],
             attributes: ['id', 'parent_category_id', 'name'],

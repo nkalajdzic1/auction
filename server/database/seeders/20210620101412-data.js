@@ -109,7 +109,7 @@ module.exports = {
     await queryInterface.bulkInsert('item', [{
         name: "Black sneakers",
         color: "BLACK",
-        size: "44",
+        size: "LARGE",
         rating: 4.4,
         description: "Black sport sneakers, with a clean and look that provides comfort.",
         created_at: currentDate,
@@ -118,7 +118,7 @@ module.exports = {
       {
         name: "Adidas Superstar",
         color: "WHITE",
-        size: "42",
+        size: "MEDIUM",
         rating: 4.2,
         description: "The classic adidas model that never goes out of fashion.",
         created_at: currentDate,
@@ -127,7 +127,7 @@ module.exports = {
       {
         name: "Long Fit T-Shirt",
         color: "WHITE",
-        size: "M",
+        size: "MEDIUM",
         rating: 3.1,
         description: "Long, crew-neck T-shirt in soft jersey with a rounded hem.",
         created_at: currentDate,
@@ -136,7 +136,7 @@ module.exports = {
       {
         name: "Regular Fit Crew-neck T-shirt",
         color: "GREEN",
-        size: "L",
+        size: "LARGE",
         rating: 3.1,
         description: "Crew-neck T-shirt in soft cotton jersey.",
         created_at: currentDate,
@@ -145,7 +145,7 @@ module.exports = {
       {
         name: "Slim Jeans",
         color: "BLUE",
-        size: "28/32",
+        size: "SMALL",
         rating: 3.9,
         description: "5-pocket jeans in washed denim with a regular waist, zip fly, and slim legs..",
         created_at: currentDate,
@@ -154,7 +154,7 @@ module.exports = {
       {
         name: "Freefit® Slim Jeans",
         color: "BLACK",
-        size: "28/30",
+        size: "SMALL",
         rating: 3.5,
         description: "5-pocket denim jeans with a regular waist, zip fly with button, and slim legs. Made with Lycra® Freefit® technology for soft, super-generous stretch, maximum freedom of movement, and optimal comfort.",
         created_at: currentDate,
@@ -163,7 +163,7 @@ module.exports = {
       {
         name: "V-neck Kaftan Dress",
         color: "DARK BEIGE",
-        size: "S",
+        size: "SMALL",
         rating: 5,
         description: "Calf-length kaftan dress in woven fabric. Low-cut V-neck, pleat at front for added volume, and short sleeves. Straight-cut hem. Unlined.",
         created_at: currentDate,
