@@ -1,0 +1,35 @@
+@media (min-width: 600px) {
+  .shop_page {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media (min-width: 900px) {
+  .shop_page {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 4%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+.shop_page_items {
+  display: flex;
+  flex-direction: column;
+}
+
+.shop_page_filter {
+}
+
+.shop_page_sort_and_view {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.shop_page_view {
+  justify-content: end;
+}

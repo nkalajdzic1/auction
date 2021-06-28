@@ -54,13 +54,15 @@
     "react-show-more-text": "^1.4.6",
     "react-spring-3d-carousel": "^1.2.1",
     "react-toastify": "^7.0.4",
-    "react-tooltip": "^4.2.19"
+    "react-tooltip": "^4.2.19",
+    "server": "^1.0.34"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "serve -s build"
   },
   "eslintConfig": {
     "extends": [

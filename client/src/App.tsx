@@ -22,14 +22,14 @@ function App() {
           exact
           path="/landing"
           component={LandingPage}
-          title="Landing Page"
+          title="Home"
         />
         <CustomRoute
           //permission={[PermissionType.All]}
           exact
           path="/"
           component={LandingPage}
-          title="Landing Page"
+          title="Home"
         />
         <CustomRoute
           //permission={[PermissionType.All]}

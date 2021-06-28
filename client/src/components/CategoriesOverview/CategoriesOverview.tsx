@@ -7,11 +7,8 @@ import Divider from "@material-ui/core/Divider";
 
 import "./CategoriesOverview.css";
 import axios from "axios";
-import ItemListSkeleton from "../ItemList/ItemListSkeleton";
-import { Route, useHistory } from "react-router-dom";
-import ShopPage from "../../pages/ShopPage/ShopPage";
-import { render } from "react-dom";
-import { firstUpperRestLower } from "../ShopPageCategories/SubList";
+import { useHistory } from "react-router-dom";
+import { firstUpperRestLower } from "../ShopPageCategories/Functions";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -67,12 +64,7 @@ function CategoriesOverview() {
             return (
               <>
                 <ListItem button onClick={() => routeTo(x.name)}>
-                  <ListItemText
-                    primary={
-                      x.name.toLocaleUpperCase()[0] +
-                      x.name.toLocaleLowerCase().slice(1, x.name.length)
-                    }
-                  />
+                  <ListItemText primary={firstUpperRestLower(x.name)} />
                 </ListItem>
                 <Divider></Divider>
               </>
