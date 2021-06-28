@@ -18,6 +18,7 @@ export const styles = makeStyles({
   },
   image: {
     width: 300,
-    height: "scale",
+    height: 300,
+    objectFit: "cover",
   },
 });

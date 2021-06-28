@@ -7,6 +7,7 @@ export const useStyles = makeStyles({
   media: {
     height: "600px",
     borderRadius: 5,
+    objectFit: "cover",
   },
   images: {
     paddingTop: 10,

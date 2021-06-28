@@ -9,6 +9,8 @@ import { styles } from "../Styles";
 import { IAuctionIdBody } from "../../ItemCard/ItemCard";
 import { useHistory } from "react-router-dom";
 
+import "./LandingItemContent.css";
+
 export interface IRandomItem {
   id: number;
   starting_price: number;
@@ -51,7 +53,7 @@ function LandingItemContent({ randomItem }: ILandingItemContent) {
       <div className="landing_item_info">
         <Typography variant="h4">{randomItem.item.name}</Typography>
         <Typography className={classes.bid} variant="h6">
-          Start from $ - {randomItem.starting_price}
+          Start from - ${randomItem.starting_price}
         </Typography>
         <div>
           <Typography className={classes.description}>
@@ -66,8 +68,9 @@ function LandingItemContent({ randomItem }: ILandingItemContent) {
       </div>
       <div className="landing_item_picture">
         <Image
+          className={classes.image}
           width={300}
-          height={"auto"}
+          height={300}
           src={blobToImage(randomItem.item.item_item_picture[0].picture)}
         ></Image>
       </div>

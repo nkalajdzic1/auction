@@ -47,7 +47,11 @@ function SingleProductPictures({ auction }: ISingleProductPicturesProps) {
 
   return (
     <div className="single_product_pictures">
-      <Image className={classes.media} src={blobToImage(mainImage.picture)} />
+      <Image
+        className={classes.media}
+        style={{ verticalAlign: 0 }}
+        src={blobToImage(mainImage.picture)}
+      />
       <CardContent className={classes.images}>
         <div className="images_other">
           {images.slice(startPointImg, endPointImg).map((x, i) => {

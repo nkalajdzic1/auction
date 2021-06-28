@@ -20,7 +20,10 @@ export default function HeaderMenu() {
     <div className={classes.grow}>
       <AppBar
         position="static"
-        style={{ backgroundColor: "white", boxShadow: "none" }}
+        style={{
+          backgroundColor: "white",
+          boxShadow: "none",
+        }}
       >
         <Toolbar>
           <img

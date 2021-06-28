@@ -41,6 +41,9 @@ function Footer() {
               <li>About us</li>
               <li>Terms and conditions</li>
               <li>Privacy and policy</li>
+              <li style={{ fontStyle: "italic" }}>
+                Page created by Nadir Kalajdžić
+              </li>
             </ul>
           </div>
           {/* Column2 */}

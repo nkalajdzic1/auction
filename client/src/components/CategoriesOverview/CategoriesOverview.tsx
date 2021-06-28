@@ -8,6 +8,10 @@ import Divider from "@material-ui/core/Divider";
 import "./CategoriesOverview.css";
 import axios from "axios";
 import ItemListSkeleton from "../ItemList/ItemListSkeleton";
+import { Route, useHistory } from "react-router-dom";
+import ShopPage from "../../pages/ShopPage/ShopPage";
+import { render } from "react-dom";
+import { firstUpperRestLower } from "../ShopPageCategories/SubList";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -17,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     head: {
       color: "#8367D8",
+      fontWeight: "bold",
     },
   })
 );
@@ -32,6 +37,7 @@ export interface IParentCagetoryNames {
 
 function CategoriesOverview() {
   const [categories, setCategories] = useState<IParentCagetoryNames[]>([]);
+  const history = useHistory();
 
   useEffect(() => {
     axios
@@ -45,18 +51,22 @@ function CategoriesOverview() {
 
   const classes = useStyles();
 
+  function routeTo(category: string) {
+    history.push("/shop");
+  }
+
   return (
     <div className="categories_list">
       <List component="nav" className={classes.root}>
         <ListItem className={classes.head}>
-          <ListItemText>CATEGORIES</ListItemText>
+          <ListItemText className={classes.head}>CATEGORIES</ListItemText>
         </ListItem>
         <Divider></Divider>
         {categories.length > 0 ? (
           categories.map((x, i) => {
             return (
               <>
-                <ListItem button>
+                <ListItem button onClick={() => routeTo(x.name)}>
                   <ListItemText
                     primary={
                       x.name.toLocaleUpperCase()[0] +

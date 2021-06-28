@@ -6,6 +6,7 @@ import CustomRoute from "./routes/CustomRoute";
 import Routes from "./routes/Routes";
 import { AboutUsPage, LandingPage, Page404, SingleProductPage } from "./pages";
 import { ToastContainer } from "react-toastify";
+import ShopPage from "./pages/ShopPage/ShopPage";
 
 function App() {
   useEffect(() => {
@@ -37,9 +38,16 @@ function App() {
           component={AboutUsPage}
           title="About us"
         />
+        <CustomRoute
+          //permission={[PermissionType.All]}
+          exact
+          path="/shop"
+          component={ShopPage}
+          title="Shop"
+        />
         <Route exact path="/single_product" component={SingleProductPage} />
         <Route exact path="" component={Routes} />
-        <Route exact path="" component={Page404} />x
+        <Route exact path="" component={Page404} />
       </Switch>
       <ToastContainer draggable={false} />
     </Router>
