@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import GridListToggleButton from "../GridListToggleButton/GridListToggleButton";
 import ShopPageCategories from "../ShopPageCategories/ShopPageCategories";
 import ShopPageColorFilter from "../ShopPageColorFilter/ShopPageColorFilter";
 import ShopPageHeader from "../ShopPageHeader/ShopPageHeader";
@@ -54,8 +55,10 @@ function ShopPageContainer() {
         </div>
         <div className="shop_page_items">
           <div className="shop_page_sort_and_view">
-            <div className="shop_page_sort">view</div>
-            <div className="shop_page_view">sort</div>
+            <div className="shop_page_sort">sort</div>
+            <div className="shop_page_view">
+              <GridListToggleButton></GridListToggleButton>
+            </div>
           </div>
           <div className="shop_page_list">sss</div>
         </div>
