@@ -8,9 +8,14 @@ import { CategoryPair } from "../ShopPageContainer/ShopPageContainer";
 export interface IShopPageHeaderProps {
   breadcrumbs: CategoryPair[];
   setBreadcrumbs: (categories: CategoryPair[]) => void;
+  setCategory: (categories: CategoryPair[]) => void;
 }
 
-function ShopPageHeader({ breadcrumbs, setBreadcrumbs }: IShopPageHeaderProps) {
+function ShopPageHeader({
+  breadcrumbs,
+  setBreadcrumbs,
+  setCategory,
+}: IShopPageHeaderProps) {
   const classes = styles();
   return (
     <div className={classes.root} style={{ paddingBottom: "5%" }}>
@@ -41,6 +46,10 @@ function ShopPageHeader({ breadcrumbs, setBreadcrumbs }: IShopPageHeaderProps) {
                     color="textPrimary"
                     onClick={() => {
                       setBreadcrumbs([
+                        { id: breadcrumbs[0].id, name: breadcrumbs[0].name },
+                        { id: breadcrumbs[0].id, name: breadcrumbs[0].name },
+                      ]);
+                      setCategory([
                         { id: breadcrumbs[0].id, name: breadcrumbs[0].name },
                         { id: breadcrumbs[0].id, name: breadcrumbs[0].name },
                       ]);

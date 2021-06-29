@@ -21,14 +21,17 @@ const useStyle = makeStyles({
 });
 
 export interface IShopPagePriceFilterProps {
-  price: number[];
-  setPrice: (price: number[]) => void;
+  selectedPrice: number[];
+  setSelectedPrice: (price: number[]) => void;
 }
 
-function ShopPagePriceFilter({ price, setPrice }: IShopPagePriceFilterProps) {
+function ShopPagePriceFilter({
+  selectedPrice,
+  setSelectedPrice,
+}: IShopPagePriceFilterProps) {
   let [min, setMin] = useState(0);
   let [max, setMax] = useState(100);
-  let [pp, setPP] = useState<number[]>([price[0], price[1]]);
+  const [price, setPrice] = useState<number[]>([0, 100]);
   const classes = useStyle();
 
   useEffect(() => {
@@ -36,11 +39,11 @@ function ShopPagePriceFilter({ price, setPrice }: IShopPagePriceFilterProps) {
       .get("http://localhost:5000/price/max_min_price")
       .then((res) => {
         setPrice([res.data.minPrice, res.data.maxPrice]);
+        setSelectedPrice([res.data.minPrice, res.data.maxPrice]);
         setMin(res.data.minPrice);
         setMax(res.data.maxPrice);
       })
-      .catch((err) => console.log(err))
-      .then();
+      .catch((err) => console.log(err));
   }, []);
 
   const handleChange = (event: any, newValue: number | number[]) => {
@@ -48,7 +51,7 @@ function ShopPagePriceFilter({ price, setPrice }: IShopPagePriceFilterProps) {
   };
 
   const handleChangePP = (event: any, newValue: number | number[]) => {
-    setPP(newValue as number[]);
+    setSelectedPrice(newValue as number[]);
   };
 
   function valuetext(value: number) {
@@ -69,20 +72,20 @@ function ShopPagePriceFilter({ price, setPrice }: IShopPagePriceFilterProps) {
         <Slider
           min={min}
           max={max}
-          value={pp}
+          value={price}
           step={0.1}
           className={classes.root}
-          onChange={handleChangePP}
+          onChange={handleChange}
           valueLabelDisplay="auto"
           aria-labelledby="range-slider"
           getAriaValueText={valuetext}
-          onChangeCommitted={handleChange}
+          onChangeCommitted={handleChangePP}
         />
         <Typography className={classes.textColor}>
-          ${pp[0].toFixed(2)} - ${pp[1].toFixed(2)}
+          ${price[0].toFixed(2)} - ${price[1].toFixed(2)}
         </Typography>
         <Typography className={classes.textColor}>
-          The average price is ${((pp[0] + pp[1]) / 2).toFixed(2)}
+          The average price is ${((price[0] + price[1]) / 2).toFixed(2)}
         </Typography>
       </div>
     </div>

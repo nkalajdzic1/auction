@@ -16,10 +16,12 @@ export interface IShopPageCategories {
 export interface IShopPageCategoriesProps {
   breadcrumbs?: CategoryPair[];
   setBreadcrumbs?: (categories: CategoryPair[]) => void;
+  setCategory?: (categories: CategoryPair[]) => void;
 }
 
 export interface ISubList {
   breadcrumbs?: CategoryPair[];
   setBreadcrumbs?: (categories: CategoryPair[]) => void;
+  setCategory?: (categories: CategoryPair[]) => void;
   category: IShopPageCategories;
 }

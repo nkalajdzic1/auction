@@ -15,9 +15,14 @@ interface Size {
 export interface IShopPageSizeFilterProps {
   sizes: string[];
   setSizes: (sizes: string[]) => void;
+  setSelectedSize: (size: string) => void;
 }
 
-function ShopPageSizeFilter({ sizes, setSizes }: IShopPageSizeFilterProps) {
+function ShopPageSizeFilter({
+  sizes,
+  setSizes,
+  setSelectedSize,
+}: IShopPageSizeFilterProps) {
   const classes = useStyles();
   const [selected, setSelected] = useState<number>();
 
@@ -54,7 +59,10 @@ function ShopPageSizeFilter({ sizes, setSizes }: IShopPageSizeFilterProps) {
               <ListItem
                 button
                 selected={selected == i ? true : false}
-                onClick={() => setSelected(i)}
+                onClick={() => {
+                  setSelected(i);
+                  setSelectedSize(x);
+                }}
               >
                 <ListItemText primary={x} />
               </ListItem>

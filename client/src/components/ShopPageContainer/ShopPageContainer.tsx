@@ -15,57 +15,98 @@ export interface CategoryPair {
   name: string;
 }
 
+export interface IAuctionItemShop {
+  id: number;
+  starting_price: number;
+  start_date: Date;
+  end_date: Date;
+  numOfBids: number;
+  item: {
+    id: number;
+    name: string;
+    color: string;
+    size: string;
+    rating: number;
+    description: string;
+    item_item_picture: Array<{
+      picture: {
+        type: string;
+        data: any;
+      };
+    }>;
+    item_category: Array<{
+      category_id: number;
+    }>;
+  };
+}
+
 function ShopPageContainer() {
-  const [price, setPrice] = useState<number[]>([0, 100]);
-  const [items, setItems] = useState([]);
+  const [selectedPrice, setSelectedPrice] = useState<number[]>([-1, -1]);
+  const [items, setItems] = useState<IAuctionItemShop[]>([]);
   const [colors, setColors] = useState<string[]>([]);
+  const [selectedColor, setSelectedColor] = useState<string>("");
   const [sizes, setSizes] = useState<string[]>([]);
+  const [selectedSize, setSelectedSize] = useState<string>("");
   const [breadcrumb, setBreadcrumbs] = useState<CategoryPair[]>([
     { id: -1, name: "" },
     { id: -1, name: "" },
   ]);
-
+  const [selectedCategory, setSelectedCategory] = useState<CategoryPair[]>([
+    { id: -1, name: "" },
+    { id: -1, name: "" },
+  ]);
   const setBreadcrumbsHelpingF = (categories: CategoryPair[]) =>
     setBreadcrumbs(categories);
-  const setPriceHelpingF = (price: number[]) => setPrice(price);
   const setColorsHelpingF = (colors: string[]) => setColors(colors);
   const setSizesHelpingF = (sizes: string[]) => setSizes(sizes);
+  const setSelectedColorHelpingF = (color: string) => setSelectedColor(color);
+  const setSelectedSizeHelpingF = (size: string) => setSelectedSize(size);
 
   useEffect(() => {
     axios
       .post("http://localhost:5000/shop/items", {
-        ss: "1",
-        aa: "1",
+        category: selectedCategory[0].id,
+        subcategory: selectedCategory[1].id,
+        minPrice: selectedPrice[0] != -1 ? selectedPrice[0] : -1,
+        maxPrice: selectedPrice[1] != -1 ? selectedPrice[1] : -1,
+        color: selectedColor == "" ? -1 : selectedColor,
+        size:
+          selectedSize == "" ? -1 : selectedSize.replaceAll(/\s\(\d\)/g, ""),
       })
-      .then((x) => console.log(x))
+      .then((x) => {
+        console.log(x.data);
+        setItems(x.data);
+      })
       .catch((err) => console.log(err));
-  });
-
-  //<<<<<< helping functions to carry the setters into other components >>>>>>
+  }, [selectedPrice, selectedCategory, selectedColor, selectedSize]);
 
   return (
     <div className="shop_page_containerr">
       <ShopPageHeader
         breadcrumbs={breadcrumb}
         setBreadcrumbs={setBreadcrumbsHelpingF}
+        setCategory={setSelectedCategory}
       />
       <div className="shop_page">
         <div className="shop_page_filter">
           <ShopPageCategories
             breadcrumbs={breadcrumb}
             setBreadcrumbs={setBreadcrumbsHelpingF}
+            setCategory={setSelectedCategory}
           />
           <ShopPagePriceFilter
-            price={price}
-            setPrice={setPriceHelpingF}
+            selectedPrice={selectedPrice}
+            setSelectedPrice={setSelectedPrice}
           ></ShopPagePriceFilter>
           <ShopPageColorFilter
             colors={colors}
             setColors={setColorsHelpingF}
+            setSelectedColor={setSelectedColorHelpingF}
           ></ShopPageColorFilter>
           <ShopPageSizeFilter
             sizes={sizes}
             setSizes={setSizesHelpingF}
+            setSelectedSize={setSelectedSizeHelpingF}
           ></ShopPageSizeFilter>
         </div>
         <div className="shop_page_items">
@@ -78,8 +119,8 @@ function ShopPageContainer() {
             </div>
           </div>
           <div className="shop_page_list">
-            {new Array(10).fill(null).map((x, i) => {
-              return <ItemCardShop></ItemCardShop>;
+            {items.map((x, i) => {
+              return <ItemCardShop item={x}></ItemCardShop>;
             })}
           </div>
         </div>

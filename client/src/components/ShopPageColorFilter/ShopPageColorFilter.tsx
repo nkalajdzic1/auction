@@ -14,9 +14,14 @@ interface ColorPair {
 export interface IShopPageColorFilterProps {
   colors: string[];
   setColors: (colors: string[]) => void;
+  setSelectedColor: (color: string) => void;
 }
 
-function ShopPageColorFilter({ colors, setColors }: IShopPageColorFilterProps) {
+function ShopPageColorFilter({
+  colors,
+  setColors,
+  setSelectedColor,
+}: IShopPageColorFilterProps) {
   const classes = useStyles();
   const [selected, setSelected] = useState<number>();
 
@@ -49,7 +54,10 @@ function ShopPageColorFilter({ colors, setColors }: IShopPageColorFilterProps) {
               <ListItem
                 button
                 selected={selected == i ? true : false}
-                onClick={() => setSelected(i)}
+                onClick={() => {
+                  setSelected(i);
+                  setSelectedColor(x);
+                }}
               >
                 <ListItemText primary={firstUpperRestLower(x)} />
               </ListItem>

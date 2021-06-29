@@ -12,6 +12,7 @@ import SubList from "./SubList";
 function ShopPageCategories({
   breadcrumbs,
   setBreadcrumbs,
+  setCategory,
 }: IShopPageCategoriesProps) {
   const history = useHistory();
   const location = history.location;
@@ -56,6 +57,7 @@ function ShopPageCategories({
           <SubList
             breadcrumbs={breadcrumbs}
             setBreadcrumbs={setBreadcrumbs}
+            setCategory={setCategory}
             category={x}
           />
         );

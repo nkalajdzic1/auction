@@ -8,6 +8,8 @@ import GavelIcon from "@material-ui/icons/Gavel";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { IAuctionIdBody } from "../ItemCard/ItemCard";
 import { useHistory } from "react-router-dom";
+import { IAuctionItemShop } from "../ShopPageContainer/ShopPageContainer";
+import { blobToImage } from "../NTLOverview/NTLOverview";
 
 const useStyles = makeStyles({
   buttonWatchlist: {
@@ -27,7 +29,13 @@ const useStyles = makeStyles({
   },
 });
 
-function ItemCardShop() {
+export interface IItemCardShopProps {
+  item?: IAuctionItemShop;
+}
+
+function ItemCardShop({ item }: IItemCardShopProps) {
+  if (item == null) return <></>;
+
   const classes = useStyles();
   const [watchlistStyle, setWatchlistStyle] = useState(classes.buttonWatchlist);
   const history = useHistory();
@@ -46,14 +54,15 @@ function ItemCardShop() {
     <div className="item_card_shop">
       <div className="item_card_shop_img">
         <Image
+          height={400}
           style={{ objectFit: "cover" }}
-          src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+          src={blobToImage(item.item.item_item_picture[0].picture)}
         />
       </div>
       <div className="item_card_shop_content">
         <div className="item_card_shop_title">
           <Typography style={{ fontStyle: "bold" }} noWrap={true} variant="h5">
-            Titlesssssssssssssssssssssssssssssssssssssssssssssss
+            {item.item.name}
           </Typography>
         </div>
         <div className="item_card_shop_description">
@@ -61,14 +70,12 @@ function ItemCardShop() {
             style={{ color: "#9B9B9B" }}
             ellipsis={{ rows: 4, expandable: false }}
           >
-            {new Array(333).fill("A").map((x, i) => {
-              return x;
-            })}
+            {item.item.description}
           </Paragraph>
         </div>
         <div className="item_card_shop_price">
           <Typography style={{ color: "#8367D8" }} variant="h5">
-            Start from ${"59.00"}
+            Start from ${item.starting_price}
           </Typography>
         </div>
         <div className="item_card_shop_buttons">
@@ -90,7 +97,7 @@ function ItemCardShop() {
             <Button
               variant="outlined"
               className={classes.buttonBid}
-              onClick={() => routeTo(1)}
+              onClick={() => routeTo(item.item.id)}
               endIcon={<GavelIcon />}
             >
               Bid

@@ -9,10 +9,16 @@ import { List } from "@material-ui/core";
 import { useStylesSubList } from "./Styles";
 import { cmp, firstUpperRestLower } from "./Functions";
 
-function SubList({ breadcrumbs, setBreadcrumbs, category }: ISubList) {
+function SubList({
+  breadcrumbs,
+  setBreadcrumbs,
+  setCategory,
+  category,
+}: ISubList) {
   const classes = useStylesSubList();
 
-  if (breadcrumbs == null || setBreadcrumbs == null) return <></>;
+  if (breadcrumbs == null || setBreadcrumbs == null || setCategory == null)
+    return <></>;
 
   return (
     <>
@@ -20,6 +26,17 @@ function SubList({ breadcrumbs, setBreadcrumbs, category }: ISubList) {
         button
         onClick={() => {
           setBreadcrumbs(
+            breadcrumbs[0].id == category.id
+              ? [
+                  { id: -1, name: "" },
+                  { id: -1, name: "" },
+                ]
+              : [
+                  { id: category.id, name: category.name },
+                  { id: category.id, name: category.name },
+                ]
+          );
+          setCategory(
             breadcrumbs[0].id == category.id
               ? [
                   { id: -1, name: "" },
@@ -57,6 +74,10 @@ function SubList({ breadcrumbs, setBreadcrumbs, category }: ISubList) {
                 }
                 onClick={() => {
                   setBreadcrumbs([
+                    { id: category.id, name: category.name },
+                    { id: x.id, name: x.name },
+                  ]);
+                  setCategory([
                     { id: category.id, name: category.name },
                     { id: x.id, name: x.name },
                   ]);
