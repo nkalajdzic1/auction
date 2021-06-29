@@ -1,0 +1,55 @@
+@media screen and (max-width: 450px) {
+  .item_card_shop {
+    display: grid;
+    grid-template-rows: auto 300px;
+    padding: 10px;
+  }
+
+  .item_card_shop_img {
+    margin: 0 auto;
+    width: 33%;
+    height: 300px;
+  }
+
+  .item_card_shop_content {
+    width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .item_card_shop {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 5%;
+    padding-top: 5%;
+  }
+
+  .item_card_shop_content {
+  }
+
+  .item_card_shop_img {
+  }
+
+  .item_card_shop_title {
+  }
+}
+
+.item_card_shop_description {
+  margin-top: 5%;
+  color: #9b9b9b;
+}
+
+.item_card_shop_price {
+  margin-top: 5%;
+}
+
+.item_card_shop_buttons {
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5%;
+}

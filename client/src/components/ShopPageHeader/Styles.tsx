@@ -7,18 +7,14 @@ const styles = makeStyles((theme: Theme) =>
       boxShadow: "none",
       color: "#252525",
     },
-    product_left: {
-      width: "15%",
-      marginLeft: "10%",
+    toolbar: {},
+    app: {
+      backgroundColor: "white",
+      boxShadow: "none",
+      color: "#252525",
     },
-    product_right: {
-      right: 0,
-      width: "100%",
-      minWidth: "auto",
-      display: "flex",
-      justifyContent: "flex-end",
-      marginRight: "10%",
-    },
+    product_left: {},
+    product_right: {},
     empty: {
       position: "relative",
       backgroundColor: "white",

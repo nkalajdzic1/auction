@@ -13,9 +13,16 @@ export interface IShopPageHeaderProps {
 function ShopPageHeader({ breadcrumbs, setBreadcrumbs }: IShopPageHeaderProps) {
   const classes = styles();
   return (
-    <div style={{ paddingBottom: "5%" }}>
-      <AppBar position="static" className={classes.root}>
-        <Toolbar>
+    <div className={classes.root} style={{ paddingBottom: "5%" }}>
+      <AppBar position="static" className={classes.app}>
+        <Toolbar
+          className={classes.toolbar}
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginInline: "4%",
+          }}
+        >
           <div className={classes.product_left}>
             <Typography variant="h6">SHOP</Typography>
           </div>

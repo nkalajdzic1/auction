@@ -25,7 +25,6 @@ function ShopPageSizeFilter({ sizes, setSizes }: IShopPageSizeFilterProps) {
     axios
       .get("http://localhost:5000/size/all")
       .then((res) => {
-        console.log(res.data);
         var arr = Array.from(
           new Set<string>(
             res.data.map(

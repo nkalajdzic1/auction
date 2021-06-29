@@ -6,14 +6,13 @@ import { useStyles } from "./Styles";
 
 function GridListToggleButton() {
   const [view, setView] = useState("list");
-  const [toggleColor, setToggleColors] = useState("default");
-
   const classes = useStyles();
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     nextView: string
   ) => {
+    if (nextView == null) return;
     setView(nextView);
   };
 
