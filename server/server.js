@@ -6,9 +6,9 @@ const fs = require("fs");
 const app = express();
 
 app.use(cors());
-app.use(express.json());
 
-//app.use(express.static(path.join(__dirname, 'client', 'build')));
+//app.use(express.static(__dirname));
+//app.use(express.json());
 
 //routes
 app.use("/auction", require("./routes/auction.js"));
@@ -19,6 +19,13 @@ app.use("/size", require("./routes/size.js"));
 app.use("/shop", require("./routes/shop.js"));
 
 
+const root = require('path').join(__dirname, '..', 'client', 'build')
+app.use(express.static(root));
+app.get("*", (req, res) => {
+  res.sendFile('index.html', {
+    root
+  });
+})
 
 //check connection to database
 db.authenticate()

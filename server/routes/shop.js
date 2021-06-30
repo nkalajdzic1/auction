@@ -11,15 +11,18 @@ const {
 
 async function filteredAuctions(filters) {
     var itemFilter = {};
-    if (filters.color != -1) itemFilter['color'] = filters.color.toLocaleUpperCase();
-    if (filters.size != -1) itemFilter['size'] = filters.size.toLocaleUpperCase();
-
     var categoryFilter = {};
-    if (filters.subcategory != -1) categoryFilter['category_id'] = filters.subcategory;
-
     var sp = {};
-    if (filters.minPrice != -1) sp['[Op.gte]'] = filters.minPrice;
-    if (filters.maxPrice != -1) sp['[Op.lte]'] = filters.maxPrice;
+    if (filters != null) {
+        if (filters.color != -1) itemFilter['color'] = filters.color.toLocaleUpperCase();
+        if (filters.size != -1) itemFilter['size'] = filters.size.toLocaleUpperCase();
+
+        if (filters.subcategory != -1) categoryFilter['category_id'] = filters.subcategory;
+
+        if (filters.minPrice != -1) sp['[Op.gte]'] = filters.minPrice;
+        if (filters.maxPrice != -1) sp['[Op.lte]'] = filters.maxPrice;
+    }
+
 
     var result = await models.auction.findAll({
         where: {
@@ -52,10 +55,10 @@ async function filteredAuctions(filters) {
             attributes: []
         }],
         where: {
-            starting_price: {
-                [Op.lte]: filters.maxPrice != -1 ? filters.maxPrice : Sequelize.col('auction.start_date'),
-                [Op.gte]: filters.minPrice != -1 ? filters.minPrice : Sequelize.col('auction.start_date'),
-            }
+            /* starting_price: {
+                 [Op.lte]: filters != null && filters.maxPrice != -1 ? filters.maxPrice : Sequelize.col('auction.start_date'),
+                 [Op.gte]: filters != null && filters.minPrice != -1 ? filters.minPrice : Sequelize.col('auction.start_date'),
+             }*/
         },
         attributes: ['id', 'starting_price', 'start_date', 'end_date', [sequelize.fn('count', sequelize.col('auction_bid.id')), 'numOfBids']],
         group: ['id']
