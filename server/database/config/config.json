@@ -1,16 +1,16 @@
 {
   "development": {
-    "username": "Admin",
-    "password": "admin",
-    "database": "auctionDB",
-    "host": "127.0.0.1",
+    "username": "bf9029dad2acca",
+    "password": "82022ccf",
+    "database": "heroku_1532f95a856551d",
+    "host": "eu-cdbr-west-01.cleardb.com",
     "dialect": "mysql"
   },
   "test": {
-    "username": "admin",
-    "password": "admin",
-    "database": "auctionDB",
-    "host": "127.0.0.1",
+    "username": "bf9029dad2acca",
+    "password": "82022ccf",
+    "database": "heroku_1532f95a856551d",
+    "host": "eu-cdbr-west-01.cleardb.com",
     "dialect": "mysql"
   },
   "production": {

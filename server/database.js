@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-module.exports = new Sequelize('auctionDB', 'Admin', 'admin', {
-    host: 'localhost',
-    dialect: 'mysql',
+module.exports = new Sequelize('heroku_1532f95a856551d', 'bf9029dad2acca', '82022ccf', {
+    host: "eu-cdbr-west-01.cleardb.com",
+    dialect: "mysql",
     operatorAliases: false,
 
     pool: {

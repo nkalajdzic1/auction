@@ -156,7 +156,7 @@ module.exports = {
       },
       parent_category_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'category',
           key: 'id',
