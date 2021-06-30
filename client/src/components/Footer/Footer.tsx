@@ -42,7 +42,9 @@ function Footer() {
               <li>Terms and conditions</li>
               <li>Privacy and policy</li>
               <li style={{ fontStyle: "italic" }}>
-                Creator Nadir Kalajdžić. All rights reserved.
+                <a href="https://www.linkedin.com/in/nadir-kalajd%C5%BEi%C4%87-844995214/">
+                  Creator Nadir Kalajdžić. All rights reserved.
+                </a>
               </li>
             </ul>
           </div>

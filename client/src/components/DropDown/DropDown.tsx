@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { Menu, Dropdown, Button } from "antd";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { classNames } from "react-select/src/utils";
 import { useStyles } from "./Styles";
-import { toastRegular, toastRegularBlack } from "../ToastCustom/ToastCustom";
 
 const sort = [
   "Sort by Popularity",
-  "Sort by rating",
+  "Sort by Rating",
   "Sort by Newness",
   "Sort by Price",
 ];
 
-function DropDown() {
-  const [selected, setSelected] = useState("Sort by");
+export interface IDropDown {
+  dropdown: string;
+  setDropdown: (sort: string) => void;
+}
+
+function DropDown({ dropdown, setDropdown }: IDropDown) {
+  const [selected, setSelected] = useState(sort[0]);
   const classes = useStyles();
 
   const menu = (
@@ -24,7 +27,8 @@ function DropDown() {
             key={i}
             onClick={() => {
               setSelected(x);
-              toastRegularBlack("Sorted by " + x.slice(8, x.length));
+              setDropdown(x);
+              //toastRegularBlack("Sorted by " + x.slice(8, x.length));
             }}
           >
             <a target="_blank">{x}</a>

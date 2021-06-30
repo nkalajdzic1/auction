@@ -21,12 +21,6 @@ async function filteredAuctions(filters) {
     if (filters.minPrice != -1) sp['[Op.gte]'] = filters.minPrice;
     if (filters.maxPrice != -1) sp['[Op.lte]'] = filters.maxPrice;
 
-    priceFilter = {
-        starting_price: sp
-    }
-
-    console.log(priceFilter);
-
     var result = await models.auction.findAll({
         where: {
             end_date: {
@@ -59,7 +53,8 @@ async function filteredAuctions(filters) {
         }],
         where: {
             starting_price: {
-                [Op.lte]: sequelize.col('auction.starting_price') + 111
+                [Op.lte]: filters.maxPrice != -1 ? filters.maxPrice : Sequelize.col('auction.start_date'),
+                [Op.gte]: filters.minPrice != -1 ? filters.minPrice : Sequelize.col('auction.start_date'),
             }
         },
         attributes: ['id', 'starting_price', 'start_date', 'end_date', [sequelize.fn('count', sequelize.col('auction_bid.id')), 'numOfBids']],

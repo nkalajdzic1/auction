@@ -2,13 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DropDown from "../DropDown/DropDown";
 import GridListToggleButton from "../GridListToggleButton/GridListToggleButton";
-import ItemCardShop from "../ItemCardShop/ItemCardShop";
 import ShopPageCategories from "../ShopPageCategories/ShopPageCategories";
 import ShopPageColorFilter from "../ShopPageColorFilter/ShopPageColorFilter";
 import ShopPageHeader from "../ShopPageHeader/ShopPageHeader";
+import ShopPageList from "../ShopPageList/ShopPageList";
 import ShopPagePriceFilter from "../ShopPagePriceFilter/ShopPagePriceFilter";
 import ShopPageSizeFilter from "../ShopPageSizeFilter/ShopPageSizeFilter";
-import { toastError } from "../ToastCustom/ToastCustom";
 
 export interface CategoryPair {
   id: number;
@@ -47,6 +46,7 @@ function ShopPageContainer() {
   const [selectedColor, setSelectedColor] = useState<string>("");
   const [sizes, setSizes] = useState<string[]>([]);
   const [selectedSize, setSelectedSize] = useState<string>("");
+  const [dropdown, setDropdown] = useState<string>("");
   const [breadcrumb, setBreadcrumbs] = useState<CategoryPair[]>([
     { id: -1, name: "" },
     { id: -1, name: "" },
@@ -112,16 +112,17 @@ function ShopPageContainer() {
         <div className="shop_page_items">
           <div className="shop_page_sort_and_view">
             <div className="shop_page_sort">
-              <DropDown></DropDown>
+              <DropDown
+                dropdown={dropdown}
+                setDropdown={setDropdown}
+              ></DropDown>
             </div>
             <div className="shop_page_view">
               <GridListToggleButton></GridListToggleButton>
             </div>
           </div>
           <div className="shop_page_list">
-            {items.map((x, i) => {
-              return <ItemCardShop item={x}></ItemCardShop>;
-            })}
+            <ShopPageList items={items} sort={dropdown} />
           </div>
         </div>
       </div>
