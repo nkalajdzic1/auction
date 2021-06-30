@@ -5,7 +5,7 @@ import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import Logo from "../../assets/icon/logo.png";
 import Styles from "./Styles";
-import { Button } from "@material-ui/core";
+import { Button, Link } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
 export default function HeaderMenu() {
@@ -20,12 +20,21 @@ export default function HeaderMenu() {
     <div className={classes.grow}>
       <AppBar
         position="static"
-        style={{ backgroundColor: "white", boxShadow: "none" }}
+        style={{
+          backgroundColor: "white",
+          boxShadow: "none",
+        }}
       >
         <Toolbar>
           <img
             src={Logo}
-            style={{ width: "15%", height: 40, marginLeft: "10%" }}
+            style={{
+              width: "15%",
+              height: 40,
+              marginLeft: "10%",
+              cursor: "pointer",
+            }}
+            onClick={() => routeTo("/landing")}
           ></img>
           <div className={classes.search}>
             <InputBase

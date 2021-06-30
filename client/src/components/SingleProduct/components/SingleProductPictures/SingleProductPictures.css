@@ -9,8 +9,18 @@
   text-align: center;
 }
 
+.ant-image {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
 .arrow_previous,
 .arrow_next {
   padding: 5px;
   display: inline-block;
+}
+
+.anticon {
+  vertical-align: 0.125em;
 }

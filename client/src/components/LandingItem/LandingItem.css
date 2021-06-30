@@ -1,0 +1,21 @@
+.landing_item {
+  margin-top: 10%;
+  margin-left: 10%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.landing_item_info {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  max-width: 450px;
+}
+
+.landing_item_picture {
+  max-height: 300px;
+  max-width: 300px;
+  height: 300px;
+  width: 300px;
+}

@@ -24,15 +24,35 @@ export const useStyles = makeStyles({
   },
   buttonBid: {
     width: "auto",
+    borderColor: "#8367D8",
+    borderRadius: 0,
+    borderWidth: 3,
   },
+  rating: {},
   highest_bid: {
-    marginTop: "10%",
     display: "flex",
     gap: 5,
   },
+  info: {
+    marginTop: "3%",
+    display: "flex",
+  },
+  bids: {
+    marginLeft: "5%",
+  },
   buttonWatchlist: {
-    marginTop: "10%",
+    marginTop: "5%",
     width: "33.3%",
+    borderColor: "#ECECEC",
+    borderRadius: 0,
+    borderWidth: 3,
+  },
+  buttonWatchlistActive: {
+    marginTop: "5%",
+    width: "33.3%",
+    borderColor: "#8367D8",
+    borderRadius: 0,
+    borderWidth: 3,
   },
   details: {
     marginTop: "5%",
@@ -44,5 +64,9 @@ export const useStyles = makeStyles({
     height: "100%",
     maxHeight: "100%",
     marginTop: "1%",
+  },
+  description: {
+    margin: "2% 2%",
+    overflowWrap: "break-word",
   },
 });

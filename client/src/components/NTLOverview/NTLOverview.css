@@ -1,5 +1,5 @@
 .ntlOverview {
-  margin-top: 15%;
+  margin-top: 5%;
 }
 
 .ntlOverviewTabs {
@@ -15,7 +15,7 @@
 .cardContent {
   display: inline-grid;
   grid-template-columns: repeat(4, auto);
-  height: 720px;
+  height: 60px;
 }
 
 .cardContent > ul {

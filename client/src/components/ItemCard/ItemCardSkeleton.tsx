@@ -15,11 +15,12 @@ export interface IItemCardSkeletonProps {
 
 const defaultStyles = makeStyles({
   root: {
-    width: 200,
+    width: 250,
     height: 350,
   },
   media: {
     height: 250,
+    width: 250,
   },
 });
 
