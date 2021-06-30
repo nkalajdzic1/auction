@@ -7,8 +7,7 @@ const app = express();
 
 app.use(cors());
 
-//app.use(express.static(__dirname));
-//app.use(express.json());
+const root = require('path').join(__dirname, '..', 'client', 'build/')
 
 //routes
 app.use("/auction", require("./routes/auction.js"));
@@ -18,14 +17,13 @@ app.use("/color", require("./routes/color.js"));
 app.use("/size", require("./routes/size.js"));
 app.use("/shop", require("./routes/shop.js"));
 
-
-const root = require('path').join(__dirname, '..', 'client', 'build')
 app.use(express.static(root));
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile('index.html', {
     root
   });
 })
+
 
 //check connection to database
 db.authenticate()

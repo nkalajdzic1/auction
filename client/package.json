@@ -94,7 +94,6 @@
   "bugs": {
     "url": "https://github.com/nkalajdzic1/auction/issues"
   },
-  "homepage": "https://github.com/nkalajdzic1/auction#readme",
   "browserslist": [
     ">0.2%",
     "not dead",

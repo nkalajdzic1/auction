@@ -38,7 +38,7 @@ function CategoriesOverview() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/category/parent_categories")
+      .get("http://localhost:5000/api/category/parent_categories")
       .then((res) => {
         console.log(res.data);
         setCategories(res.data);
