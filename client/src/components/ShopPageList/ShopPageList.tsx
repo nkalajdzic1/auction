@@ -34,7 +34,7 @@ function ShopPageList({ items, sort }: IShopPageListProps) {
       ? sortByNewness
       : sortByPrice
   );
-  console.log(sort);
+
   return (
     <>
       {sortedItems.map((x, i) => {
