@@ -52,7 +52,7 @@ function FeatureProducts() {
     setIsLoadingData(true);
 
     axios
-      .get("http://localhost:5000/auction/feature_products")
+      .get("https://auctiononline.herokuapp.com/auction/feature_products")
       .then((res) => {
         setItems(res.data);
         setTimeout(() => {

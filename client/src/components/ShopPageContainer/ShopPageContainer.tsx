@@ -64,7 +64,7 @@ function ShopPageContainer() {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/shop/items", {
+      .post("hhttps://auctiononline.herokuapp.com/shop/items", {
         category: selectedCategory[0].id,
         subcategory: selectedCategory[1].id,
         minPrice: selectedPrice[0] != -1 ? selectedPrice[0] : -1,

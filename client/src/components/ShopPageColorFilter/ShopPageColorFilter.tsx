@@ -27,7 +27,7 @@ function ShopPageColorFilter({
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/color/all")
+      .get("https://auctiononline.herokuapp.com/color/all")
       .then((res) => {
         var arr = Array.from(
           new Set<string>(res.data.map((x: ColorPair) => x.color))

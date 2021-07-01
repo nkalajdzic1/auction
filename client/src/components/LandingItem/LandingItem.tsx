@@ -14,7 +14,7 @@ function LandingItem() {
   useEffect(() => {
     setIsLoadingData(true);
     axios
-      .get("http://localhost:5000/auction/random_item")
+      .get("https://auctiononline.herokuapp.com/auction/random_item")
       .then((res) => {
         setItem(res.data);
         setTimeout(() => {

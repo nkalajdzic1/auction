@@ -16,7 +16,7 @@ function LastChance({ route }: ILastChanceProps) {
     setIsLoadingData(true);
 
     axios
-      .get("http://localhost:5000/auction/" + route)
+      .get("https://auctiononline.herokuapp.com/auction/" + route)
       .then((res) => {
         setItems(res.data);
         setTimeout(() => {

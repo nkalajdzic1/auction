@@ -26,7 +26,7 @@ function ShopPageCategories({
     setIsLoadingData(true);
 
     axios
-      .get("http://localhost:5000/category/categories")
+      .get("https://auctiononline.herokuapp.com/category/categories")
       .then((res) => {
         setCategories(res.data);
         setTimeout(() => {

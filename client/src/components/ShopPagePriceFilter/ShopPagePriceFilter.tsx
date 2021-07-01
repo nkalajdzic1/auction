@@ -36,7 +36,7 @@ function ShopPagePriceFilter({
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/price/max_min_price")
+      .get("https://auctiononline.herokuapp.com/price/max_min_price")
       .then((res) => {
         setPrice([res.data.minPrice, res.data.maxPrice]);
         setSelectedPrice([res.data.minPrice, res.data.maxPrice]);

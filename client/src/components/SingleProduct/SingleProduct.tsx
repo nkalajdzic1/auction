@@ -15,7 +15,9 @@ function SingleProduct({ auction_id }: ISingleProductProps) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/auction/single_item/" + auction_id)
+      .get(
+        "https://auctiononline.herokuapp.com/auction/single_item/" + auction_id
+      )
       .then((res) => {
         setAuction(res.data);
         window.scrollTo(0, 0);

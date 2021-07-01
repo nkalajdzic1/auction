@@ -28,7 +28,7 @@ function ShopPageSizeFilter({
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/size/all")
+      .get("https://auctiononline.herokuapp.com/size/all")
       .then((res) => {
         var arr = Array.from(
           new Set<string>(

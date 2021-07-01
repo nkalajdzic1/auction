@@ -38,7 +38,7 @@ function CategoriesOverview() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/category/parent_categories")
+      .get("https://auctiononline.herokuapp.com/category/parent_categories")
       .then((res) => {
         console.log(res.data);
         setCategories(res.data);
