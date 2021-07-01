@@ -1,9 +1,6 @@
 const Sequelize = require('sequelize');
-module.exports = new Sequelize('heroku_1532f95a856551d', 'bf9029dad2acca', '82022ccf', {
-    host: "eu-cdbr-west-01.cleardb.com",
+module.exports = new Sequelize(process.env.CLEAR_DATABASE_URL, {
     dialect: "mysql",
-    operatorAliases: false,
-
     pool: {
         max: 5,
         min: 0,
@@ -11,3 +8,6 @@ module.exports = new Sequelize('heroku_1532f95a856551d', 'bf9029dad2acca', '8202
         idle: 10000
     },
 });
+//mysql://bf9029dad2acca:82022ccf@eu-cdbr-west-01.cleardb.com/heroku_1532f95a856551d?reconnect=true
+
+enviromental
