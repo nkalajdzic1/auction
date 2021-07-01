@@ -8,6 +8,7 @@ import axios from "axios";
 import { IItemCard } from "../ItemList/IItemCard";
 import ItemList from "../ItemList/ItemList";
 import ItemListSkeleton from "../ItemList/ItemListSkeleton";
+import { TMBD_API_URL } from "../../const";
 
 const mediumCard = makeStyles({
   root: {
@@ -52,7 +53,7 @@ function FeatureProducts() {
     setIsLoadingData(true);
 
     axios
-      .get("https://auctiononline.herokuapp.com/auction/feature_products")
+      .get(`${TMBD_API_URL}/auction/feature_products`)
       .then((res) => {
         setItems(res.data);
         setTimeout(() => {

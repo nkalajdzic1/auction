@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { TMBD_API_URL } from "../../const";
 import DropDown from "../DropDown/DropDown";
 import GridListToggleButton from "../GridListToggleButton/GridListToggleButton";
 import ShopPageCategories from "../ShopPageCategories/ShopPageCategories";
@@ -64,7 +65,7 @@ function ShopPageContainer() {
 
   useEffect(() => {
     axios
-      .post("hhttps://auctiononline.herokuapp.com/shop/items", {
+      .post(`${TMBD_API_URL}/shop/items`, {
         category: selectedCategory[0].id,
         subcategory: selectedCategory[1].id,
         minPrice: selectedPrice[0] != -1 ? selectedPrice[0] : -1,

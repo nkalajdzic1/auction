@@ -8,6 +8,7 @@ import { Divider } from "@material-ui/core";
 import { useStylesShopPageCategories } from "./Styles";
 import { IShopPageCategories, IShopPageCategoriesProps } from "./Intefaces";
 import SubList from "./SubList";
+import { TMBD_API_URL } from "../../const";
 
 function ShopPageCategories({
   breadcrumbs,
@@ -26,7 +27,7 @@ function ShopPageCategories({
     setIsLoadingData(true);
 
     axios
-      .get("https://auctiononline.herokuapp.com/category/categories")
+      .get(`${TMBD_API_URL}/category/categories`)
       .then((res) => {
         setCategories(res.data);
         setTimeout(() => {

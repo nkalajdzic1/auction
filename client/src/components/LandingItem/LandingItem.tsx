@@ -6,6 +6,7 @@ import axios from "axios";
 import LandingItemContent, {
   IRandomItem,
 } from "./components/LandingItemContent";
+import { TMBD_API_URL } from "../../const";
 
 function LandingItem() {
   const [item, setItem] = useState<IRandomItem>();
@@ -14,7 +15,7 @@ function LandingItem() {
   useEffect(() => {
     setIsLoadingData(true);
     axios
-      .get("https://auctiononline.herokuapp.com/auction/random_item")
+      .get(`${TMBD_API_URL}/auction/random_item`)
       .then((res) => {
         setItem(res.data);
         setTimeout(() => {

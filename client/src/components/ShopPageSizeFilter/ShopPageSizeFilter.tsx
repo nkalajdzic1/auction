@@ -2,6 +2,7 @@ import { ListItem, ListItemText, ListSubheader } from "@material-ui/core";
 import { Divider, List } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { TMBD_API_URL } from "../../const";
 import { firstUpperRestLower } from "../ShopPageCategories/Functions";
 
 import "./ShopPageSizeFilter.css";
@@ -28,7 +29,7 @@ function ShopPageSizeFilter({
 
   useEffect(() => {
     axios
-      .get("https://auctiononline.herokuapp.com/size/all")
+      .get(`${TMBD_API_URL}/size/all`)
       .then((res) => {
         var arr = Array.from(
           new Set<string>(

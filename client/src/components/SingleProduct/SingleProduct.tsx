@@ -5,6 +5,7 @@ import SingleProductInfo from "./components/SingleProductInfo/SingleProductInfo"
 import axios from "axios";
 import { ISingleAuction } from "./ISingleProduct";
 import BidsList from "./components/BidsList/BidsList";
+import { TMBD_API_URL } from "../../const";
 
 export interface ISingleProductProps {
   auction_id: number;
@@ -15,9 +16,7 @@ function SingleProduct({ auction_id }: ISingleProductProps) {
 
   useEffect(() => {
     axios
-      .get(
-        "https://auctiononline.herokuapp.com/auction/single_item/" + auction_id
-      )
+      .get(`${TMBD_API_URL}/auction/single_item/` + auction_id)
       .then((res) => {
         setAuction(res.data);
         window.scrollTo(0, 0);

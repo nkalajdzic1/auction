@@ -3,6 +3,7 @@ import { IItemCard } from "../ItemList/IItemCard";
 import axios from "axios";
 import ItemList from "../ItemList/ItemList";
 import ItemListSkeleton from "../ItemList/ItemListSkeleton";
+import { TMBD_API_URL } from "../../const";
 
 export interface ILastChanceProps {
   route: string;
@@ -16,7 +17,7 @@ function LastChance({ route }: ILastChanceProps) {
     setIsLoadingData(true);
 
     axios
-      .get("https://auctiononline.herokuapp.com/auction/" + route)
+      .get(`${TMBD_API_URL}/auction/` + route)
       .then((res) => {
         setItems(res.data);
         setTimeout(() => {

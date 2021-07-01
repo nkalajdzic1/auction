@@ -9,6 +9,7 @@ import "./CategoriesOverview.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { firstUpperRestLower } from "../ShopPageCategories/Functions";
+import { TMBD_API_URL } from "../../const";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -38,7 +39,7 @@ function CategoriesOverview() {
 
   useEffect(() => {
     axios
-      .get("https://auctiononline.herokuapp.com/category/parent_categories")
+      .get(`${TMBD_API_URL}/category/parent_categories`)
       .then((res) => {
         console.log(res.data);
         setCategories(res.data);
