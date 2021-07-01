@@ -47,7 +47,7 @@ function ShopPageContainer() {
   const [selectedColor, setSelectedColor] = useState<string>("");
   const [sizes, setSizes] = useState<string[]>([]);
   const [selectedSize, setSelectedSize] = useState<string>("");
-  const [dropdown, setDropdown] = useState<string>("");
+  const [dropdown, setDropdown] = useState<string>("Sort by Popularity");
   const [breadcrumb, setBreadcrumbs] = useState<CategoryPair[]>([
     { id: -1, name: "" },
     { id: -1, name: "" },

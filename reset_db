@@ -1,0 +1,1 @@
+$ npm run unmigrate && npm run migrate && npm run seed-all
