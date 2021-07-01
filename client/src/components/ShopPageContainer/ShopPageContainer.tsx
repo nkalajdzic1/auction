@@ -75,7 +75,6 @@ function ShopPageContainer() {
           selectedSize == "" ? -1 : selectedSize.replaceAll(/\s\(\d\)/g, ""),
       })
       .then((x) => {
-        console.log(x.data);
         setItems(x.data);
       })
       .catch((err) => console.log(err));

@@ -41,7 +41,6 @@ function CategoriesOverview() {
     axios
       .get(`${TMBD_API_URL}/category/parent_categories`)
       .then((res) => {
-        console.log(res.data);
         setCategories(res.data);
       })
       .catch((err) => console.log(err));

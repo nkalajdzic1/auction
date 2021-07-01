@@ -14,7 +14,6 @@ export interface IItemListProps {
 
 function ItemList({ items, style }: IItemListProps) {
   const smallCardClasses = style == null ? smallCard() : style;
-  console.log(items);
   return (
     <ul>
       {items.length > 0 ? (

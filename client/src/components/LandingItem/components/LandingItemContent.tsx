@@ -68,9 +68,8 @@ function LandingItemContent({ randomItem }: ILandingItemContent) {
       </div>
       <div className="landing_item_picture">
         <Image
+          style={{}}
           className={classes.image}
-          width={300}
-          height={300}
           src={blobToImage(randomItem.item.item_item_picture[0].picture)}
         ></Image>
       </div>
