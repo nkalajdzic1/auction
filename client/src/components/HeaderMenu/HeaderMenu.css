@@ -46,10 +46,19 @@
 }
 
 .header_icon {
-  width: 90px;
-  margin-top: 20px;
+  width: 140px;
+  margin-top: 18px;
   display: flex;
+  gap: 10px;
   cursor: pointer;
+}
+
+.header_icon_text {
+  color: #8367d8af;
+}
+
+.header_icon_icon {
+  margin-top: 3px;
 }
 
 .header_menu {

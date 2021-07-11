@@ -72,8 +72,10 @@ export default function HeaderMenu() {
   return (
     <Header className="header">
       <div className="header_icon" onClick={() => routeTo("landing")}>
-        <GavelIcon />
-        <Typography className="header_icon_text">AUCTION</Typography>
+        <GavelIcon className="header_icon_icon" />
+        <Typography variant="h5" className="header_icon_text">
+          AUCTION
+        </Typography>
       </div>
 
       <Search placeholder="Search by term" className="header_search" />
