@@ -4,38 +4,29 @@ import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import Logo from "../../assets/icon/logo.png";
-import Styles from "./Styles";
-import { Button, Link } from "@material-ui/core";
+import "antd/dist/antd.css";
+import { Button, Link, Typography } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import GavelIcon from "@material-ui/icons/Gavel";
+import { Layout, Menu, Input } from "antd";
 
-export default function HeaderMenu() {
-  const history = useHistory();
-  const classes = Styles();
+import "./HeaderMenu.css";
 
-  function routeTo(redirection: string) {
-    history.push(redirection);
-  }
+const { Header } = Layout;
+const { Search } = Input;
+/*
 
-  return (
-    <div className={classes.grow}>
-      <AppBar
+/*<AppBar
         position="static"
         style={{
           backgroundColor: "white",
           boxShadow: "none",
         }}
       >
+        <div>
+          <Button startIcon={<GavelIcon />}>AUCTION</Button>
+        </div>
         <Toolbar>
-          <img
-            src={Logo}
-            style={{
-              width: "15%",
-              height: 40,
-              marginLeft: "10%",
-              cursor: "pointer",
-            }}
-            onClick={() => routeTo("/landing")}
-          ></img>
           <div className={classes.search}>
             <InputBase
               placeholder="Try enter: Shoes"
@@ -70,7 +61,33 @@ export default function HeaderMenu() {
             </Button>
           </div>
         </Toolbar>
-      </AppBar>
-    </div>
+      </AppBar>*/
+export default function HeaderMenu() {
+  const history = useHistory();
+
+  function routeTo(redirection: string) {
+    history.push(redirection);
+  }
+
+  return (
+    <Header className="header">
+      <div className="header_icon" onClick={() => routeTo("landing")}>
+        <GavelIcon />
+        <Typography className="header_icon_text">AUCTION</Typography>
+      </div>
+
+      <Search placeholder="Search by term" className="header_search" />
+      <Menu theme="light" className="header_menu" mode="horizontal">
+        <Menu.Item key={1} onClick={() => routeTo("landing")}>
+          <div style={{ color: "#8367D8" }}>HOME</div>
+        </Menu.Item>
+        <Menu.Item key={2} onClick={() => routeTo("shop")}>
+          SHOP
+        </Menu.Item>
+        <Menu.Item key={3} onClick={() => routeTo("terms_and_conditions")}>
+          MY ACCOUNT
+        </Menu.Item>
+      </Menu>
+    </Header>
   );
 }
