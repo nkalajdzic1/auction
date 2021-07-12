@@ -48,7 +48,8 @@
 }
 
 .singleCard {
-  padding: 20px;
+  padding-top: 10px;
+  padding-inline: 10px;
 }
 
 #simple-tabpanel-0,

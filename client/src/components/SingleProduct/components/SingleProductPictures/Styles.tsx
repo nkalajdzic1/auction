@@ -5,7 +5,6 @@ export const useStyles = makeStyles({
     maxWidth: "100%",
   },
   media: {
-    height: "600px",
     borderRadius: 5,
     objectFit: "cover",
   },

@@ -74,6 +74,9 @@ function LandingItemContent({ randomItem }: ILandingItemContent) {
           <Paragraph
             className="ladning_item_desc"
             ellipsis={{ rows: 4, expandable: false }}
+            style={
+              getWindowDimensions().width >= 900 ? {} : { textAlign: "center" }
+            }
           >
             {randomItem.item.description}
           </Paragraph>

@@ -5,8 +5,6 @@ import { blobToImage } from "../NTLOverview/NTLOverview";
 import { smallCard } from "./Styles";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 
-function openItem() {}
-
 export interface IItemListProps {
   items: IItemCard[];
   style?: ClassNameMap<"root" | "media">;

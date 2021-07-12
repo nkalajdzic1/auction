@@ -26,7 +26,7 @@ const mediumCard = makeStyles({
     fontWeight: 400,
   },
   divider: {
-    width: "85%",
+    width: "100%",
   },
   feature: {
     witdh: "auto",
@@ -68,7 +68,7 @@ function FeatureProducts() {
   return (
     <div className="feature_products">
       <div className={mediumCardclasses.feature}>
-        <li className={mediumCardclasses.font}>Feature Products</li>
+        <li className="feature_products_title">Feature Products</li>
         <Divider className={mediumCardclasses.divider}></Divider>
       </div>
       <div>

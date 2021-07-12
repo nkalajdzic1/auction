@@ -1,0 +1,10 @@
+.single_product_header {
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-inline: 5%;
+}
+
+.single_product_breadcrumb_auction {
+  justify-content: right;
+}

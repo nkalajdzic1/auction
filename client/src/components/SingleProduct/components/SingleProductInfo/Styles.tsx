@@ -9,7 +9,6 @@ export const useStyles = makeStyles({
     backgroundColor: "#ECECEC",
     padding: 10,
     fontSize: 20,
-    width: 200,
     color: "black",
   },
   price_input: {
@@ -22,7 +21,6 @@ export const useStyles = makeStyles({
     color: "#9B9B9B",
   },
   buttonBid: {
-    width: "auto",
     borderColor: "#8367D8",
     borderRadius: 0,
     borderWidth: 3,
