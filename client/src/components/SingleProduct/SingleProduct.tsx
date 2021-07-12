@@ -27,7 +27,7 @@ function SingleProduct({ auction_id }: ISingleProductProps) {
   }, []);
 
   return (
-    <div>
+    <div className="single_product_container">
       <div className="single_product_content">
         <SingleProductPictures auction={auction}></SingleProductPictures>
         <SingleProductInfo auction={auction}></SingleProductInfo>

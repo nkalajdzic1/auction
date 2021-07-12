@@ -15,8 +15,8 @@ const useStyles = makeStyles({
     minWidth: 300,
   },
   root: {
-    width: "80%",
-    marginLeft: "10%",
+    width: "90%",
+    marginLeft: "5%",
     maxHeight: 64 * 4,
     marginBottom: "10%",
     marginTop: "10%",
