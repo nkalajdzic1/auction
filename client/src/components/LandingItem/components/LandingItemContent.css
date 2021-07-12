@@ -1,3 +1,35 @@
 .anticon {
   vertical-align: 0.05em;
 }
+
+.landing_item_bid {
+  color: #8367d8;
+}
+
+.landing_item_description {
+  max-width: 350px;
+  color: #252525;
+}
+
+.landing_item_image {
+  object-fit: cover;
+}
+
+.ladning_item_desc {
+  text-align: left;
+}
+
+@media only screen and (max-width: 900px) {
+  .landing_item_button,
+  .landing_item_bid,
+  .landing_item_description,
+  .landing_item_image,
+  .landing_item_name,
+  .landing_item_bidding {
+    margin: 0 auto;
+  }
+
+  .landing_item_desc {
+    text-align: center;
+  }
+}

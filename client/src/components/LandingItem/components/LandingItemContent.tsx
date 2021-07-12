@@ -1,15 +1,16 @@
-import { Typography } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import React from "react";
 import ButtonCustom from "../../ButtonCustom/ButtonCustom";
 import { Image } from "antd";
 import "antd/dist/antd.css";
-
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { blobToImage } from "../../NTLOverview/NTLOverview";
 import { styles } from "../Styles";
 import { IAuctionIdBody } from "../../ItemCard/ItemCard";
 import { useHistory } from "react-router-dom";
 
 import "./LandingItemContent.css";
+import Paragraph from "antd/lib/typography/Paragraph";
 
 export interface IRandomItem {
   id: number;
@@ -25,6 +26,14 @@ export interface IRandomItem {
         };
       }
     ];
+  };
+}
+
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height,
   };
 }
 
@@ -51,27 +60,42 @@ function LandingItemContent({ randomItem }: ILandingItemContent) {
   return (
     <div className="landing_item">
       <div className="landing_item_info">
-        <Typography variant="h4">{randomItem.item.name}</Typography>
-        <Typography className={classes.bid} variant="h6">
-          Start from - ${randomItem.starting_price}
-        </Typography>
-        <div>
-          <Typography className={classes.description}>
-            {randomItem.item.description}
+        <div className="landing_item_name">
+          <Typography className="root" variant="h4">
+            {randomItem.item.name}
           </Typography>
-          <ButtonCustom
-            styles={classes}
-            onClick={() => routeTo(randomItem.id)}
-            content={"Bid now"}
-          ></ButtonCustom>
+        </div>
+        <div className="landing_item_bidding">
+          <Typography className="landing_item_bid" variant="h6">
+            Start from - ${randomItem.starting_price}
+          </Typography>
+        </div>
+        <div className="ladning_item_description">
+          <Paragraph
+            className="ladning_item_desc"
+            ellipsis={{ rows: 4, expandable: false }}
+          >
+            {randomItem.item.description}
+          </Paragraph>
         </div>
       </div>
       <div className="landing_item_picture">
         <Image
-          style={{}}
-          className={classes.image}
+          width={300}
+          height={300}
+          className="landing_item_image"
           src={blobToImage(randomItem.item.item_item_picture[0].picture)}
         ></Image>
+      </div>
+      <div className="landing_item_button">
+        <Button
+          variant="outlined"
+          endIcon={<ArrowForwardIosIcon />}
+          className={classes.buttonBid}
+          onClick={() => routeTo(randomItem.id)}
+        >
+          Bid now
+        </Button>
       </div>
     </div>
   );

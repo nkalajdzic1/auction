@@ -25,14 +25,20 @@ export interface IButtonCustomProps {
   content: string;
   onClick: () => void;
   styles: ClassNameMap<"bid" | "description" | "buttonBid">;
+  className?: string;
 }
 
-function ButtonCustom({ content, onClick, styles }: IButtonCustomProps) {
+function ButtonCustom({
+  content,
+  onClick,
+  styles,
+  className,
+}: IButtonCustomProps) {
   return (
     <Button
       variant="outlined"
       endIcon={<ArrowForwardIosIcon />}
-      className={styles.buttonBid}
+      className={className != null ? className : styles.buttonBid}
       onClick={onClick}
     >
       {content}

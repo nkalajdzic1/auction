@@ -5,9 +5,7 @@ export const styles = makeStyles({
     color: "#8367D8",
   },
   description: {
-    height: "145px",
     maxWidth: "350px",
-    overflowWrap: "break-word",
     color: "#252525",
   },
   buttonBid: {
@@ -17,8 +15,6 @@ export const styles = makeStyles({
     borderWidth: 3,
   },
   image: {
-    width: 300,
-    height: 300,
     objectFit: "cover",
   },
 });

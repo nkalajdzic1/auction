@@ -1,16 +1,36 @@
-.landing_item {
-  margin-top: 10%;
-  margin-left: 10%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+@media only screen and (max-width: 900px) {
+  .landing_item {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    margin: 0 auto;
+
+    row-gap: 20px;
+  }
+
+  .landing_item_info {
+    margin: 0 auto;
+    padding: 5px;
+  }
+
+  .landing_item_picture {
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .landing_item {
+    margin-top: 10%;
+    margin-left: 10%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }
 
 .landing_item_info {
   display: flex;
-  flex-direction: column;
-  width: 450px;
   max-width: 450px;
+  flex-direction: column;
 }
 
 .landing_item_picture {
