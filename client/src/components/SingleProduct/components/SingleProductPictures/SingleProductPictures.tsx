@@ -48,8 +48,7 @@ function SingleProductPictures({ auction }: ISingleProductPicturesProps) {
   return (
     <div className="single_product_pictures">
       <Image
-        className={classes.media}
-        style={{ verticalAlign: 0 }}
+        className="single_product_pictures_main_pic"
         src={blobToImage(mainImage.picture)}
       />
       <CardContent className={classes.images}>

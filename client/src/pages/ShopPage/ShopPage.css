@@ -1,4 +1,4 @@
-@media (max-width: 700px) and (min-width: 360px) {
+@media (max-width: 700px) and (min-width: 444px) {
   .shop_page {
     display: flex;
     flex-direction: column;
@@ -13,18 +13,16 @@
   }
 }
 
-@media (max-width: 415px) and (min-width: 320px) {
+@media (max-width: 444px) {
   .shop_page_sort_and_view {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    margin-top: 5%;
+    grid-template-rows: auto auto;
+    row-gap: 10px;
   }
 
   .shop_page_sort {
     height: 48px;
-  }
-
-  .shop_page_view {
-    margin-top: 5%;
   }
 }
 

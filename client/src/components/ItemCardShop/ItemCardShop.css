@@ -1,18 +1,20 @@
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 530px) {
   .item_card_shop {
     display: grid;
-    grid-template-rows: auto 300px;
+    grid-template-rows: auto auto;
     padding: 10px;
   }
 
   .item_card_shop_img {
     margin: 0 auto;
-    width: 33%;
-    height: 300px;
+  }
+
+  .item_card_shop > .item_card_shop_img > .ant-image > .ant-image-img {
+    height: 250px;
+    width: 250px;
   }
 
   .item_card_shop_content {
-    width: 400px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -20,18 +22,15 @@
   }
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 530px) {
   .item_card_shop {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 50% 45%;
     column-gap: 5%;
     padding-top: 5%;
   }
 
   .item_card_shop_content {
-  }
-
-  .item_card_shop_img {
   }
 
   .item_card_shop_title {

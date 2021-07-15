@@ -1,7 +1,7 @@
 .single_product_header {
   margin-top: 5%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, auto);
   margin-inline: 5%;
 }
 

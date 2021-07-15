@@ -25,6 +25,10 @@
   .single_product_info {
     margin-left: 5%;
   }
+
+  .single_product_pictures > .ant-image > .ant-image-mask {
+    height: 400px;
+  }
 }
 
 .single_product_images {
@@ -39,4 +43,9 @@
 .single_product_info {
   display: flex;
   flex-direction: column;
+}
+
+.single_product_pictures_main_pic {
+  border-radius: 5;
+  object-fit: cover;
 }

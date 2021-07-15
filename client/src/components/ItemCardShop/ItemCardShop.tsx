@@ -54,7 +54,6 @@ function ItemCardShop({ item }: IItemCardShopProps) {
     <div className="item_card_shop">
       <div className="item_card_shop_img">
         <Image
-          height={400}
           style={{ objectFit: "cover" }}
           src={blobToImage(item.item.item_item_picture[0].picture)}
         />

@@ -5,6 +5,8 @@ import styles from "./Styles";
 import { Breadcrumbs, Link, Typography } from "@material-ui/core";
 import { CategoryPair } from "../ShopPageContainer/ShopPageContainer";
 
+import "./ShopPageHeader.css";
+
 export interface IShopPageHeaderProps {
   breadcrumbs: CategoryPair[];
   setBreadcrumbs: (categories: CategoryPair[]) => void;
