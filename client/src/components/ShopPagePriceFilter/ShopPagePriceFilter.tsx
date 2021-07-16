@@ -37,10 +37,12 @@ function ShopPagePriceFilter({
   useEffect(() => {
     getMinMaxPrice()
       .then((res) => {
-        setPrice([res.data.minPrice, res.data.maxPrice]);
-        setSelectedPrice([res.data.minPrice, res.data.maxPrice]);
-        setMin(res.data.minPrice);
-        setMax(res.data.maxPrice);
+        var minPrice = parseFloat(res.data.minPrice.toFixed(2));
+        var maxPrice = parseFloat(res.data.maxPrice.toFixed(2));
+        setPrice([minPrice, maxPrice]);
+        setSelectedPrice([minPrice, maxPrice]);
+        setMin(minPrice);
+        setMax(maxPrice);
       })
       .catch((err) => console.log(err));
   }, []);

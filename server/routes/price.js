@@ -16,7 +16,7 @@ const max_min = async function (req, res) {
             [sequelize.fn('min', sequelize.col('starting_price')), 'minPrice']
         ],
     });
-
+    console.log(max_min[0])
     res.json(max_min[0])
 }
 
