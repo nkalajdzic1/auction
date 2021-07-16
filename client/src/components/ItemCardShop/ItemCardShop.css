@@ -30,10 +30,8 @@
     padding-top: 5%;
   }
 
-  .item_card_shop_content {
-  }
-
-  .item_card_shop_title {
+  .item_card_shop_image {
+    height: 300px;
   }
 }
 

@@ -18,26 +18,25 @@
   .single_product_content {
     margin: 5%;
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .single_product_info {
     margin-left: 5%;
   }
 
-  .single_product_pictures > .ant-image > .ant-image-mask {
-    height: 400px;
+  .single_product_pictures > .ant-image {
+    height: 650px;
+  }
+
+  .single_product_pictures_main_pic {
+    height: 650px;
   }
 }
 
 .single_product_images {
   display: flex;
   width: auto;
-}
-
-.single_product_pictures {
-  width: 100%;
 }
 
 .single_product_info {

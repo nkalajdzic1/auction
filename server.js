@@ -18,6 +18,7 @@ app.use("/price", require("./server/routes/price.js"));
 app.use("/color", require("./server/routes/color.js"));
 app.use("/size", require("./server/routes/size.js"));
 app.use("/shop", require("./server/routes/shop.js"));
+app.use("/auth", require("./server/routes/auth.js"));
 
 app.use(express.static(root));
 app.get("/*", (req, res) => {

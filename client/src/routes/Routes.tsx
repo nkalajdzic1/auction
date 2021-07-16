@@ -7,6 +7,7 @@ import CustomRoute from "./CustomRoute";
 import { LandingPage, AboutUsPage, Page404 } from "../pages";
 import SingleProductPage from "../pages/SingleProductPage/SingleProductPage";
 import ShopPage from "../pages/ShopPage/ShopPage";
+import RegisterPage from "../pages/RegisterPage/RegisterPage";
 
 const Routes = () => {
   return (
@@ -45,6 +46,13 @@ const Routes = () => {
         path="/shop"
         component={ShopPage}
         title="Single product"
+      />
+      <CustomRoute
+        // permission={[PermissionType.All]}
+        exact
+        path="/register"
+        component={RegisterPage}
+        title="Register"
       />
     </Switch>
   );
