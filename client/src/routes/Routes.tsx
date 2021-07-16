@@ -8,6 +8,7 @@ import { LandingPage, AboutUsPage, Page404 } from "../pages";
 import SingleProductPage from "../pages/SingleProductPage/SingleProductPage";
 import ShopPage from "../pages/ShopPage/ShopPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import LoginPage from "../pages/LoginPage/LoginPage";
 
 const Routes = () => {
   return (
@@ -53,6 +54,13 @@ const Routes = () => {
         path="/register"
         component={RegisterPage}
         title="Register"
+      />
+      <CustomRoute
+        // permission={[PermissionType.All]}
+        exact
+        path="/login"
+        component={LoginPage}
+        title="Login"
       />
     </Switch>
   );

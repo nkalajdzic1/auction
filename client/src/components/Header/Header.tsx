@@ -27,7 +27,7 @@ function Header() {
         <div className="h_col"></div>
         <div className="h_col">
           <div className="login">
-            <a>Login</a> <text>or</text>{" "}
+            <a onClick={() => routeTo("/login")}>Login</a> <text>or</text>{" "}
             <a onClick={() => routeTo("/register")}>Create account</a>
           </div>
         </div>

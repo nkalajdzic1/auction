@@ -1,8 +1,7 @@
 import { ListItem, ListItemText, ListSubheader } from "@material-ui/core";
 import { Divider, List } from "antd";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { TMBD_API_URL } from "../../const";
+import { getAllColors } from "../../api/colors";
 import { firstUpperRestLower } from "../ShopPageCategories/Functions";
 
 import "./ShopPageColorFilter.css";
@@ -27,8 +26,7 @@ function ShopPageColorFilter({
   const [selected, setSelected] = useState<number>();
 
   useEffect(() => {
-    axios
-      .get(`${TMBD_API_URL}/color/all`)
+    getAllColors()
       .then((res) => {
         var arr = Array.from(
           new Set<string>(res.data.map((x: ColorPair) => x.color))

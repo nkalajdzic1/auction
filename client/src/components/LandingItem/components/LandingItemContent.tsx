@@ -1,6 +1,5 @@
 import { Typography, Button } from "@material-ui/core";
 import React from "react";
-import ButtonCustom from "../../ButtonCustom/ButtonCustom";
 import { Image } from "antd";
 import "antd/dist/antd.css";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";

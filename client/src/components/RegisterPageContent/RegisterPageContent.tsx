@@ -1,4 +1,4 @@
-import { Button, Input, Link, makeStyles, Typography } from "@material-ui/core";
+import { Button, Input, Link, Typography } from "@material-ui/core";
 import React from "react";
 
 import "./RegisterPageContent.css";
@@ -26,7 +26,7 @@ function RegisterPageContent() {
           </Button>
           <div className="register_page_login">
             <Typography variant="caption">
-              Alread have an account? <Link> Login</Link>
+              Alread have an account? <Link href="/login"> Login</Link>
             </Typography>
           </div>
         </div>

@@ -1,13 +1,13 @@
 import React from "react";
-import { Route, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
+import { defaultStyles } from "./Styles";
 
 export interface IItemCardProps {
   id: number;
@@ -20,17 +20,6 @@ export interface IItemCardProps {
 export interface IAuctionIdBody {
   auction_id: number;
 }
-
-const defaultStyles = makeStyles({
-  root: {
-    width: 350,
-    height: 350,
-  },
-  media: {
-    height: 250,
-    width: 350,
-  },
-});
 
 function ItemCard({
   id,

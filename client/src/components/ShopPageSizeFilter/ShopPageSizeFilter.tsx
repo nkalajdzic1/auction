@@ -1,8 +1,7 @@
 import { ListItem, ListItemText, ListSubheader } from "@material-ui/core";
 import { Divider, List } from "antd";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { TMBD_API_URL } from "../../const";
+import { getAllSizes } from "../../api/sizes";
 import { firstUpperRestLower } from "../ShopPageCategories/Functions";
 
 import "./ShopPageSizeFilter.css";
@@ -28,8 +27,7 @@ function ShopPageSizeFilter({
   const [selected, setSelected] = useState<number>();
 
   useEffect(() => {
-    axios
-      .get(`${TMBD_API_URL}/size/all`)
+    getAllSizes()
       .then((res) => {
         var arr = Array.from(
           new Set<string>(

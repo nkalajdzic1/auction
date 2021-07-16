@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import "./LandingItem.css";
-import { styles } from "./Styles";
-import axios from "axios";
 import LandingItemContent, {
   IRandomItem,
 } from "./components/LandingItemContent";
-import { TMBD_API_URL } from "../../const";
+import { getRandomItem } from "../../api/products";
 
 function LandingItem() {
   const [item, setItem] = useState<IRandomItem>();
@@ -14,15 +12,14 @@ function LandingItem() {
 
   useEffect(() => {
     setIsLoadingData(true);
-    axios
-      .get(`${TMBD_API_URL}/auction/random_item`)
+    getRandomItem()
       .then((res) => {
         setItem(res.data);
         setTimeout(() => {
           setIsLoadingData(false);
         }, 500);
       })
-      .catch((err) => setTimeout(() => setIsLoadingData(false), 500));
+      .catch(() => setTimeout(() => setIsLoadingData(false), 500));
   }, []);
 
   return <LandingItemContent randomItem={item}></LandingItemContent>;

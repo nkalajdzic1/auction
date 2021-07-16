@@ -13,7 +13,7 @@ export interface IItemCardSkeletonProps {
   styles?: ClassNameMap<"root" | "media">;
 }
 
-const defaultStyles = makeStyles({
+export const defaultSkeletonStyles = makeStyles({
   root: {
     width: 250,
     height: 350,
@@ -25,7 +25,7 @@ const defaultStyles = makeStyles({
 });
 
 const ItemCardSkeleton = ({ id, styles }: IItemCardSkeletonProps) => {
-  const classes = styles == null ? defaultStyles() : styles;
+  const classes = styles == null ? defaultSkeletonStyles() : styles;
   return (
     <Card key={id} className={classes.root} raised={false}>
       <CardActionArea>

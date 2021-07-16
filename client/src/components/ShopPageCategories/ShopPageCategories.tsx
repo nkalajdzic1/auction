@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import List from "@material-ui/core/List";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 import queryString from "query-string";
 import { Divider } from "@material-ui/core";
 import { useStylesShopPageCategories } from "./Styles";
 import { IShopPageCategories, IShopPageCategoriesProps } from "./Intefaces";
 import SubList from "./SubList";
-import { TMBD_API_URL } from "../../const";
+import { getAllCategories } from "../../api/categories";
 
 function ShopPageCategories({
   breadcrumbs,
@@ -26,15 +25,14 @@ function ShopPageCategories({
   useEffect(() => {
     setIsLoadingData(true);
 
-    axios
-      .get(`${TMBD_API_URL}/category/categories`)
+    getAllCategories()
       .then((res) => {
         setCategories(res.data);
         setTimeout(() => {
           setIsLoadingData(false);
         }, 500);
       })
-      .catch((err) => setTimeout(() => setIsLoadingData(false), 500));
+      .catch(() => setTimeout(() => setIsLoadingData(false), 500));
   }, []);
 
   return (

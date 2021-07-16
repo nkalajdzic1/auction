@@ -1,8 +1,7 @@
 import { ListSubheader, makeStyles, Slider } from "@material-ui/core";
 import { Typography } from "antd";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { TMBD_API_URL } from "../../const";
+import { getMinMaxPrice } from "../../api/price";
 
 import "./ShopPagePriceFilter.css";
 
@@ -36,8 +35,7 @@ function ShopPagePriceFilter({
   const classes = useStyle();
 
   useEffect(() => {
-    axios
-      .get(`${TMBD_API_URL}/price/max_min_price`)
+    getMinMaxPrice()
       .then((res) => {
         setPrice([res.data.minPrice, res.data.maxPrice]);
         setSelectedPrice([res.data.minPrice, res.data.maxPrice]);

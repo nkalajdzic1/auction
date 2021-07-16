@@ -7,5 +7,6 @@ export const useStyles = makeStyles({
     borderWidth: 3,
     marginTop: "5%",
     width: "100%",
+    height: 45,
   },
 });

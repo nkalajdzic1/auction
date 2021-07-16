@@ -1,32 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
-import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
+import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
+import "../../api/categories";
 
 import "./CategoriesOverview.css";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { firstUpperRestLower } from "../ShopPageCategories/Functions";
-import { TMBD_API_URL } from "../../const";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      width: 250,
-      maxWidth: 250,
-    },
-    head: {
-      color: "#8367D8",
-      fontWeight: "bold",
-    },
-  })
-);
-
-function ListItemLink(props: ListItemProps<"a", { button?: true }>) {
-  return <ListItem button component="a" {...props} />;
-}
+import { getParentCategories } from "../../api/categories";
+import { useStyles } from "./Styles";
 
 export interface IParentCagetoryNames {
   id: number;
@@ -38,8 +21,7 @@ function CategoriesOverview() {
   const history = useHistory();
 
   useEffect(() => {
-    axios
-      .get(`${TMBD_API_URL}/category/parent_categories`)
+    getParentCategories()
       .then((res) => {
         setCategories(res.data);
       })

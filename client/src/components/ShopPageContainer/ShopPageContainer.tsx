@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { getShopItems } from "../../api/products";
 import { TMBD_API_URL } from "../../const";
 import DropDown from "../DropDown/DropDown";
 import GridListToggleButton from "../GridListToggleButton/GridListToggleButton";
@@ -64,16 +65,16 @@ function ShopPageContainer() {
   const setSelectedSizeHelpingF = (size: string) => setSelectedSize(size);
 
   useEffect(() => {
-    axios
-      .post(`${TMBD_API_URL}/shop/items`, {
-        category: selectedCategory[0].id,
-        subcategory: selectedCategory[1].id,
-        minPrice: selectedPrice[0] != -1 ? selectedPrice[0] : -1,
-        maxPrice: selectedPrice[1] != -1 ? selectedPrice[1] : -1,
-        color: selectedColor == "" ? -1 : selectedColor,
-        size:
-          selectedSize == "" ? -1 : selectedSize.replaceAll(/\s\(\d\)/g, ""),
-      })
+    var filters = {
+      category: selectedCategory[0].id,
+      subcategory: selectedCategory[1].id,
+      minPrice: selectedPrice[0] != -1 ? selectedPrice[0] : -1,
+      maxPrice: selectedPrice[1] != -1 ? selectedPrice[1] : -1,
+      color: selectedColor == "" ? -1 : selectedColor,
+      size: selectedSize == "" ? -1 : selectedSize.replaceAll(/\s\(\d\)/g, ""),
+    };
+
+    getShopItems(filters)
       .then((x) => {
         setItems(x.data);
       })

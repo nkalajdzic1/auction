@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Image } from "antd";
 
 import "./ItemCardShop.css";
-import { Button, makeStyles, Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import Paragraph from "antd/lib/typography/Paragraph";
 import GavelIcon from "@material-ui/icons/Gavel";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -10,24 +10,7 @@ import { IAuctionIdBody } from "../ItemCard/ItemCard";
 import { useHistory } from "react-router-dom";
 import { IAuctionItemShop } from "../ShopPageContainer/ShopPageContainer";
 import { blobToImage } from "../NTLOverview/NTLOverview";
-
-const useStyles = makeStyles({
-  buttonWatchlist: {
-    borderColor: "#ECECEC",
-    borderRadius: 0,
-    borderWidth: 3,
-  },
-  buttonWatchlistActive: {
-    borderColor: "#8367D8",
-    borderRadius: 0,
-    borderWidth: 3,
-  },
-  buttonBid: {
-    borderColor: "#ECECEC",
-    borderRadius: 0,
-    borderWidth: 3,
-  },
-});
+import { useStyles } from "./Styles";
 
 export interface IItemCardShopProps {
   item?: IAuctionItemShop;
