@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-module.exports = new Sequelize( /*process.env.CLEAR_DATABASE_URL ||*/ 'mysql://Admin:admin@localhost/auctiondb', {
+module.exports = new Sequelize(process.env.CLEAR_DATABASE_URL || 'mysql://Admin:admin@localhost/auctiondb', {
     dialect: "mysql",
     pool: {
         max: 5,
