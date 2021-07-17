@@ -40,3 +40,20 @@
 .login_page_label {
   padding-top: 5%;
 }
+
+.login_page_button {
+  padding-top: 5%;
+}
+
+.login_page_forgot_password {
+  margin-top: 5%;
+  text-align: center;
+  color: #9b9b9b;
+}
+
+.login_page_other_logins {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+  margin-top: 5%;
+}

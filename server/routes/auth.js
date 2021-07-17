@@ -12,10 +12,8 @@ const {
     generateHash,
     comparePassword
 } = require('../database/encryption/encryption');
-const {
-    generateToken
-} = require('./token');
 
+const heplingF = require('./token');
 
 router.post('/register', async (req, res) => {
     const user = await models.user.findOne({
@@ -48,15 +46,18 @@ router.get('/login', async (req, res) => {
 
     if (await comparePassword(req.body.password, userExists.password)) {
         const user = {
+            id: userExists.id,
             name: userExists.name,
             surname: userExists.surname,
             email: userExists.email
         }
 
-        const token = generateToken(user);
+        const accessToken = heplingF.generateAccesToken(user);
+        const refreshToken = heplingF.generateRefreshToken(user);
 
         return res.json({
-            token: token
+            accessToken: accessToken,
+            refreshToken: refreshToken
         });
     }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import "./config/firebase-config";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./index.css";

@@ -6,7 +6,6 @@ import CustomRoute from "./routes/CustomRoute";
 import Routes from "./routes/Routes";
 import { AboutUsPage, LandingPage, Page404, SingleProductPage } from "./pages";
 import { ToastContainer } from "react-toastify";
-import ShopPage from "./pages/ShopPage/ShopPage";
 
 function App() {
   useEffect(() => {
