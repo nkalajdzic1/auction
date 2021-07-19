@@ -8,5 +8,6 @@ export const useStyles = makeStyles({
     marginTop: "5%",
     width: "100%",
     height: 45,
+    fontSize: '1rem'
   },
 });

@@ -6,17 +6,15 @@ import CustomRoute from "./routes/CustomRoute";
 import Routes from "./routes/Routes";
 import { AboutUsPage, LandingPage, Page404, SingleProductPage } from "./pages";
 import { ToastContainer } from "react-toastify";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
-  useEffect(() => {
-    if (localStorage.getItem("currentUser") == null)
-      localStorage.setItem("currentUser", JSON.stringify({ role: 0 }));
-  }, []);
-
   return (
     <Router basename={"/site"}>
-      <Routes />
-      <ToastContainer draggable={false} />
+      <AuthProvider>
+        <Routes />
+        <ToastContainer draggable={false} />
+      </AuthProvider>
     </Router>
   );
 }

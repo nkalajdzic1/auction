@@ -216,6 +216,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      is_third_party_user: {
+        allowNull: false,
+        defaultValue: false,
+        type: Sequelize.BOOLEAN
+      },
       location_id: {
         type: Sequelize.INTEGER,
         allowNull: true,

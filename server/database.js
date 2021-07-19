@@ -1,10 +1,12 @@
+require('dotenv').config();
 const Sequelize = require('sequelize');
-module.exports = new Sequelize( /*process.env.CLEAR_DATABASE_URL ||*/ 'mysql://Admin:admin@localhost/auctiondb', {
-    dialect: "mysql",
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    },
-});
+
+module.exports = new Sequelize({
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    host: process.env.DB_HOST,
+    dialect: 'mysql',
+    operatorsAliases: 0,
+  },);
+

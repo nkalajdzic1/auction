@@ -13,4 +13,15 @@ function authenticateToken(req, res, next) {
     });
 }
 
-module.exports = authenticateToken;
+function authenticateThirdParty(req, res, next) {
+    if(req.body == null || req.body.tokenId == null) return res.sendStatus(401);
+
+    const data = jwt.decode(req.body.tokenId);
+    req.user = data;
+    next();
+}
+
+module.exports = {
+    authenticateToken,
+    authenticateThirdParty
+};

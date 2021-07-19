@@ -5,5 +5,7 @@ export const styles = makeStyles({
     width: "100%",
     height: "45px",
     marginTop: "5%",
+    fontSize: "0.6rem",
+    fontWeight: 'bold'
   },
 });

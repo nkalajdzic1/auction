@@ -537,6 +537,7 @@ module.exports = {
     ]);
     await queryInterface.bulkInsert('user', [{
         id: 1,
+        is_third_party_user: false,
         location_id: 1,
         card_id: null,
         paypal_id: 1,
@@ -554,6 +555,7 @@ module.exports = {
       },
       {
         id: 2,
+        is_third_party_user: false,
         location_id: 1,
         card_id: null,
         paypal_id: 2,
@@ -571,6 +573,7 @@ module.exports = {
       },
       {
         id: 3,
+        is_third_party_user: false,
         location_id: 3,
         card_id: null,
         paypal_id: 3,
@@ -588,6 +591,7 @@ module.exports = {
       },
       {
         id: 4,
+        is_third_party_user: false,
         location_id: 4,
         card_id: 1,
         paypal_id: null,
@@ -605,6 +609,7 @@ module.exports = {
       },
       {
         id: 5,
+        is_third_party_user: false,
         location_id: 5,
         card_id: 2,
         paypal_id: null,
@@ -622,6 +627,7 @@ module.exports = {
       },
       {
         id: 6,
+        is_third_party_user: false,
         location_id: 6,
         card_id: 3,
         paypal_id: null,
