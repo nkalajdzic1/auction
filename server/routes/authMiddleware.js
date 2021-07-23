@@ -14,14 +14,27 @@ function authenticateToken(req, res, next) {
 }
 
 function authenticateThirdParty(req, res, next) {
-    if(req.body == null || req.body.tokenId == null) return res.sendStatus(401);
+    if (req.body == null || req.body.tokenId == null) return res.sendStatus(401);
 
     const data = jwt.decode(req.body.tokenId);
     req.user = data;
+
     next();
+}
+
+function authenticateCookie(req, res, next) {
+    const cookie = req.cookies['session_id'];
+    if (cookie == null) return res.sendStatus(401);
+
+    jwt.verify(cookie, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    });
 }
 
 module.exports = {
     authenticateToken,
-    authenticateThirdParty
+    authenticateThirdParty,
+    authenticateCookie
 };

@@ -3,7 +3,6 @@ import { auth } from "../config/firebase-config"
 import firebase from "firebase/app"
 import { getUserViaThirdParty} from "../api/auth";
 
-
 const AuthContext = React.createContext()
 
 export function useAuth() {
@@ -12,6 +11,8 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
+  const [userProfilePicture, setUserProfilePicture] = useState('');
+  const [userName, setUserName] = useState('');
   const [loading, setLoading] = useState(true)
 
   function signup(email, password) {
@@ -50,6 +51,12 @@ export function AuthProvider({ children }) {
         return;
       }
 
+      localStorage.setItem('profile_picture', user.photoURL);
+      setUserProfilePicture(user.photoURL);
+
+      localStorage.setItem('name', user.displayName);
+      setUserName(user.displayName);
+
       var userObject = {
         name: user.displayName,
         tokenId: user.Aa,
@@ -57,7 +64,8 @@ export function AuthProvider({ children }) {
 
       getUserViaThirdParty(userObject)
             .then((res) => {
-              setCurrentUser(res.data);
+              localStorage.setItem('accessToken', res.data.accessToken);
+              setCurrentUser(res.data.accessToken);
             })
             .catch(() => {});  
       
@@ -70,6 +78,11 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
+    setCurrentUser,
+    userProfilePicture,
+    setUserProfilePicture,
+    userName,
+    setUserName,
     login,
     loginWithGMail,
     loginWithFacebook,

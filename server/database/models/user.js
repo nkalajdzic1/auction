@@ -12,7 +12,8 @@ module.exports = function (sequelize, DataTypes) {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     role: DataTypes.INTEGER,
-    profile_picture: DataTypes.BLOB
+    profile_picture: DataTypes.BLOB,
+    third_party_profile_picture_url: DataTypes.STRING
   }, {
     freezeTableName: true,
     underscored: true

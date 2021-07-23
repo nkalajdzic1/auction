@@ -41,7 +41,7 @@
   font-family: "Lato", sans-serif;
 }
 
-.h_col img {
+.h_col > .ic {
   padding-left: 15px;
 }
 

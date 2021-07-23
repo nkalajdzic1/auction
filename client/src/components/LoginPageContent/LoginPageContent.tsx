@@ -11,8 +11,7 @@ import { styles } from "./Style";
 import { FacebookButton, GmailButton } from "./LoginPageButtons";
 import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
-import { TMBD_API_URL } from "../../const";
+import { toastSucces } from "../ToastCustom/ToastCustom";
 
 function LoginPageContent() {
   const classes = useStyles();
@@ -21,11 +20,8 @@ function LoginPageContent() {
   const [disabled, setDisabled] = useState(false);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { login, loginWithFacebook, loginWithGMail, currentUser } = useAuth();
+  const { login, loginWithFacebook, loginWithGMail } = useAuth();
   const history = useHistory();
-  /*const [auth, setAuth] = useState(
-    false || window.localStorage.getItem("auth") === "true"
-  );*/
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRememberMe(event.target.checked);
@@ -33,47 +29,30 @@ function LoginPageContent() {
 
   const cookies = new Cookies();
 
-  useEffect(() => {
-    /*firebase.auth().onAuthStateChanged((userCredentials) => {
-      if (userCredentials) {
-        setAuth(true);
-        userCredentials
-          .getIdTokenResult()
-          .then((token) => console.log(`\n\n ${token}`))
-          .catch((err) => console.log(err));
-        window.localStorage.setItem("auth", "true");
-        userCredentials.getIdToken().then((token) => {
-          window.localStorage.setItem("token", token);
-        });
-      }
-    });*/
-  }, []);
-
   const gmailLogin = async () => {
-    await loginWithGMail();
-    
-    /*axios
-      .get(`${TMBD_API_URL}/auth/rand`, { withCredentials: true })
-      .then((res) => {
-        //cookies.set("refresh_token", res.headers["refresh_token"], {path: '/'});
-        console.log(res.data);
+    loginWithGMail()
+      .then((res: any) => {
+        history.push("/");
+        toastSucces("Login successful");
       })
-      .catch((err) => console.log(err));*/
-   
+      .catch();
   };
 
   const facebookLogin = async () => {
-    await loginWithFacebook();
+     loginWithFacebook()
+      .then((res: any) => {
+        history.push("/");
+        toastSucces("Login successful");
+      })
+      .catch();
   };
 
   const handleLogin = async () => {
     if (emailRef.current && passwordRef.current) {
-      await login(emailRef.current.value, passwordRef.current.value);
-      //history.push("/");
+        await login(emailRef.current.value, passwordRef.current.value);
+        history.push("/");
     }
   };
-
-  console.log(currentUser);
 
   return (
     <div className="login_page_content">

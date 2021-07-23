@@ -39,9 +39,13 @@ const generateTokens = (user) => {
     };
 };
 
-router.get('/rand', (req, res) => {
-    console.log(req.cookies['session_id']);
-    res.sendStatus(200);
+router.post('/refresh_access_token', middleware.authenticateCookie, (req, res) => {
+    res.status(201).json({
+        accessToken: heplingF.generateAccesToken({
+            name: req.user.name,
+            email: req.user.email
+        })
+    });
 });
 
 router.post('/third_party_auth', middleware.authenticateThirdParty, async (req, res) => {
@@ -58,7 +62,8 @@ router.post('/third_party_auth', middleware.authenticateThirdParty, async (req, 
             name: name != null ? name : 'unown',
             surname: surname != null ? surname : 'unown',
             email: data.email,
-            password: generateHash('###$$$###')
+            password: generateHash('###$$$###'),
+            third_party_profile_picture_url: data.picture
         });
 
     }
@@ -69,7 +74,8 @@ router.post('/third_party_auth', middleware.authenticateThirdParty, async (req, 
     });
 
     res.cookie('session_id', tokens.refreshToken, {
-        httpOnly: true
+        httpOnly: true,
+        secure: true
     });
 
     res.json({
@@ -78,6 +84,10 @@ router.post('/third_party_auth', middleware.authenticateThirdParty, async (req, 
 
 
 });
+
+router.get('/logout', middleware.authenticateCookie, (req, res) => {
+    res.clearCookie('session_id').send('Cookie cleared');
+})
 
 router.post('/register', async (req, res) => {
 

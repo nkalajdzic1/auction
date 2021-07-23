@@ -284,6 +284,11 @@ module.exports = {
       profile_picture: {
         type: Sequelize.BLOB
       },
+      third_party_profile_picture_url: {
+        allowNull: false,
+        defaultValue: '',
+        type: Sequelize.STRING
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE

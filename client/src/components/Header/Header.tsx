@@ -8,13 +8,39 @@ import "./Header.css";
 import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { Avatar, Button, Typography } from "@material-ui/core";
+import { useStyle } from "./Style";
+import { toastSucces } from "../ToastCustom/ToastCustom";
+import { logoutUser } from "../../api/auth";
 
 function Header() {
   const history = useHistory();
-  const { currentUser } = useAuth();
+  const classes = useStyle();
+  const {
+    setCurrentUser,
+    userProfilePicture,
+    setUserProfilePicture,
+    setUserName,
+    logout
+  } = useAuth();
 
   const routeTo = (path: string) => {
     history.push(path);
+  };
+
+  const logOut = () => {
+    setCurrentUser("");
+    setUserProfilePicture("");
+    setUserName("");
+
+    logoutUser()
+      .then(() => {
+        localStorage.clear();
+        logout();
+        routeTo("/");
+        toastSucces("Logged out");
+      })
+      .catch((err: any) => console.log(err));
   };
 
   return (
@@ -29,9 +55,31 @@ function Header() {
         <div className="h_col"></div>
         <div className="h_col">
           <div className="login">
-            <a onClick={() => routeTo("/login")}>Login</a> <text>or</text>
-            {` `}
-            <a onClick={() => routeTo("/register")}>Create account</a>
+            {localStorage.getItem("accessToken") != null ? (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 10,
+                }}
+              >
+                <Avatar
+                  alt="profile picture"
+                  className={classes.picSize}
+                  src={userProfilePicture}
+                />
+                <Button onClick={logOut} style={{ color: "white" }}>
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <>
+                <a onClick={() => routeTo("/login")}>Login</a> <text>or</text>
+                {` `}
+                <a onClick={() => routeTo("/register")}>Create account</a>
+              </>
+            )}
           </div>
         </div>
       </div>
