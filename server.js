@@ -1,19 +1,21 @@
 const express = require("express");
 const cors = require("cors");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 const db = require("./server/database.js");
 const path = require("path");
 const fs = require("fs");
 const app = express();
 
 app.use(cookieParser());
-app.use(cors({
-  credentials: true,
-  origin: 'http://localhost:3000'
-}));
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+  })
+);
 app.use(express.json());
 
-const root = require('path').join(__dirname, 'client', 'build/')
+const root = require("path").join(__dirname, "client", "build/");
 
 //routes
 app.use("/auction", require("./server/routes/auction.js"));
@@ -26,16 +28,15 @@ app.use("/auth", require("./server/routes/auth.js"));
 
 app.use(express.static(root));
 app.get("/*", (req, res) => {
-  res.sendFile('index.html', {
-    root
+  res.sendFile("index.html", {
+    root,
   });
-})
+});
 
 //check connection to database
 db.authenticate()
   .then(() => console.log("Connected to auctionDB database."))
-  .catch((err) => console.log(err));
-
+  .catch(console.log);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, async () => console.log(`Server listening on ${PORT}`));

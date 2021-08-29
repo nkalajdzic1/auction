@@ -1,36 +1,38 @@
-'use strict';
-const encryption = require('../encryption/encryption.js');
-const fs = require('fs');
-const sequelize = require('../models');
+"use strict";
+const encryption = require("../encryption/encryption.js");
+const fs = require("fs");
+const sequelize = require("../models");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     var currentDate = new Date();
     var auctionDate = new Date();
     auctionDate.setDate(auctionDate.getDate() + 27);
-    await queryInterface.bulkInsert('paypal', [{
+    await queryInterface.bulkInsert("paypal", [
+      {
         id: 1,
         credentials: "user1@gmail.com",
         password: encryption.generateHash("password123"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 2,
         credentials: "user2@gmail.com",
         password: encryption.generateHash("testtest123"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 3,
         credentials: "user3@gmail.com",
         password: encryption.generateHash("useruser123"),
         created_at: currentDate,
-        updated_at: currentDate
-      }
+        updated_at: currentDate,
+      },
     ]);
-    await queryInterface.bulkInsert('location', [{
+    await queryInterface.bulkInsert("location", [
+      {
         id: 1,
         street: "Lipe 10",
         city: "Sarajevo",
@@ -38,7 +40,7 @@ module.exports = {
         state: "",
         country: "BiH",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 2,
@@ -48,7 +50,7 @@ module.exports = {
         state: "",
         country: "BiH",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 3,
@@ -58,7 +60,7 @@ module.exports = {
         state: "",
         country: "BiH",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 4,
@@ -68,7 +70,7 @@ module.exports = {
         state: "",
         country: "BiH",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 5,
@@ -78,7 +80,7 @@ module.exports = {
         state: "",
         country: "BiH",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 6,
@@ -88,17 +90,18 @@ module.exports = {
         state: "",
         country: "BiH",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
     ]);
-    await queryInterface.bulkInsert('card', [{
+    await queryInterface.bulkInsert("card", [
+      {
         id: 1,
         name_on_card: "user4 aaa",
         card_number: "371449635398431",
         expiration_date: "07/22",
         cvc: "164",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 2,
@@ -107,7 +110,7 @@ module.exports = {
         expiration_date: "10/21",
         cvc: "313",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 3,
@@ -116,18 +119,20 @@ module.exports = {
         expiration_date: "01/23",
         cvc: "091",
         created_at: currentDate,
-        updated_at: currentDate
-      }
+        updated_at: currentDate,
+      },
     ]);
-    await queryInterface.bulkInsert('item', [{
+    await queryInterface.bulkInsert("item", [
+      {
         id: 1,
         name: "Black sneakers",
         color: "BLACK",
         size: "LARGE",
         rating: 4.4,
-        description: "Black sport sneakers, with a clean and look that provides comfort.",
+        description:
+          "Black sport sneakers, with a clean and look that provides comfort.",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 2,
@@ -137,7 +142,7 @@ module.exports = {
         rating: 4.2,
         description: "The classic adidas model that never goes out of fashion.",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 3,
@@ -145,9 +150,10 @@ module.exports = {
         color: "WHITE",
         size: "MEDIUM",
         rating: 3.1,
-        description: "Long, crew-neck T-shirt in soft jersey with a rounded hem.",
+        description:
+          "Long, crew-neck T-shirt in soft jersey with a rounded hem.",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 4,
@@ -157,7 +163,7 @@ module.exports = {
         rating: 3.1,
         description: "Crew-neck T-shirt in soft cotton jersey.",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 5,
@@ -165,9 +171,10 @@ module.exports = {
         color: "BLUE",
         size: "SMALL",
         rating: 3.9,
-        description: "5-pocket jeans in washed denim with a regular waist, zip fly, and slim legs..",
+        description:
+          "5-pocket jeans in washed denim with a regular waist, zip fly, and slim legs..",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 6,
@@ -175,9 +182,10 @@ module.exports = {
         color: "BLACK",
         size: "SMALL",
         rating: 3.5,
-        description: "5-pocket denim jeans with a regular waist, zip fly with button, and slim legs. Made with Lycra® Freefit® technology for soft, super-generous stretch, maximum freedom of movement, and optimal comfort.",
+        description:
+          "5-pocket denim jeans with a regular waist, zip fly with button, and slim legs. Made with Lycra® Freefit® technology for soft, super-generous stretch, maximum freedom of movement, and optimal comfort.",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 7,
@@ -185,18 +193,20 @@ module.exports = {
         color: "DARK BEIGE",
         size: "SMALL",
         rating: 5,
-        description: "Calf-length kaftan dress in woven fabric. Low-cut V-neck, pleat at front for added volume, and short sleeves. Straight-cut hem. Unlined.",
+        description:
+          "Calf-length kaftan dress in woven fabric. Low-cut V-neck, pleat at front for added volume, and short sleeves. Straight-cut hem. Unlined.",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
     ]);
-    await queryInterface.bulkInsert('item_picture', [{
+    await queryInterface.bulkInsert("item_picture", [
+      {
         id: 1,
         item_id: 1,
         is_main_picture: true,
         picture: fs.readFileSync(__dirname + "/img/shoe1_img1.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 2,
@@ -204,7 +214,7 @@ module.exports = {
         is_main_picture: false,
         picture: fs.readFileSync(__dirname + "/img/shoe1_img2.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 3,
@@ -212,7 +222,7 @@ module.exports = {
         is_main_picture: false,
         picture: fs.readFileSync(__dirname + "/img/shoe1_img3.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 4,
@@ -220,7 +230,7 @@ module.exports = {
         is_main_picture: false,
         picture: fs.readFileSync(__dirname + "/img/shoe1_img4.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 5,
@@ -228,7 +238,7 @@ module.exports = {
         is_main_picture: false,
         picture: fs.readFileSync(__dirname + "/img/shoe1_img5.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 6,
@@ -236,7 +246,7 @@ module.exports = {
         is_main_picture: true,
         picture: fs.readFileSync(__dirname + "/img/shoe2_img1.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 7,
@@ -244,7 +254,7 @@ module.exports = {
         is_main_picture: false,
         picture: fs.readFileSync(__dirname + "/img/shoe2_img2.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 8,
@@ -252,7 +262,7 @@ module.exports = {
         is_main_picture: false,
         picture: fs.readFileSync(__dirname + "/img/shoe2_img3.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 9,
@@ -260,7 +270,7 @@ module.exports = {
         is_main_picture: false,
         picture: fs.readFileSync(__dirname + "/img/shoe2_img4.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 10,
@@ -268,7 +278,7 @@ module.exports = {
         is_main_picture: false,
         picture: fs.readFileSync(__dirname + "/img/shoe2_img5.png"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 11,
@@ -276,7 +286,7 @@ module.exports = {
         is_main_picture: true,
         picture: fs.readFileSync(__dirname + "/img/t-shirt1_img1.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 12,
@@ -284,7 +294,7 @@ module.exports = {
         is_main_picture: true,
         picture: fs.readFileSync(__dirname + "/img/t-shirt2_img1.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 13,
@@ -292,7 +302,7 @@ module.exports = {
         is_main_picture: true,
         picture: fs.readFileSync(__dirname + "/img/jeans1_img1.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 14,
@@ -300,7 +310,7 @@ module.exports = {
         is_main_picture: true,
         picture: fs.readFileSync(__dirname + "/img/jeans2_img1.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 15,
@@ -308,7 +318,7 @@ module.exports = {
         is_main_picture: false,
         picture: fs.readFileSync(__dirname + "/img/jeans2_img2.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 16,
@@ -316,15 +326,16 @@ module.exports = {
         is_main_picture: true,
         picture: fs.readFileSync(__dirname + "/img/dress1_img1.jpg"),
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
     ]);
-    await queryInterface.bulkInsert('category', [{
+    await queryInterface.bulkInsert("category", [
+      {
         id: 1,
         parent_category_id: 1,
         name: "WOMEN",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
 
       {
@@ -332,42 +343,42 @@ module.exports = {
         parent_category_id: 2,
         name: "MEN",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 3,
         parent_category_id: 3,
         name: "KIDS",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 4,
         parent_category_id: 4,
         name: "ACCESORIES",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 5,
         parent_category_id: 5,
         name: "HOME",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 6,
         parent_category_id: 6,
         name: "ART",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 7,
         parent_category_id: 7,
         name: "COMPUTERS",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       // women subcategories
       {
@@ -375,42 +386,42 @@ module.exports = {
         parent_category_id: 1,
         name: "ACCESORIES",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 9,
         parent_category_id: 1,
         name: "BAGS",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 10,
         parent_category_id: 1,
         name: "CLOTHES",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 11,
         parent_category_id: 1,
         name: "BAD & BATH",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 12,
         parent_category_id: 1,
         name: "SWIMMING COSTUMES",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 13,
         parent_category_id: 1,
         name: "SPOT TOP & SHOES",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       // men subcategories
       {
@@ -418,124 +429,125 @@ module.exports = {
         parent_category_id: 2,
         name: "ACCESORIES",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 15,
         parent_category_id: 2,
         name: "BAGS",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 16,
         parent_category_id: 2,
         name: "CLOTHES",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 17,
         parent_category_id: 2,
         name: "BAD & BATH",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 18,
         parent_category_id: 2,
         name: "SWIMMING COSTUMES",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 19,
         parent_category_id: 2,
         name: "SPOT TOP & SHOES",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
     ]);
-    await queryInterface.bulkInsert('item_category', [{
+    await queryInterface.bulkInsert("item_category", [
+      {
         id: 1,
         item_id: 1,
         category_id: 2,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 2,
         item_id: 2,
         category_id: 1,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
-
 
       {
         id: 3,
         item_id: 2,
         category_id: 2,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 4,
         item_id: 3,
         category_id: 2,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 5,
         item_id: 4,
         category_id: 1,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         item_id: 5,
         category_id: 2,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 6,
         item_id: 5,
         category_id: 16,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 7,
         item_id: 6,
         category_id: 1,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 8,
         item_id: 6,
         category_id: 16,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 9,
         item_id: 7,
         category_id: 1,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 10,
         item_id: 7,
         category_id: 10,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
     ]);
-    await queryInterface.bulkInsert('user', [{
+    await queryInterface.bulkInsert("user", [
+      {
         id: 1,
         is_third_party_user: false,
         location_id: 1,
@@ -550,8 +562,9 @@ module.exports = {
         password: encryption.generateHash("passpass"),
         role: 2,
         profile_picture: null,
+        third_party_profile_picture_url: "",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 2,
@@ -568,8 +581,9 @@ module.exports = {
         password: encryption.generateHash("user2pass"),
         role: 2,
         profile_picture: null,
+        third_party_profile_picture_url: "",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 3,
@@ -586,8 +600,9 @@ module.exports = {
         password: encryption.generateHash("itsasecret"),
         role: 2,
         profile_picture: null,
+        third_party_profile_picture_url: "",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 4,
@@ -604,8 +619,9 @@ module.exports = {
         password: encryption.generateHash("idontknow"),
         role: 2,
         profile_picture: null,
+        third_party_profile_picture_url: "",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 5,
@@ -622,8 +638,9 @@ module.exports = {
         password: encryption.generateHash("pitajkonobara"),
         role: 2,
         profile_picture: null,
+        third_party_profile_picture_url: "",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 6,
@@ -640,8 +657,9 @@ module.exports = {
         password: encryption.generateHash("fromonetoeight"),
         role: 2,
         profile_picture: null,
+        third_party_profile_picture_url: "",
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
     ]);
     var a1 = new Date(),
@@ -672,7 +690,8 @@ module.exports = {
     ae6.setMinutes(ae6.getMinutes() + 60 * 12);
     a7.setDate(a7.getDate() - 61);
     ae7.setMinutes(ae7.getMinutes() + 60 * 10);
-    await queryInterface.bulkInsert('auction', [{
+    await queryInterface.bulkInsert("auction", [
+      {
         id: 1,
         item_id: 1,
         user_id: 1,
@@ -681,18 +700,18 @@ module.exports = {
         start_date: a1,
         end_date: ae1,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 2,
         item_id: 2,
         user_id: 1,
-        starting_price: 45.90,
+        starting_price: 45.9,
         is_bearing_shipping: false,
         start_date: a2,
         end_date: ae2,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 3,
@@ -703,7 +722,7 @@ module.exports = {
         start_date: a3,
         end_date: ae3,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 4,
@@ -714,7 +733,7 @@ module.exports = {
         start_date: a4,
         end_date: ae4,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 5,
@@ -725,7 +744,7 @@ module.exports = {
         start_date: a5,
         end_date: ae5,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 6,
@@ -736,31 +755,32 @@ module.exports = {
         start_date: a6,
         end_date: ae6,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         id: 7,
         item_id: 7,
         user_id: 3,
-        starting_price: 80.10,
+        starting_price: 80.1,
         is_bearing_shipping: true,
         start_date: a7,
         end_date: ae7,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
     ]);
     var bid1 = new Date(a5);
-    bid1.setHours(bid1.getHours() + 1)
+    bid1.setHours(bid1.getHours() + 1);
     var bid2 = new Date(a5);
-    bid2.setHours(bid2.getHours() + 2)
-    await queryInterface.bulkInsert('bid', [{
+    bid2.setHours(bid2.getHours() + 2);
+    await queryInterface.bulkInsert("bid", [
+      {
         user_id: 1,
         auction_id: 5,
         bidding_price: 45,
         bidding_time: bid1,
         created_at: currentDate,
-        updated_at: currentDate
+        updated_at: currentDate,
       },
       {
         user_id: 2,
@@ -768,22 +788,21 @@ module.exports = {
         bidding_price: 48,
         bidding_time: bid2,
         created_at: currentDate,
-        updated_at: currentDate
-      }
-    ])
-
+        updated_at: currentDate,
+      },
+    ]);
   },
 
   down: async (queryInterface, Sequelize) => {
-    queryInterface.bulkDelete('paypal', null, {});
-    queryInterface.bulkDelete('location', null, {});
-    queryInterface.bulkDelete('card', null, {});
-    queryInterface.bulkDelete('item', null, {});
-    queryInterface.bulkDelete('item_picture', null, {});
-    queryInterface.bulkDelete('category', null, {});
-    queryInterface.bulkDelete('item_category', null, {});
-    queryInterface.bulkDelete('user', null, {});
-    queryInterface.bulkDelete('auction', null, {});
-    queryInterface.bulkDelete('bid', null, {});
-  }
+    queryInterface.bulkDelete("paypal", null, {});
+    queryInterface.bulkDelete("location", null, {});
+    queryInterface.bulkDelete("card", null, {});
+    queryInterface.bulkDelete("item", null, {});
+    queryInterface.bulkDelete("item_picture", null, {});
+    queryInterface.bulkDelete("category", null, {});
+    queryInterface.bulkDelete("item_category", null, {});
+    queryInterface.bulkDelete("user", null, {});
+    queryInterface.bulkDelete("auction", null, {});
+    queryInterface.bulkDelete("bid", null, {});
+  },
 };

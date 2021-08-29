@@ -1,374 +1,373 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('paypal', {
+    await queryInterface.createTable("paypal", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       credentials: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
-    await queryInterface.createTable('location', {
+    await queryInterface.createTable("location", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       street: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       city: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       zip_code: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       state: {
         type: Sequelize.STRING,
-        allowNull: true
+        allowNull: true,
       },
       country: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
-    await queryInterface.createTable('card', {
+    await queryInterface.createTable("card", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name_on_card: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       card_number: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       expiration_date: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       cvc: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
-    await queryInterface.createTable('item', {
+    await queryInterface.createTable("item", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       color: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       size: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       rating: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
-    await queryInterface.createTable('item_picture', {
+    await queryInterface.createTable("item_picture", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       item_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'item',
-          key: 'id',
-          as: 'item_id'
-        }
+          model: "item",
+          key: "id",
+          as: "item_id",
+        },
       },
       is_main_picture: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: false,
       },
       picture: {
-        type: Sequelize.BLOB('long'),
-        allowNull: false
+        type: Sequelize.BLOB("long"),
+        allowNull: false,
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
-    await queryInterface.createTable('category', {
+    await queryInterface.createTable("category", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       parent_category_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
-          model: 'category',
-          key: 'id',
-          as: 'category_id'
-        }
+          model: "category",
+          key: "id",
+          as: "category_id",
+        },
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
-    await queryInterface.createTable('item_category', {
+    await queryInterface.createTable("item_category", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       item_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'item',
-          key: 'id',
-          as: 'item_id'
-        }
+          model: "item",
+          key: "id",
+          as: "item_id",
+        },
       },
       category_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'category',
-          key: 'id',
-          as: 'category_id'
-        }
+          model: "category",
+          key: "id",
+          as: "category_id",
+        },
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
-    await queryInterface.createTable('user', {
+    await queryInterface.createTable("user", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       is_third_party_user: {
         allowNull: false,
         defaultValue: false,
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       location_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         unique: false,
         references: {
-          model: 'location',
-          key: 'id',
-          as: 'user_id'
-        }
+          model: "location",
+          key: "id",
+          as: "user_id",
+        },
       },
       card_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         unique: true,
         references: {
-          model: 'card',
-          key: 'id',
-          as: 'card_id'
-        }
+          model: "card",
+          key: "id",
+          as: "card_id",
+        },
       },
       paypal_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         unique: true,
         references: {
-          model: 'paypal',
-          key: 'id',
-          as: 'paypal_id'
-        }
+          model: "paypal",
+          key: "id",
+          as: "paypal_id",
+        },
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       surname: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       gender: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       date_of_birth: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       phone_number: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       password: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       role: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       profile_picture: {
-        type: Sequelize.BLOB
+        type: Sequelize.BLOB,
       },
       third_party_profile_picture_url: {
         allowNull: false,
-        defaultValue: '',
-        type: Sequelize.STRING
+        defaultValue: "",
+        type: Sequelize.STRING,
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
-    await queryInterface.createTable('auction', {
+    await queryInterface.createTable("auction", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       item_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         unique: true,
         references: {
-          model: 'item',
-          key: 'id',
-          as: 'item_id'
-        }
+          model: "item",
+          key: "id",
+          as: "item_id",
+        },
       },
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'user',
-          key: 'id',
-          as: 'user_id'
-        }
+          model: "user",
+          key: "id",
+          as: "user_id",
+        },
       },
       starting_price: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
       },
       is_bearing_shipping: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       start_date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       end_date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
-    await queryInterface.createTable('bid', {
+    await queryInterface.createTable("bid", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'user',
-          key: 'id',
-          as: 'user_id'
-        }
+          model: "user",
+          key: "id",
+          as: "user_id",
+        },
       },
       auction_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'auction',
-          key: 'id',
-          as: 'auction_id'
-        }
+          model: "auction",
+          key: "id",
+          as: "auction_id",
+        },
       },
       bidding_price: {
         type: Sequelize.FLOAT,
@@ -380,15 +379,15 @@ module.exports = {
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropAllTables();
-  }
+  },
 };
